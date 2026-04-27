@@ -12,9 +12,13 @@ export default function RotatingGlobe() {
       {/* Outer glow - green tint */}
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="absolute w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full animate-globe-glow"
+        animate={isInView ? { opacity: [0.3, 0.6, 0.3], scale: 1, filter: ['blur(20px)', 'blur(30px)', 'blur(20px)'] } : {}}
+        transition={{
+          scale: { duration: 1.2, ease: 'easeOut' },
+          opacity: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+          filter: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+        }}
+        className="absolute w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(15,118,110,0.2) 0%, rgba(20,184,166,0.1) 50%, transparent 70%)',
         }}
@@ -51,7 +55,11 @@ export default function RotatingGlobe() {
         </div>
 
         {/* Rotating grid lines */}
-        <div className="absolute inset-0 animate-globe-rotate">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          className="absolute inset-0"
+        >
           <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
             {/* Vertical ellipses (longitude lines) */}
             <ellipse cx="100" cy="100" rx="20" ry="90" stroke="rgba(20,184,166,0.15)" strokeWidth="0.6" />
@@ -121,7 +129,7 @@ export default function RotatingGlobe() {
               <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2.4s" repeatCount="indefinite" />
             </circle>
           </svg>
-        </div>
+        </motion.div>
 
         {/* Orbit ring 1 */}
         <motion.div
