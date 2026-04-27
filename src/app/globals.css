@@ -187,3 +187,37 @@
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
 }
+
+/* Marquee animations */
+.animate-marquee-left {
+  animation: marquee-left 40s linear infinite;
+}
+.animate-marquee-right {
+  animation: marquee-right 45s linear infinite;
+}
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+@keyframes marquee-right {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+/* Globe rotation */
+.animate-globe-rotate {
+  animation: globe-rotate 20s linear infinite;
+}
+@keyframes globe-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Globe pulse glow */
+.animate-globe-glow {
+  animation: globe-glow 3s ease-in-out infinite alternate;
+}
+@keyframes globe-glow {
+  0% { opacity: 0.3; filter: blur(20px); }
+  100% { opacity: 0.6; filter: blur(30px); }
+}

@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/sections/Navbar'
 import HeroSection from '@/components/sections/HeroSection'
+import MarqueeSection from '@/components/sections/MarqueeSection'
 import TrustSection from '@/components/sections/TrustSection'
 import MetricsSection from '@/components/sections/MetricsSection'
 import ServicesSection from '@/components/sections/ServicesSection'
@@ -54,6 +55,7 @@ export default function Home() {
       <main className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <HeroSection />
+        <MarqueeSection />
         <TrustSection />
         <MetricsSection />
         <ServicesSection />
