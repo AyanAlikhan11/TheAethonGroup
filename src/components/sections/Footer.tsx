@@ -37,7 +37,7 @@ export default function Footer() {
   }
 
   return (
-    <footer id="footer" ref={ref} className="relative bg-matte-black border-t border-ivory/5">
+    <footer id="footer" ref={ref} className="relative bg-aethon-green">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,25 +47,26 @@ export default function Footer() {
         >
           {/* Column 1: Logo + tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-4">
-              <span className="text-2xl font-bold tracking-tighter text-gold-gradient">
+            <div className="mb-4 flex items-center gap-1">
+              <span className="text-2xl font-bold tracking-tighter text-white">
                 AETHON
               </span>
-              <span className="block text-[10px] tracking-[0.3em] text-ivory-soft/40 font-medium">
+              <span className="w-2 h-2 rounded-full bg-aethon-yellow" />
+              <span className="block text-[10px] tracking-[0.3em] text-white/50 font-medium">
                 GROUP
               </span>
             </div>
-            <p className="text-sm text-ivory-soft/40 leading-relaxed mb-2">
+            <p className="text-sm text-white/80 leading-relaxed mb-2">
               Growth, Engineered.
             </p>
-            <p className="text-sm text-ivory-soft/30 leading-relaxed">
+            <p className="text-sm text-white/50 leading-relaxed">
               Premium growth intelligence for ambitious brands. We build systems that compound.
             </p>
           </div>
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="text-sm font-semibold text-ivory mb-4 tracking-wide">
+            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
               Services
             </h4>
             <ul className="space-y-2.5">
@@ -73,7 +74,7 @@ export default function Footer() {
                 <li key={service}>
                   <button
                     onClick={() => scrollToSection('services')}
-                    className="text-sm text-ivory-soft/35 hover:text-gold transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300 cursor-pointer"
                   >
                     {service}
                   </button>
@@ -84,7 +85,7 @@ export default function Footer() {
 
           {/* Column 3: Company */}
           <div>
-            <h4 className="text-sm font-semibold text-ivory mb-4 tracking-wide">
+            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
               Company
             </h4>
             <ul className="space-y-2.5">
@@ -92,7 +93,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-ivory-soft/35 hover:text-gold transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300 cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -103,13 +104,13 @@ export default function Footer() {
 
           {/* Column 4: Connect */}
           <div>
-            <h4 className="text-sm font-semibold text-ivory mb-4 tracking-wide">
+            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
               Connect
             </h4>
             <div className="space-y-3">
               <a
                 href="mailto:hello@aethongroup.com"
-                className="block text-sm text-ivory-soft/35 hover:text-gold transition-colors duration-300"
+                className="block text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300"
               >
                 hello@aethongroup.com
               </a>
@@ -119,9 +120,9 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-lg bg-matte-black-lighter border border-ivory/5 flex items-center justify-center hover:border-gold/20 hover:bg-gold/5 transition-all duration-300"
+                    className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-aethon-yellow/20 transition-all duration-300"
                   >
-                    <social.icon className="size-4 text-ivory-soft/40 hover:text-gold transition-colors duration-300" />
+                    <social.icon className="size-4 text-white/60 hover:text-aethon-yellow transition-colors duration-300" />
                   </a>
                 ))}
               </div>
@@ -130,15 +131,15 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-ivory/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-ivory-soft/25">
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/30">
             &copy; 2025 THE AETHON GROUP. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <button className="text-xs text-ivory-soft/25 hover:text-ivory-soft/50 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/30 hover:text-white/60 transition-colors duration-300 cursor-pointer">
               Privacy
             </button>
-            <button className="text-xs text-ivory-soft/25 hover:text-ivory-soft/50 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/30 hover:text-white/60 transition-colors duration-300 cursor-pointer">
               Terms
             </button>
           </div>

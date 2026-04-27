@@ -103,8 +103,10 @@ export default function TestimonialsSection() {
     : fallbackTestimonials
 
   return (
-    <section id="testimonials" ref={ref} className="relative py-24 sm:py-32">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-violet/3 rounded-full blur-[100px]" />
+    <section id="testimonials" ref={ref} className="relative py-20 sm:py-28 bg-aethon-purple overflow-hidden">
+      {/* Decorative circles */}
+      <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-aethon-orange/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -113,9 +115,9 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
             What Founders{' '}
-            <span className="text-gold-gradient">Say</span>
+            <span className="text-aethon-yellow">Say</span>
           </h2>
         </motion.div>
 
@@ -135,21 +137,21 @@ export default function TestimonialsSection() {
             <CarouselContent>
               {displayTestimonials.map((testimonial) => (
                 <CarouselItem key={testimonial.id}>
-                  <div className="glass rounded-2xl p-8 sm:p-12 text-center border border-gold/5">
-                    {/* Gold quote mark */}
-                    <div className="text-5xl sm:text-6xl text-gold/20 font-serif leading-none mb-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 sm:p-12 text-center border border-white/10">
+                    {/* Quote mark */}
+                    <div className="text-5xl sm:text-6xl text-aethon-yellow/60 font-serif leading-none mb-4">
                       &ldquo;
                     </div>
 
-                    <p className="text-lg sm:text-xl text-ivory-soft/80 leading-relaxed mb-8">
+                    <p className="text-lg sm:text-xl text-white/90 leading-relaxed mb-8">
                       {testimonial.quote}
                     </p>
 
                     <div>
-                      <p className="text-base font-semibold text-ivory">
+                      <p className="text-base font-semibold text-white">
                         {testimonial.name}
                       </p>
-                      <p className="text-sm text-ivory-soft/40 mt-1">
+                      <p className="text-sm text-white/50 mt-1">
                         {testimonial.role}, {testimonial.company}
                       </p>
                     </div>
@@ -165,10 +167,10 @@ export default function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   i === current
-                    ? 'bg-gold w-6'
-                    : 'bg-ivory/15 hover:bg-ivory/30'
+                    ? 'bg-aethon-yellow w-6'
+                    : 'bg-white/20 hover:bg-white/40 w-2'
                 }`}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
@@ -176,8 +178,6 @@ export default function TestimonialsSection() {
           </div>
         </motion.div>
       </div>
-
-      <div className="section-divider mt-16 sm:mt-20" />
     </section>
   )
 }

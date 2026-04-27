@@ -12,7 +12,6 @@ import InsightsSection from '@/components/sections/InsightsSection'
 import CTASection from '@/components/sections/CTASection'
 import Footer from '@/components/sections/Footer'
 import ContactModal from '@/components/sections/ContactModal'
-import AdminProvider from '@/components/AdminProvider'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -21,7 +20,7 @@ const jsonLd = {
   description:
     'THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.',
   url: 'https://aethongroup.com',
-  logo: 'https://aethongroup.com/logo.svg',
+  logo: 'https://aethongroup.com/aethon-logo.png',
   slogan: 'Growth, Engineered.',
   sameAs: [
     'https://linkedin.com/company/aethongroup',
@@ -52,7 +51,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen flex flex-col bg-matte-black">
+      <main className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <HeroSection />
         <TrustSection />
@@ -65,7 +64,6 @@ export default function Home() {
         <CTASection />
         <Footer />
         <ContactModal />
-        <AdminProvider />
       </main>
     </>
   )

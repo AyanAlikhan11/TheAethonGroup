@@ -86,24 +86,26 @@ export default function ContactModal() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="bg-matte-black-light border-ivory/10 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="bg-white max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-ivory text-xl">
+          <DialogTitle className="text-aethon-text text-xl">
             Book Your{' '}
-            <span className="text-gold-gradient">Strategy Call</span>
+            <span className="text-orange-gradient">Strategy Call</span>
           </DialogTitle>
-          <DialogDescription className="text-ivory-soft/50">
+          <DialogDescription className="text-aethon-text-secondary">
             Tell us about your brand and growth goals. We&apos;ll get back within 24 hours.
           </DialogDescription>
         </DialogHeader>
 
         {success ? (
           <div className="py-12 text-center">
-            <div className="text-4xl mb-4">&#10003;</div>
-            <h3 className="text-xl font-semibold text-ivory mb-2">
+            <div className="w-16 h-16 rounded-full bg-aethon-green/10 flex items-center justify-center mx-auto mb-4">
+              <span className="text-2xl text-aethon-green">&#10003;</span>
+            </div>
+            <h3 className="text-xl font-semibold text-aethon-text mb-2">
               Thank you!
             </h3>
-            <p className="text-ivory-soft/50 text-sm">
+            <p className="text-aethon-text-secondary text-sm">
               We&apos;ll be in touch shortly to schedule your strategy call.
             </p>
           </div>
@@ -111,7 +113,7 @@ export default function ContactModal() {
           <form onSubmit={handleSubmit} className="space-y-4 mt-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+                <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                   Name *
                 </label>
                 <Input
@@ -121,11 +123,11 @@ export default function ContactModal() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Your full name"
-                  className="bg-matte-black-lighter border-ivory/10 text-ivory placeholder:text-ivory-soft/25 focus-visible:border-gold/30"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+                <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                   Email *
                 </label>
                 <Input
@@ -136,14 +138,14 @@ export default function ContactModal() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="you@company.com"
-                  className="bg-matte-black-lighter border-ivory/10 text-ivory placeholder:text-ivory-soft/25 focus-visible:border-gold/30"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+                <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                   Company
                 </label>
                 <Input
@@ -152,11 +154,11 @@ export default function ContactModal() {
                     setFormData({ ...formData, company: e.target.value })
                   }
                   placeholder="Company name"
-                  className="bg-matte-black-lighter border-ivory/10 text-ivory placeholder:text-ivory-soft/25 focus-visible:border-gold/30"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+                <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                   Phone
                 </label>
                 <Input
@@ -166,13 +168,13 @@ export default function ContactModal() {
                     setFormData({ ...formData, phone: e.target.value })
                   }
                   placeholder="+91 98765 43210"
-                  className="bg-matte-black-lighter border-ivory/10 text-ivory placeholder:text-ivory-soft/25 focus-visible:border-gold/30"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+              <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                 Service Interest
               </label>
               <Select
@@ -181,15 +183,15 @@ export default function ContactModal() {
                   setFormData({ ...formData, service: value })
                 }
               >
-                <SelectTrigger className="w-full bg-matte-black-lighter border-ivory/10 text-ivory focus-visible:border-gold/30">
+                <SelectTrigger className="w-full bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
-                <SelectContent className="bg-matte-black-light border-ivory/10">
+                <SelectContent className="bg-white border-aethon-gray-dark/50">
                   {serviceOptions.map((service) => (
                     <SelectItem
                       key={service}
                       value={service}
-                      className="text-ivory-soft/70 focus:bg-violet/10 focus:text-ivory"
+                      className="text-aethon-text-secondary focus:bg-aethon-orange/10 focus:text-aethon-orange"
                     >
                       {service}
                     </SelectItem>
@@ -199,7 +201,7 @@ export default function ContactModal() {
             </div>
 
             <div>
-              <label className="text-xs font-medium text-ivory-soft/60 mb-1.5 block">
+              <label className="text-xs font-medium text-aethon-text-secondary mb-1.5 block">
                 Message
               </label>
               <Textarea
@@ -208,14 +210,14 @@ export default function ContactModal() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 placeholder="Tell us about your growth goals..."
-                className="bg-matte-black-lighter border-ivory/10 text-ivory placeholder:text-ivory-soft/25 focus-visible:border-gold/30 min-h-[100px]"
+                className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20 min-h-[100px]"
               />
             </div>
 
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gold hover:bg-gold-light text-matte-black font-semibold py-6 cursor-pointer"
+              className="w-full bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold py-6 rounded-full cursor-pointer btn-primary"
             >
               {loading ? (
                 <>

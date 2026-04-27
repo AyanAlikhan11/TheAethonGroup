@@ -57,6 +57,7 @@ export const metadata: Metadata = {
     title: "THE AETHON GROUP | Growth, Engineered.",
     description:
       "We Build Growth Engines That Compound. Premium Growth Intelligence for ambitious brands.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -77,9 +78,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-matte-black text-ivory`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-aethon-text`}
       >
         {children}
         <Toaster />

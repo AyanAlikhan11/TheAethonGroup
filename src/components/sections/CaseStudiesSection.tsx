@@ -27,6 +27,7 @@ const fallbackCaseStudies = [
     stat: '8.2x ROAS',
     description:
       'Transformed a struggling D2C fashion brand into a high-growth engine through systematic paid media scaling, funnel optimization, and creative systems.',
+    color: 'bg-aethon-orange',
   },
   {
     id: '2',
@@ -37,6 +38,7 @@ const fallbackCaseStudies = [
     stat: '12x CAC Improvement',
     description:
       'Engineered a complete growth system for a SaaS platform — from lead generation to conversion optimization — resulting in exponential MRR growth.',
+    color: 'bg-aethon-blue',
   },
   {
     id: '3',
@@ -47,6 +49,7 @@ const fallbackCaseStudies = [
     stat: '5.6x ROAS',
     description:
       'Launched and scaled a premium wellness brand from zero to ₹1.2Cr in 90 days with precision media buying and AI-optimized creative systems.',
+    color: 'bg-aethon-pink',
   },
 ]
 
@@ -68,9 +71,12 @@ export default function CaseStudiesSection() {
       })
   }, [])
 
+  const colorClasses = ['bg-aethon-orange', 'bg-aethon-blue', 'bg-aethon-pink']
+  const colorTextClasses = ['text-aethon-orange', 'text-aethon-blue', 'text-aethon-pink']
+  const colorBgLightClasses = ['bg-aethon-orange/10', 'bg-aethon-blue/10', 'bg-aethon-pink/10']
+
   const displayStudies = caseStudies.length > 0
-    ? caseStudies.map((cs) => {
-        // Parse metrics string to extract key stat
+    ? caseStudies.map((cs, idx) => {
         const metricParts = cs.metrics?.split(' | ') || []
         const firstMetric = metricParts[0] || 'Significant Growth'
         const secondMetric = metricParts[1] || ''
@@ -82,14 +88,19 @@ export default function CaseStudiesSection() {
           metricLabel: cs.results.split('.')[0] || 'Key Result',
           stat: secondMetric || firstMetric,
           description: cs.challenge.length > 120 ? cs.challenge.substring(0, 120) + '...' : cs.challenge,
+          color: colorClasses[idx % 3],
+          colorText: colorTextClasses[idx % 3],
+          colorBgLight: colorBgLightClasses[idx % 3],
         }
       })
-    : fallbackCaseStudies
+    : fallbackCaseStudies.map((cs, idx) => ({
+        ...cs,
+        colorText: colorTextClasses[idx % 3],
+        colorBgLight: colorBgLightClasses[idx % 3],
+      }))
 
   return (
-    <section id="case-studies" ref={ref} className="relative py-24 sm:py-32">
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[100px]" />
-
+    <section id="case-studies" ref={ref} className="relative py-20 sm:py-28 bg-white">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -97,11 +108,11 @@ export default function CaseStudiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
             Growth,{' '}
-            <span className="text-gold-gradient">Proven.</span>
+            <span className="text-orange-gradient">Proven.</span>
           </h2>
-          <p className="mt-6 text-ivory-soft/50 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Real results from real partnerships. Here&apos;s what compounding growth looks like.
           </p>
         </motion.div>
@@ -113,44 +124,44 @@ export default function CaseStudiesSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="glass rounded-2xl overflow-hidden premium-card group cursor-pointer"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-aethon-gray-dark/30 card-hover group cursor-pointer"
             >
-              {/* Top gradient bar */}
-              <div className="h-1 bg-gradient-to-r from-gold via-gold-light to-violet" />
+              {/* Colored top strip */}
+              <div className={`h-2 ${study.color}`} />
 
               <div className="p-6 sm:p-8">
                 {/* Industry tag */}
-                <span className="inline-block px-3 py-1 text-xs font-medium bg-violet/10 text-violet-light rounded-full border border-violet/20 mb-4">
+                <span className={`inline-block px-3 py-1 text-xs font-medium ${study.colorBgLight} ${study.colorText} rounded-full mb-4`}>
                   {study.industry}
                 </span>
 
                 {/* Client type */}
-                <p className="text-sm text-ivory-soft/40 mb-4">{study.client}</p>
+                <p className="text-sm text-aethon-text-muted mb-4">{study.client}</p>
 
                 {/* Key Metric */}
                 <div className="mb-4">
-                  <p className="text-2xl sm:text-3xl font-bold text-gold">
+                  <p className={`text-2xl sm:text-3xl font-bold ${study.colorText}`}>
                     {study.metric}
                   </p>
-                  <p className="text-sm text-ivory-soft/50">{study.metricLabel}</p>
+                  <p className="text-sm text-aethon-text-secondary">{study.metricLabel}</p>
                 </div>
 
                 {/* Stat badge */}
                 {study.stat && (
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gold/5 border border-gold/10 mb-4">
-                    <span className="text-sm font-semibold text-gold-light">
+                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${study.colorBgLight} mb-4`}>
+                    <span className={`text-sm font-semibold ${study.colorText}`}>
                       {study.stat}
                     </span>
                   </div>
                 )}
 
                 {/* Description */}
-                <p className="text-sm text-ivory-soft/40 leading-relaxed mb-6">
+                <p className="text-sm text-aethon-text-secondary leading-relaxed mb-6">
                   {study.description}
                 </p>
 
                 {/* Link */}
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-gold group-hover:text-gold-light transition-colors duration-300">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-orange group-hover:text-aethon-orange-dark transition-colors duration-300">
                   View Case Study
                   <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </span>

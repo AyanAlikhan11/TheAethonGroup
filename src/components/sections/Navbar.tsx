@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 
@@ -38,7 +38,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'glass-strong shadow-lg shadow-black/20'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-aethon-gray-dark/50'
           : 'bg-transparent'
       }`}
     >
@@ -47,16 +47,15 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2 group cursor-pointer"
+            className="flex items-center gap-1 group cursor-pointer"
           >
-            <div className="relative">
-              <span className="text-2xl sm:text-3xl font-bold tracking-tighter text-gold-gradient">
-                AETHON
-              </span>
-              <span className="block text-[10px] tracking-[0.3em] text-ivory-soft/60 font-medium -mt-1">
-                GROUP
-              </span>
-            </div>
+            <span className="text-2xl sm:text-3xl font-bold tracking-tighter text-aethon-text">
+              AETHON
+            </span>
+            <span className="w-2 h-2 rounded-full bg-aethon-orange mt-1 group-hover:scale-125 transition-transform duration-300" />
+            <span className="block text-[10px] tracking-[0.3em] text-aethon-text-secondary font-medium -mt-0.5 ml-0.5">
+              GROUP
+            </span>
           </button>
 
           {/* Desktop Nav */}
@@ -65,17 +64,17 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="relative px-4 py-2 text-sm font-medium text-ivory-soft/70 hover:text-ivory transition-colors duration-300 cursor-pointer group"
+                className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-orange transition-colors duration-300 cursor-pointer group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gold group-hover:w-3/4 transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-orange group-hover:w-3/4 transition-all duration-300 rounded-full" />
               </button>
             ))}
             <Button
               onClick={() => scrollToSection('cta')}
-              className="ml-4 bg-gold hover:bg-gold-light text-matte-black font-semibold px-6 cursor-pointer"
+              className="ml-4 bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold px-6 rounded-full cursor-pointer btn-primary"
             >
-              Book Call
+              Book a Call
             </Button>
           </div>
 
@@ -83,21 +82,22 @@ export default function Navbar() {
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-ivory hover:text-gold cursor-pointer">
+                <Button variant="ghost" size="icon" className="text-aethon-text hover:text-aethon-orange cursor-pointer">
                   <Menu className="size-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="bg-matte-black border-l border-ivory/5 w-[280px] sm:w-[320px]"
+                className="bg-white w-[280px] sm:w-[320px]"
               >
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col gap-2 pt-8">
-                  <div className="mb-6">
-                    <span className="text-2xl font-bold tracking-tighter text-gold-gradient">
+                  <div className="mb-6 flex items-center gap-1">
+                    <span className="text-2xl font-bold tracking-tighter text-aethon-text">
                       AETHON
                     </span>
-                    <span className="block text-[10px] tracking-[0.3em] text-ivory-soft/60 font-medium">
+                    <span className="w-2 h-2 rounded-full bg-aethon-orange" />
+                    <span className="block text-[10px] tracking-[0.3em] text-aethon-text-secondary font-medium">
                       GROUP
                     </span>
                   </div>
@@ -108,7 +108,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                       onClick={() => scrollToSection(link.href)}
-                      className="text-left py-3 px-4 text-lg font-medium text-ivory-soft/70 hover:text-ivory hover:bg-ivory/5 rounded-lg transition-all duration-300 cursor-pointer"
+                      className="text-left py-3 px-4 text-lg font-medium text-aethon-text-secondary hover:text-aethon-orange hover:bg-aethon-gray rounded-xl transition-all duration-300 cursor-pointer"
                     >
                       {link.label}
                     </motion.button>
@@ -116,7 +116,7 @@ export default function Navbar() {
                   <div className="mt-6 px-4">
                     <Button
                       onClick={() => scrollToSection('cta')}
-                      className="w-full bg-gold hover:bg-gold-light text-matte-black font-semibold cursor-pointer"
+                      className="w-full bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold rounded-full cursor-pointer btn-primary"
                     >
                       Book Strategy Call
                     </Button>
