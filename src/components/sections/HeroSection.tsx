@@ -62,7 +62,7 @@ export default function HeroSection() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
               We Help Brands{' '}
               <br className="hidden sm:block" />
-              <span className="inline-flex items-center relative">
+              <span className="inline-flex items-center relative min-w-[180px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={wordIndex}
@@ -114,36 +114,35 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Block B: Image + ProcessFlow — mobile: between paragraph & buttons | desktop: right column */}
+          {/* Block B: Transparent Image + ProcessFlow — mobile: between paragraph & buttons | desktop: right column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
-            {/* Yellow circular background behind image */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full bg-gradient-to-br from-aethon-yellow/30 via-aethon-gold-light/20 to-aethon-yellow/10 blur-sm" />
+            {/* Gold circular glow behind the people */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-aethon-gold/15 via-aethon-gold-light/10 to-aethon-yellow/5" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-aethon-gold/20 via-aethon-gold-light/15 to-transparent blur-2xl" />
 
-            {/* Team image */}
+            {/* Transparent team image - no rounded container, people appear alive */}
             <div className="relative mx-auto max-w-md lg:max-w-lg">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative rounded-3xl overflow-hidden shadow-2xl"
+                className="relative"
               >
                 <Image
                   src="/team-hero.png"
                   alt="AETHON team collaborating on growth strategy"
                   width={576}
                   height={432}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
                   priority
                 />
-                {/* Subtle overlay for blend */}
-                <div className="absolute inset-0 bg-gradient-to-t from-aethon-dark/10 to-transparent" />
 
-                {/* Video Play Button */}
+                {/* Video Play Button - floating beside the team */}
                 <motion.button
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -160,9 +159,9 @@ export default function HeroSection() {
 
               {/* Floating stat cards around the image */}
               {[
-                { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '-8%', right: '-5%', color: '#D4AF37' },
-                { icon: BarChart3, label: 'ROI', value: '3X', bottom: '20%', left: '-8%', color: '#0F766E' },
-                { icon: Target, label: 'Growth Score', value: '92', bottom: '-5%', right: '5%', color: '#2D1B69' },
+                { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '-5%', right: '-3%', color: '#D4AF37' },
+                { icon: BarChart3, label: 'ROI', value: '3X', bottom: '25%', left: '-3%', color: '#0F766E' },
+                { icon: Target, label: 'Growth Score', value: '92', bottom: '0%', right: '3%', color: '#2D1B69' },
               ].map((metric, i) => {
                 const Icon = metric.icon
                 return (
@@ -206,17 +205,6 @@ export default function HeroSection() {
                       <div className="text-lg font-bold text-aethon-text leading-tight">{metric.value}</div>
                       <div className="text-[10px] text-aethon-text-secondary leading-tight">{metric.label}</div>
                     </div>
-                    {/* Growth score bar */}
-                    {metric.label === 'Growth Score' && (
-                      <div className="absolute -bottom-0.5 left-2 right-2 h-1 bg-aethon-gray rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={isInView ? { width: '92%' } : {}}
-                          transition={{ delay: 1.5, duration: 1.5, ease: 'easeOut' }}
-                          className="h-full rounded-full bg-gradient-to-r from-aethon-purple to-aethon-gold"
-                        />
-                      </div>
-                    )}
                   </motion.div>
                 )
               })}

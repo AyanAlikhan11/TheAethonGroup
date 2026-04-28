@@ -13,8 +13,7 @@ const metrics = [
     description: 'Total revenue generated for our clients across industries — from startups to enterprise-level organizations.',
     icon: TrendingUp,
     accentColor: '#D4AF37',
-    glowColor: 'rgba(212, 175, 55, 0.15)',
-    image: '💰',
+    glowColor: 'rgba(212, 175, 55, 0.25)',
   },
   {
     value: 120,
@@ -24,8 +23,7 @@ const metrics = [
     description: 'Performance-driven campaigns launched, optimized, and scaled across every major platform.',
     icon: BarChart3,
     accentColor: '#0F766E',
-    glowColor: 'rgba(15, 118, 110, 0.15)',
-    image: '🚀',
+    glowColor: 'rgba(15, 118, 110, 0.25)',
   },
   {
     value: 4.8,
@@ -36,8 +34,7 @@ const metrics = [
     description: 'Average return on ad spend across all accounts — beating industry benchmarks by 2.3x.',
     icon: Target,
     accentColor: '#2D1B69',
-    glowColor: 'rgba(45, 27, 105, 0.15)',
-    image: '🎯',
+    glowColor: 'rgba(45, 27, 105, 0.25)',
   },
   {
     value: 97,
@@ -47,8 +44,7 @@ const metrics = [
     description: 'Clients who stay and scale with us year over year — because growth compounds when systems work.',
     icon: Heart,
     accentColor: '#D4AF37',
-    glowColor: 'rgba(212, 175, 55, 0.15)',
-    image: '🤝',
+    glowColor: 'rgba(212, 175, 55, 0.25)',
   },
 ]
 
@@ -151,46 +147,56 @@ export default function MetricsSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.12, duration: 0.6 }}
-                className="group relative rounded-2xl cursor-pointer"
+                whileHover={{
+                  y: -8,
+                  scale: 1.04,
+                  transition: { duration: 0.35, ease: 'easeOut' },
+                }}
+                className="relative cursor-pointer"
               >
-                {/* Glow background - appears on hover */}
-                <div
-                  className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"
+                {/* Glow background - rendered behind card */}
+                <motion.div
+                  className="absolute -inset-2 rounded-3xl"
                   style={{ backgroundColor: metric.glowColor }}
+                  initial={{ opacity: 0, filter: 'blur(0px)' }}
+                  whileHover={{ opacity: 1, filter: 'blur(16px)' }}
+                  transition={{ duration: 0.4 }}
                 />
 
                 {/* Card */}
-                <div className="relative bg-white rounded-2xl p-6 sm:p-7 border border-aethon-gray-dark/60 group-hover:border-transparent group-hover:shadow-2xl group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                <motion.div
+                  className="relative bg-white rounded-2xl p-6 sm:p-7 border border-aethon-gray-dark/60 overflow-hidden"
+                  whileHover={{
+                    borderColor: 'rgba(0,0,0,0)',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                  }}
+                  transition={{ duration: 0.4 }}
+                >
                   {/* Top accent line */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-[3px]"
                     style={{ background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)` }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                   />
 
-                  {/* Icon with background glow */}
-                  <div className="relative mb-5">
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg"
-                      style={{
-                        backgroundColor: `${metric.accentColor}10`,
-                        boxShadow: `0 0 0 0 ${metric.accentColor}00`,
-                      }}
-                    >
-                      <Icon
-                        className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
-                        style={{ color: metric.accentColor }}
-                      />
-                    </div>
-                    {/* Floating glow dot */}
-                    <div
-                      className="absolute -top-1 -right-1 w-3 h-3 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:scale-125"
-                      style={{ backgroundColor: metric.accentColor, filter: `blur(1px)` }}
+                  {/* Icon with background */}
+                  <motion.div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                    style={{ backgroundColor: `${metric.accentColor}10` }}
+                    whileHover={{ scale: 1.12 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Icon
+                      className="w-6 h-6"
+                      style={{ color: metric.accentColor }}
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Value */}
                   <div
-                    className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 transition-all duration-300"
+                    className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
                     style={{ color: metric.accentColor }}
                   >
                     <AnimatedCounter
@@ -203,28 +209,26 @@ export default function MetricsSection() {
                   </div>
 
                   {/* Label */}
-                  <h3 className="text-sm sm:text-base font-semibold text-aethon-text mb-2 transition-colors duration-300">
+                  <h3 className="text-sm sm:text-base font-semibold text-aethon-text mb-2">
                     {metric.label}
                   </h3>
 
-                  {/* Description - always visible but highlighted on hover */}
-                  <p className="text-xs sm:text-sm text-aethon-text-secondary leading-relaxed group-hover:text-aethon-text transition-colors duration-300">
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-aethon-text-secondary leading-relaxed">
                     {metric.description}
                   </p>
 
-                  {/* Bottom-right decorative corner */}
-                  <div
-                    className="absolute bottom-0 right-0 w-24 h-24 rounded-tl-3xl opacity-[0.02] group-hover:opacity-[0.07] transition-opacity duration-500"
-                    style={{ backgroundColor: metric.accentColor }}
-                  />
-
                   {/* Hover shine effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl pointer-events-none"
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
                     style={{
-                      background: `linear-gradient(135deg, ${metric.accentColor}06 0%, transparent 50%, ${metric.accentColor}03 100%)`,
+                      background: `linear-gradient(135deg, ${metric.accentColor}08 0%, transparent 50%, ${metric.accentColor}04 100%)`,
                     }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                   />
-                </div>
+                </motion.div>
               </motion.div>
             )
           })}
