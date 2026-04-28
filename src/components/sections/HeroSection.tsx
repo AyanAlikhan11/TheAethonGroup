@@ -134,10 +134,10 @@ export default function HeroSection() {
                 className="relative"
               >
                 <Image
-                  src="/team-hero.png"
+                  src="/team-transparent.png"
                   alt="AETHON team collaborating on growth strategy"
-                  width={576}
-                  height={432}
+                  width={672}
+                  height={384}
                   className="w-full h-auto object-contain drop-shadow-2xl"
                   priority
                 />
