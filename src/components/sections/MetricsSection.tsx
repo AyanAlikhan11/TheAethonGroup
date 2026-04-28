@@ -10,20 +10,18 @@ const metrics = [
     suffix: 'Cr+',
     prefix: '₹',
     label: 'Revenue Influenced',
-    description: 'Total revenue generated for our clients across industries — from startups to enterprise-level organizations.',
+    description: 'Revenue generated for clients across industries',
     icon: TrendingUp,
     accentColor: '#D4AF37',
-    glowColor: 'rgba(212, 175, 55, 0.25)',
   },
   {
     value: 120,
     suffix: '+',
     prefix: '',
     label: 'Campaigns Built',
-    description: 'Performance-driven campaigns launched, optimized, and scaled across every major platform.',
+    description: 'Performance campaigns launched & optimized',
     icon: BarChart3,
-    accentColor: '#0F766E',
-    glowColor: 'rgba(15, 118, 110, 0.25)',
+    accentColor: '#14B8A6',
   },
   {
     value: 4.8,
@@ -31,20 +29,18 @@ const metrics = [
     prefix: '',
     label: 'Avg ROAS',
     decimal: true,
-    description: 'Average return on ad spend across all accounts — beating industry benchmarks by 2.3x.',
+    description: 'Return on ad spend — 2.3x above benchmark',
     icon: Target,
-    accentColor: '#2D1B69',
-    glowColor: 'rgba(45, 27, 105, 0.25)',
+    accentColor: '#8B5CF6',
   },
   {
     value: 97,
     suffix: '%',
     prefix: '',
     label: 'Client Retention',
-    description: 'Clients who stay and scale with us year over year — because growth compounds when systems work.',
+    description: 'Clients who stay & scale with us year over year',
     icon: Heart,
     accentColor: '#D4AF37',
-    glowColor: 'rgba(212, 175, 55, 0.25)',
   },
 ]
 
@@ -104,99 +100,81 @@ export default function MetricsSection() {
     <section
       id="metrics"
       ref={ref}
-      className="relative py-20 sm:py-28 bg-aethon-cream overflow-hidden"
+      className="relative bg-aethon-dark overflow-hidden"
     >
-      {/* Subtle decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-aethon-gold/3 -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-aethon-green/3 translate-y-1/2 -translate-x-1/2" />
+      {/* Gold glow accents */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-aethon-gold/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-aethon-gold/3 rounded-full blur-[100px]" />
 
-      {/* Dotted pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle, #1A1A2E 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
+      {/* Dot grid pattern */}
+      <div className="absolute inset-0 opacity-[0.04]" style={{
+        backgroundImage: 'radial-gradient(circle, #D4AF37 0.5px, transparent 0.5px)',
+        backgroundSize: '24px 24px',
       }} />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
+      {/* Top gold line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/30 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
+        {/* Compact header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8 sm:mb-10"
         >
-          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-aethon-gold mb-3">
-            <Zap className="w-3.5 h-3.5" />
+          <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase text-aethon-gold mb-2">
+            <Zap className="w-3 h-3" />
             Proven Results
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
             Growth, <span className="text-gold-gradient">Proven.</span>
           </h2>
-          <p className="mt-4 text-aethon-text-secondary max-w-lg mx-auto">
-            Real numbers from real clients. No vanity metrics — just the data that drives decisions.
-          </p>
-          <div className="mx-auto mt-5 w-16 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
         </motion.div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* Metrics Grid - compact, premium, dark cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {metrics.map((metric, i) => {
             const Icon = metric.icon
             return (
               <motion.div
                 key={metric.label}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.12, duration: 0.6 }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
                 whileHover={{
-                  y: -8,
-                  scale: 1.04,
-                  transition: { duration: 0.35, ease: 'easeOut' },
+                  y: -4,
+                  scale: 1.02,
+                  transition: { duration: 0.25, ease: 'easeOut' },
                 }}
                 className="relative cursor-pointer"
               >
-                {/* Glow background - rendered behind card */}
-                <motion.div
-                  className="absolute -inset-2 rounded-3xl"
-                  style={{ backgroundColor: metric.glowColor }}
-                  initial={{ opacity: 0, filter: 'blur(0px)' }}
-                  whileHover={{ opacity: 1, filter: 'blur(16px)' }}
-                  transition={{ duration: 0.4 }}
-                />
-
                 {/* Card */}
-                <motion.div
-                  className="relative bg-white rounded-2xl p-6 sm:p-7 border border-aethon-gray-dark/60 overflow-hidden"
-                  whileHover={{
-                    borderColor: 'rgba(0,0,0,0)',
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden border border-white/[0.06] backdrop-blur-sm"
+                  style={{
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
                   }}
-                  transition={{ duration: 0.4 }}
                 >
                   {/* Top accent line */}
-                  <motion.div
-                    className="absolute top-0 left-0 right-0 h-[3px]"
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] opacity-40"
                     style={{ background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)` }}
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
                   />
 
-                  {/* Icon with background */}
-                  <motion.div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                    style={{ backgroundColor: `${metric.accentColor}10` }}
-                    whileHover={{ scale: 1.12 }}
-                    transition={{ duration: 0.3 }}
+                  {/* Icon */}
+                  <div
+                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl flex items-center justify-center mb-3"
+                    style={{ backgroundColor: `${metric.accentColor}12` }}
                   >
                     <Icon
-                      className="w-6 h-6"
+                      className="w-4 h-4 sm:w-5 sm:h-5"
                       style={{ color: metric.accentColor }}
                     />
-                  </motion.div>
+                  </div>
 
-                  {/* Value */}
+                  {/* Value - big and bold */}
                   <div
-                    className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
+                    className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-none mb-1.5"
                     style={{ color: metric.accentColor }}
                   >
                     <AnimatedCounter
@@ -209,31 +187,29 @@ export default function MetricsSection() {
                   </div>
 
                   {/* Label */}
-                  <h3 className="text-sm sm:text-base font-semibold text-aethon-text mb-2">
+                  <h3 className="text-xs sm:text-sm font-semibold text-white/90 mb-1">
                     {metric.label}
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-aethon-text-secondary leading-relaxed">
+                  {/* Description - subtle */}
+                  <p className="text-[10px] sm:text-xs text-white/30 leading-snug hidden sm:block">
                     {metric.description}
                   </p>
 
-                  {/* Hover shine effect */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl pointer-events-none"
-                    style={{
-                      background: `linear-gradient(135deg, ${metric.accentColor}08 0%, transparent 50%, ${metric.accentColor}04 100%)`,
-                    }}
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                  {/* Bottom-right glow accent */}
+                  <div
+                    className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full opacity-[0.04]"
+                    style={{ backgroundColor: metric.accentColor, filter: 'blur(20px)' }}
                   />
-                </motion.div>
+                </div>
               </motion.div>
             )
           })}
         </div>
       </div>
+
+      {/* Bottom gold line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/30 to-transparent" />
     </section>
   )
 }
