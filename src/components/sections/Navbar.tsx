@@ -256,96 +256,121 @@ export default function Navbar() {
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className="relative w-full"
             >
-              {/* Left floating pill: Logo — absolutely positioned */}
-              <motion.button
-                initial={{ x: -30, opacity: 0, y: 8 }}
-                animate={{ x: 0, opacity: 1, y: 0 }}
-                exit={{ x: -30, opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="absolute left-4 sm:left-6 lg:left-8 top-3 flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/85 backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60 cursor-pointer hover:shadow-xl hover:bg-white/95 transition-all duration-300 group"
-                style={{ zIndex: 10 }}
-              >
-                <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
-                  <span className="text-white font-bold text-xs">A</span>
-                </div>
-                <span className="text-base sm:text-lg font-bold tracking-tight text-aethon-text leading-none">
-                  AETHON
-                </span>
-              </motion.button>
+             {/* Left floating pill: Logo — Bigger Version */}
+<motion.button
+  initial={{ x: -30, opacity: 0, y: 8 }}
+  animate={{ x: 0, opacity: 1, y: 0 }}
+  exit={{ x: -30, opacity: 0 }}
+  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+  className="absolute left-4 sm:left-6 lg:left-8 top-3 flex items-center gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-transparent backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60 cursor-pointer hover:shadow-xl hover:bg-white/95 transition-all duration-300 group"
+  style={{ zIndex: 10 }}
+>
+  {/* Logo Box */}
+  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+    <span className="text-white font-bold text-sm sm:text-base">A</span>
+  </div>
 
-              {/* Right floating pill: Icons — absolutely positioned */}
-              <motion.div
-                initial={{ x: 30, opacity: 0, y: 8 }}
-                animate={{ x: 0, opacity: 1, y: 0 }}
-                exit={{ x: 30, opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white/85 backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60"
-                style={{ zIndex: 10 }}
-              >
-                {/* Discuss project icon */}
-                <motion.button
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={openContactModal}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
-                  aria-label="Discuss a project"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
-                </motion.button>
+  {/* Text */}
+  <span className="text-lg sm:text-xl font-bold tracking-tight text-aethon-text leading-none">
+    AETHON
+  </span>
+</motion.button>
 
-                {/* Call icon */}
-                <motion.a
-                  href="tel:+919876543210"
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
-                  aria-label="Make a call"
-                >
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
-                </motion.a>
+              {/* ================= RIGHT FLOATING PILL : macOS Style Icons ================= */}
+<motion.div
+  initial={{ x: 30, opacity: 0, y: 8 }}
+  animate={{ x: 0, opacity: 1, y: 0 }}
+  exit={{ x: 30, opacity: 0 }}
+  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+  className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2"
+  style={{ zIndex: 10 }}
+>
+  {/* Message Icon */}
+  <motion.button
+    whileHover={{ scale: 1.12 }}
+    whileTap={{ scale: 0.9 }}
+    onClick={openContactModal}
+    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+    aria-label="Discuss a project"
+  >
+    {/* macOS style chat bubble */}
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 7.5C6 6.12 7.12 5 8.5 5h7C16.88 5 18 6.12 18 7.5v5c0 1.38-1.12 2.5-2.5 2.5H11l-3.5 3v-3H8.5A2.5 2.5 0 0 1 6 12.5v-5Z" />
+    </svg>
+  </motion.button>
 
-                {/* Hamburger */}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-dark hover:bg-aethon-gold flex items-center justify-center cursor-pointer transition-colors duration-300"
-                  aria-label="Toggle menu"
-                >
-                  <div className="relative w-3.5 h-3.5 flex flex-col items-center justify-center">
-                    <motion.span
-                      animate={{
-                        rotate: menuOpen ? 45 : 0,
-                        y: menuOpen ? 0 : -3,
-                        width: menuOpen ? 12 : 10,
-                      }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="block h-[1.5px] bg-white rounded-full origin-center"
-                      style={{ width: 10 }}
-                    />
-                    <motion.span
-                      animate={{
-                        opacity: menuOpen ? 0 : 1,
-                        scaleX: menuOpen ? 0 : 1,
-                      }}
-                      transition={{ duration: 0.2 }}
-                      className="block h-[1.5px] bg-white rounded-full"
-                      style={{ width: 6 }}
-                    />
-                    <motion.span
-                      animate={{
-                        rotate: menuOpen ? -45 : 0,
-                        y: menuOpen ? 0 : 3,
-                        width: menuOpen ? 12 : 8,
-                      }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="block h-[1.5px] bg-white rounded-full origin-center"
-                      style={{ width: 8 }}
-                    />
-                  </div>
-                </motion.button>
-              </motion.div>
+  {/* Phone Icon */}
+  <motion.a
+    href="tel:+919876543210"
+    whileHover={{ scale: 1.12 }}
+    whileTap={{ scale: 0.9 }}
+    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+    aria-label="Make a call"
+  >
+    {/* macOS style phone */}
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7.8 5.5c.5-.5 1.2-.6 1.8-.2l2 1.2c.6.4.8 1.2.5 1.8l-.8 1.6c1 1.8 2.5 3.3 4.3 4.3l1.6-.8c.6-.3 1.4-.1 1.8.5l1.2 2c.4.6.3 1.4-.2 1.8l-1.2 1.2c-.8.8-2 .9-3 .4C10.8 18.7 5.3 13.2 4.4 7.7c-.5-1 .-4 2.2-3.6l1.2-1.2Z" />
+    </svg>
+  </motion.a>
+
+  {/* Hamburger */}
+  <motion.button
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+    aria-label="Toggle menu"
+  >
+    <div className="relative w-5 h-5 flex flex-col items-center justify-center">
+      <motion.span
+        animate={{
+          rotate: menuOpen ? 45 : 0,
+          y: menuOpen ? 0 : -4,
+          width: menuOpen ? 20 : 20,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="block h-[4px] bg-aethon-gold rounded-full origin-center"
+        style={{ width: 14 }}
+      />
+      <motion.span
+        animate={{
+          opacity: menuOpen ? 0 : 1,
+          scaleX: menuOpen ? 0 : 1,
+        }}
+        transition={{ duration: 0.2 }}
+        className="block h-[4px] bg-aethon-gold rounded-full"
+        style={{ width: 10 }}
+      />
+      <motion.span
+        animate={{
+          rotate: menuOpen ? -45 : 0,
+          y: menuOpen ? 0 : 4,
+          width: menuOpen ? 20 : 20,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="block h-[4px] bg-aethon-gold rounded-full origin-center"
+        style={{ width: 14 }}
+      />
+    </div>
+  </motion.button>
+</motion.div>
 
               {/* Spacer to maintain header height */}
               <div className="h-16 sm:h-[4.5rem]" />
@@ -374,7 +399,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[300px] sm:w-[340px] bg-white shadow-2xl"
+              className="fixed top-0 right-0 bottom-0 z-50 w-[200px] sm:w-[340px] bg-white shadow-2xl"
             >
               {/* Panel header */}
               <div className="flex items-center justify-between px-5 sm:px-6 h-16 border-b border-aethon-gray-dark/40">
@@ -415,27 +440,6 @@ export default function Navbar() {
                 ))}
               </nav>
 
-              {/* Services quick links in side panel */}
-              <div className="px-3 pb-3">
-                <div className="mx-2 h-px bg-aethon-gray-dark/30 mb-2" />
-                <p className="px-2 text-[10px] font-semibold tracking-widest uppercase text-aethon-text-muted mb-1">Services</p>
-                <div className="grid grid-cols-2 gap-1">
-                  {megaServices.slice(0, 6).map((s) => {
-                    const Icon = s.icon
-                    return (
-                      <button
-                        key={s.title}
-                        onClick={() => scrollToSection('services')}
-                        className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg text-left text-xs text-aethon-text-secondary hover:bg-aethon-cream hover:text-aethon-gold transition-colors cursor-pointer"
-                      >
-                        <Icon className="w-3 h-3 shrink-0" style={{ color: s.color }} />
-                        <span className="truncate">{s.title}</span>
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
-
               {/* Divider */}
               <div className="mx-5 h-px bg-aethon-gray-dark/40" />
 
@@ -449,7 +453,7 @@ export default function Navbar() {
                     setMenuOpen(false)
                     openContactModal()
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white font-semibold text-sm cursor-pointer transition-colors duration-300"
+                  className="w-full flex items-center justify-center mt-18 gap-2 py-3 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white font-semibold text-sm cursor-pointer transition-colors duration-300"
                 >
                   <MessageSquare className="w-4 h-4" />
                   Discuss a Project

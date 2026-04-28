@@ -29,7 +29,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-white"
+      className="relative min-h-screen flex items-center overflow-hidden pt-5 bg-white"
     >
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-aethon-cream/30" />
@@ -39,7 +39,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Mobile: flex-col with order | Desktop: 2-col grid with explicit placement */}
-        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:gap-10 lg:items-center">
           {/* Block A: Badge + Heading + Paragraph */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -59,7 +59,7 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
               We Help Brands{' '}
               <br className="hidden sm:block" />
               <span className="inline-flex items-center relative min-w-[180px]">
@@ -86,7 +86,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="mt-6 text-base sm:text-lg text-aethon-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="mt-6 text-base sm:text-l text-aethon-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.
             </motion.p>
@@ -114,50 +114,48 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Block B: Transparent Image + ProcessFlow — mobile: between paragraph & buttons | desktop: right column */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
-          >
-            {/* Gold circular glow behind the people */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-aethon-gold/15 via-aethon-gold-light/10 to-aethon-yellow/5" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-aethon-gold/20 via-aethon-gold-light/15 to-transparent blur-2xl" />
+          {/* Block B: Transparent Image + ProcessFlow */}
+<motion.div
+  initial={{ opacity: 0, x: 40 }}
+  animate={isInView ? { opacity: 1, x: 0 } : {}}
+  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+  className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+>
+  {/* Gold circular glow */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-aethon-gold/15 via-aethon-gold-light/10 to-aethon-yellow/5" />
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-aethon-gold/20 via-aethon-gold-light/15 to-transparent blur-2xl" />
 
-            {/* Transparent team image - no rounded container, people appear alive */}
-            <div className="relative mx-auto max-w-md lg:max-w-lg">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative"
-              >
-                <Image
-                  src="/team-transparent-colorful.png"
-                  alt="AETHON team collaborating on growth strategy"
-                  width={672}
-                  height={384}
-                  className="w-full h-auto object-contain drop-shadow-2xl"
-                  priority
-                />
+  {/* IMAGE CONTAINER */}
+  <div className="relative mx-auto max-w-md lg:max-w-lg mt-8 lg:mt-14">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="relative"
+    >
+      <Image
+        src="/team-transparent-colorful.png"
+        alt="AETHON team collaborating"
+        width={672}
+        height={384}
+        className="w-full h-auto object-contain drop-shadow-2xl"
+        priority
+      />
 
-                {/* Video Play Button - floating beside the team */}
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 1, duration: 0.5, type: 'spring' }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center cursor-pointer group/play z-10"
-                  aria-label="Watch showreel"
-                >
-                  <div className="absolute inset-0 rounded-full bg-aethon-gold/20 animate-ping opacity-30" />
-                  <Play className="w-5 h-5 sm:w-6 sm:h-6 text-aethon-dark fill-aethon-dark ml-0.5 group-hover/play:text-aethon-gold group-hover/play:fill-aethon-gold transition-colors" />
-                </motion.button>
-              </motion.div>
+      {/* Play button */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 1, duration: 0.5, type: 'spring' }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center z-10"
+      >
+        <Play className="w-5 h-5 sm:w-6 sm:h-6 text-aethon-dark fill-aethon-dark ml-0.5" />
+      </motion.button>
+    </motion.div>
 
-              {/* Floating stat cards around the image */}
+    {/* Floating stat cards around the image */}
               {[
                 { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '-5%', right: '-3%', color: '#D4AF37' },
                 { icon: BarChart3, label: 'ROI', value: '3X', bottom: '25%', left: '-3%', color: '#0F766E' },
@@ -208,18 +206,18 @@ export default function HeroSection() {
                   </motion.div>
                 )
               })}
-            </div>
+  </div>
 
-            {/* Process Flow below the image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="mt-6 sm:mt-8"
-            >
-              <ProcessFlow />
-            </motion.div>
-          </motion.div>
+  {/* Process Flow */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={isInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ delay: 0.6, duration: 0.6 }}
+    className="mt-8 sm:mt-15 lg:mt-15"
+  >
+    <ProcessFlow />
+  </motion.div>
+</motion.div>
 
           {/* Block C: Buttons + Trust bar — mobile: after image | desktop: left column below text */}
           <motion.div
@@ -250,7 +248,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.8 }}
-              className="flex items-center gap-3 mt-8 justify-center lg:justify-start"
+              className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
             >
               <div className="flex -space-x-2">
                 {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
@@ -269,25 +267,11 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll down indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
-        onClick={() => scrollToSection('marquee')}
-      >
-        <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-aethon-text-muted">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="w-4 h-4 text-aethon-gold" />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }
+
+
+
+
+ 

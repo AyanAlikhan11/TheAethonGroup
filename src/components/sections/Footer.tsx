@@ -48,31 +48,6 @@ export default function Footer() {
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #D4AF37 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top CTA band */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="pt-12 pb-10 border-b border-white/5"
-        >
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
-                Ready to <span className="text-aethon-gold">compound</span> your growth?
-              </h3>
-              <p className="mt-2 text-sm text-white/40">
-                Let&apos;s build a growth engine that never stops.
-              </p>
-            </div>
-            <button
-              onClick={() => scrollToSection('cta')}
-              className="group flex items-center gap-2 bg-aethon-gold hover:bg-aethon-gold-dark text-aethon-dark font-semibold px-7 py-3.5 rounded-full transition-all duration-300 cursor-pointer shrink-0"
-            >
-              Start a Project
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </div>
-        </motion.div>
 
         {/* Main footer grid */}
         <motion.div
