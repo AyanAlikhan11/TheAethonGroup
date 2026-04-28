@@ -14,17 +14,6 @@ const marqueeItems = [
   'Conversion Systems',
 ]
 
-const subtitleItems = [
-  'Scaling Startups to Market Leaders',
-  'Data-Driven Decision Making',
-  'Building Unshakeable Brand Trust',
-  'Accelerating Revenue Streams',
-  'Dominating Competitive Markets',
-  'Intelligent Process Automation',
-  'Engineering Sustainable Growth',
-  'Optimizing Every Conversion Point',
-]
-
 export default function MarqueeSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
@@ -32,14 +21,14 @@ export default function MarqueeSection() {
   return (
     <section
       ref={ref}
-      className="relative py-12 sm:py-16 bg-white overflow-hidden"
+      className="relative bg-white overflow-hidden"
     >
-      {/* Top and bottom subtle lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark to-transparent" />
+      {/* Top and bottom border lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark/60 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark/60 to-transparent" />
 
       <div className="relative">
-        {/* Single marquee line - large text scrolling left */}
+        {/* Single marquee line - 8xl glassy bordered text scrolling left */}
         <div className="overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
@@ -47,49 +36,31 @@ export default function MarqueeSection() {
             transition={{
               opacity: { duration: 0.8 },
               x: {
-                duration: 30,
+                duration: 40,
                 repeat: Infinity,
                 ease: 'linear',
                 repeatType: 'loop',
               },
             }}
-            className="flex items-center py-2"
+            className="flex items-center"
             style={{ width: 'max-content' }}
           >
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
-              <div key={`m-${i}`} className="flex items-center shrink-0 mx-4 sm:mx-6">
-                <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-aethon-dark/10 tracking-tight whitespace-nowrap">
+              <div key={`m-${i}`} className="flex items-center shrink-0 mx-5 sm:mx-8">
+                <span
+                  className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight whitespace-nowrap"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(255,255,255,0.5) 25%, rgba(212,175,55,0.18) 50%, rgba(255,255,255,0.5) 75%, rgba(212,175,55,0.12) 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    WebkitTextStroke: '1px rgba(212, 175, 55, 0.25)',
+                    filter: 'drop-shadow(0 0 30px rgba(212, 175, 55, 0.08))',
+                  }}
+                >
                   {item}
                 </span>
-                <span className="ml-4 sm:ml-6 w-2.5 h-2.5 rounded-full bg-aethon-gold/40 shrink-0" />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Moving subtitle line below - scrolling right */}
-        <div className="overflow-hidden mt-3 sm:mt-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1, x: ['-50%', '0%'] } : {}}
-            transition={{
-              opacity: { duration: 0.8, delay: 0.3 },
-              x: {
-                duration: 35,
-                repeat: Infinity,
-                ease: 'linear',
-                repeatType: 'loop',
-              },
-            }}
-            className="flex items-center py-1"
-            style={{ width: 'max-content' }}
-          >
-            {[...subtitleItems, ...subtitleItems].map((item, i) => (
-              <div key={`s-${i}`} className="flex items-center shrink-0 mx-3 sm:mx-5">
-                <span className="text-sm sm:text-lg md:text-xl font-medium text-aethon-dark/8 tracking-wide whitespace-nowrap">
-                  {item}
-                </span>
-                <span className="ml-3 sm:ml-5 w-1.5 h-1.5 rounded-full bg-aethon-gold/20 shrink-0" />
+                <span className="ml-5 sm:ml-8 w-3 h-3 rounded-full bg-aethon-gold/30 shrink-0 border border-aethon-gold/20" />
               </div>
             ))}
           </motion.div>
