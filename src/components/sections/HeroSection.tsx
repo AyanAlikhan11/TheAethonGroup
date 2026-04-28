@@ -28,13 +28,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 opacity-[0.02] dotted-pattern" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left - Content */}
+        {/* Mobile: flex-col with order | Desktop: 2-col grid with explicit placement */}
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+          {/* Block A: Badge + Heading + Paragraph */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center lg:text-left order-1"
+            className="text-center lg:text-left order-1 lg:col-start-1 lg:row-start-1"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -64,58 +65,14 @@ export default function HeroSection() {
             >
               THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start"
-            >
-              <Button
-                onClick={() => scrollToSection('cta')}
-                className="bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
-              >
-                Let&apos;s Build Your Growth Engine
-                <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                onClick={() => scrollToSection('services')}
-                variant="outline"
-                className="border-aethon-dark/20 text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
-              >
-                See How We Work
-              </Button>
-            </motion.div>
-
-            {/* Trust mini bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.8 }}
-              className="flex items-center gap-3 mt-8 justify-center lg:justify-start"
-            >
-              <div className="flex -space-x-2">
-                {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}>
-                    <span className="text-[10px] font-bold text-white">
-                      {['SK', 'AR', 'JM', 'PL'][i]}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-aethon-text">50+ businesses</p>
-                <p className="text-xs text-aethon-text-muted">trust us to grow</p>
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* Right - Team image + Stat cards + Process Flow */}
+          {/* Block B: Image + ProcessFlow — mobile: between paragraph & buttons | desktop: right column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="relative order-2"
+            className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             {/* Yellow circular background behind image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full bg-gradient-to-br from-aethon-yellow/30 via-aethon-gold-light/20 to-aethon-yellow/10 blur-sm" />
@@ -212,6 +169,53 @@ export default function HeroSection() {
               className="mt-6 sm:mt-8"
             >
               <ProcessFlow />
+            </motion.div>
+          </motion.div>
+
+          {/* Block C: Buttons + Trust bar — mobile: after image | desktop: left column below text */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="text-center lg:text-left order-3 lg:col-start-1 lg:row-start-2"
+          >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button
+                onClick={() => scrollToSection('cta')}
+                className="bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
+              >
+                Let&apos;s Build Your Growth Engine
+                <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                onClick={() => scrollToSection('services')}
+                variant="outline"
+                className="border-aethon-dark/20 text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
+              >
+                See How We Work
+              </Button>
+            </div>
+
+            {/* Trust mini bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.8 }}
+              className="flex items-center gap-3 mt-8 justify-center lg:justify-start"
+            >
+              <div className="flex -space-x-2">
+                {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
+                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}>
+                    <span className="text-[10px] font-bold text-white">
+                      {['SK', 'AR', 'JM', 'PL'][i]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-aethon-text">50+ businesses</p>
+                <p className="text-xs text-aethon-text-muted">trust us to grow</p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
