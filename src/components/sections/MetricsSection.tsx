@@ -100,20 +100,20 @@ export default function MetricsSection() {
     <section
       id="metrics"
       ref={ref}
-      className="relative bg-aethon-dark overflow-hidden"
+      className="relative bg-gradient-to-b from-aethon-cream to-white overflow-hidden"
     >
-      {/* Gold glow accents */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-aethon-gold/5 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-aethon-gold/3 rounded-full blur-[100px]" />
+      {/* Subtle gold glow accents */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-aethon-gold/[0.04] rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-aethon-gold/[0.02] rounded-full blur-[100px]" />
 
       {/* Dot grid pattern */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: 'radial-gradient(circle, #D4AF37 0.5px, transparent 0.5px)',
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: 'radial-gradient(circle, #1A1A2E 0.5px, transparent 0.5px)',
         backgroundSize: '24px 24px',
       }} />
 
       {/* Top gold line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/20 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
         {/* Compact header */}
@@ -127,7 +127,7 @@ export default function MetricsSection() {
             <Zap className="w-3 h-3" />
             Proven Results
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-aethon-text tracking-tight">
             Growth, <span className="text-gold-gradient">Proven.</span>
           </h2>
         </motion.div>
@@ -150,9 +150,9 @@ export default function MetricsSection() {
                 className="relative cursor-pointer"
               >
                 {/* Card */}
-                <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden border border-white/[0.06] backdrop-blur-sm"
+                <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden border border-aethon-gray-dark/50 bg-white shadow-sm"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+                    background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
                   }}
                 >
                   {/* Top accent line */}
@@ -187,12 +187,12 @@ export default function MetricsSection() {
                   </div>
 
                   {/* Label */}
-                  <h3 className="text-xs sm:text-sm font-semibold text-white/90 mb-1">
+                  <h3 className="text-xs sm:text-sm font-semibold text-aethon-text mb-1">
                     {metric.label}
                   </h3>
 
                   {/* Description - subtle */}
-                  <p className="text-[10px] sm:text-xs text-white/30 leading-snug hidden sm:block">
+                  <p className="text-[10px] sm:text-xs text-aethon-text-secondary leading-snug hidden sm:block">
                     {metric.description}
                   </p>
 
@@ -209,7 +209,7 @@ export default function MetricsSection() {
       </div>
 
       {/* Bottom gold line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/20 to-transparent" />
     </section>
   )
 }
