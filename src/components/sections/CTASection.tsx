@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, Phone, FileText, ChevronRight } from 'lucide-react'
+import { ArrowRight, Phone, MessageSquare, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function CTASection() {
@@ -14,122 +14,135 @@ export default function CTASection() {
   }
 
   return (
-    <section
-      id="cta"
-      ref={ref}
-      className="relative py-20 sm:py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(165deg, #FAFAF5 0%, #F5F0E6 40%, #FAFAF5 100%)' }}
-    >
-      {/* Subtle top border */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-aethon-gold/20 to-transparent" />
+    <section id="cta" ref={ref} className="relative overflow-hidden">
+      {/* Top Section — Light background */}
+      <div className="bg-[#F9F8F5] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Left — Text + Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="flex-1 text-center lg:text-left"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-aethon-dark leading-[1.15] tracking-tight">
+                Ready to build a{' '}
+                <span className="text-aethon-gold">category-leading</span>{' '}
+                growth engine?
+              </h2>
 
-      {/* Very subtle background accent */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%)' }} />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(15,118,110,0.03) 0%, transparent 70%)' }} />
+              <p className="mt-4 text-aethon-text-secondary max-w-lg mx-auto lg:mx-0 text-base leading-relaxed">
+                Let&apos;s discuss how AETHON can engineer your next phase of compounding growth. No commitment required.
+              </p>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          {/* Small label */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-5"
-          >
-            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-aethon-gold">
-              Let&apos;s Talk Growth
-            </span>
-          </motion.div>
+              {/* Two primary action buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-8 justify-center lg:justify-start">
+                <Button
+                  onClick={openContactModal}
+                  className="bg-aethon-dark hover:bg-aethon-dark/90 text-white font-semibold px-7 py-5 text-sm rounded-xl cursor-pointer group"
+                >
+                  <Rocket className="mr-2 w-4 h-4" />
+                  Book Strategy Call
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Button>
+                <Button
+                  onClick={openContactModal}
+                  variant="outline"
+                  className="border-aethon-dark/20 text-aethon-dark bg-white hover:bg-aethon-dark hover:text-white hover:border-aethon-dark px-7 py-5 text-sm rounded-xl font-semibold cursor-pointer"
+                >
+                  <MessageSquare className="mr-2 w-4 h-4" />
+                  Get Free Audit
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
 
-          {/* Heading — professional size */}
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-aethon-dark leading-snug max-w-2xl"
-          >
-            Ready to build a{' '}
-            <span className="text-gold-gradient">category-leading</span>{' '}
-            growth engine?
-          </motion.h2>
+              {/* Trust indicators */}
+              <div className="mt-6 flex items-center gap-4 justify-center lg:justify-start flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-1.5">
+                    {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
+                      <div key={i} className={`w-6 h-6 rounded-full ${color} border-2 border-[#F9F8F5] flex items-center justify-center`}>
+                        <span className="text-[8px] font-bold text-white">{['SK', 'AR', 'JM', 'PL'][i]}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-xs text-aethon-text-secondary">50+ brands trust us</span>
+                </div>
+                <div className="w-[1px] h-3 bg-aethon-gray-dark" />
+                <span className="text-xs text-aethon-text-secondary">Avg. 3X ROI in 90 days</span>
+              </div>
+            </motion.div>
 
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="mt-4 text-aethon-text-secondary max-w-md text-sm sm:text-base leading-relaxed"
-          >
-            Let&apos;s discuss how AETHON can engineer your next phase of compounding growth.
-          </motion.p>
+            {/* Right — Illustration card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex-1 max-w-md w-full"
+            >
+              <div className="relative rounded-2xl bg-white border border-aethon-gray-dark/50 p-8 shadow-sm">
+                {/* Decorative gold shape behind card */}
+                <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-aethon-gold/10 blur-2xl pointer-events-none" />
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.35, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-3 mt-8"
-          >
+                {/* Stats grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { value: '230%', label: 'Revenue Growth', color: '#D4AF37' },
+                    { value: '3X', label: 'Average ROI', color: '#0F766E' },
+                    { value: '92', label: 'Growth Score', color: '#2D1B69' },
+                    { value: '50+', label: 'Brands Scaled', color: '#4A90E2' },
+                  ].map((stat, i) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ delay: 0.4 + i * 0.1, duration: 0.4 }}
+                      className="text-center p-3 rounded-xl bg-[#F9F8F5]"
+                    >
+                      <div className="text-2xl font-bold" style={{ color: stat.color }}>{stat.value}</div>
+                      <div className="text-[11px] text-aethon-text-secondary mt-0.5">{stat.label}</div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Bottom tagline */}
+                <div className="mt-6 pt-4 border-t border-aethon-gray-dark/30 text-center">
+                  <p className="text-xs text-aethon-text-secondary">
+                    Proven results across <span className="font-semibold text-aethon-dark">50+ engagements</span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Banner — Gold */}
+      <div className="bg-aethon-gold">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-aethon-dark/10 flex items-center justify-center shrink-0">
+                <Phone className="w-4 h-4 text-aethon-dark" />
+              </div>
+              <div>
+                <p className="text-sm sm:text-base font-semibold text-aethon-dark">
+                  Have a project in mind? Let&apos;s discuss.
+                </p>
+                <p className="text-xs text-aethon-dark/60 mt-0.5">
+                  Free 30-minute discovery call — no strings attached
+                </p>
+              </div>
+            </div>
             <Button
               onClick={openContactModal}
-              className="bg-aethon-dark hover:bg-aethon-dark/90 text-white font-semibold px-7 py-5 text-sm rounded-full cursor-pointer group"
+              className="bg-aethon-dark hover:bg-aethon-dark/90 text-white font-semibold px-6 py-3 text-sm rounded-xl cursor-pointer group shrink-0"
             >
-              Book Strategy Call
+              Discuss Your Project
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Button>
-            <Button
-              onClick={openContactModal}
-              variant="outline"
-              className="border-aethon-dark/15 text-aethon-dark hover:bg-aethon-dark hover:text-white px-7 py-5 text-sm rounded-full font-semibold cursor-pointer"
-            >
-              <Phone className="mr-2 w-4 h-4" />
-              Get Free Audit
-            </Button>
-            <Button
-              onClick={openContactModal}
-              variant="ghost"
-              className="text-aethon-text-secondary hover:text-aethon-dark px-7 py-5 text-sm rounded-full font-semibold cursor-pointer"
-            >
-              <FileText className="mr-2 w-4 h-4" />
-              Request Proposal
-            </Button>
-          </motion.div>
-
-          {/* Trust line */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-8 flex items-center justify-center gap-5 flex-wrap"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-1.5">
-                {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
-                  <div key={i} className={`w-6 h-6 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}>
-                    <span className="text-[8px] font-bold text-white">{['SK', 'AR', 'JM', 'PL'][i]}</span>
-                  </div>
-                ))}
-              </div>
-              <span className="text-xs text-aethon-text-secondary">50+ brands trust us</span>
-            </div>
-            <div className="w-[1px] h-3 bg-aethon-gray-dark" />
-            <span className="text-xs text-aethon-text-secondary">Avg. 3X ROI in 90 days</span>
-          </motion.div>
-
-          {/* Micro-text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-4 flex items-center justify-center gap-4 flex-wrap"
-          >
-            {['No commitment required', '30-min discovery call', 'Custom growth roadmap'].map((text) => (
-              <div key={text} className="flex items-center gap-1">
-                <ChevronRight className="w-2.5 h-2.5 text-aethon-gold" />
-                <span className="text-[11px] text-aethon-text-muted">{text}</span>
-              </div>
-            ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
