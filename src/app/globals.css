@@ -114,6 +114,12 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Hide default cursor on desktop - custom dot cursor replaces it */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
 }
 
 /* Custom Scrollbar */
