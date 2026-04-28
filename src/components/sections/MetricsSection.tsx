@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
-import { TrendingUp, BarChart3, Target, Heart } from 'lucide-react'
+import { TrendingUp, BarChart3, Target, Heart, Zap } from 'lucide-react'
 
 const metrics = [
   {
@@ -10,18 +10,22 @@ const metrics = [
     suffix: 'Cr+',
     prefix: '₹',
     label: 'Revenue Influenced',
-    description: 'Total revenue generated for our clients across industries',
+    description: 'Total revenue generated for our clients across industries — from startups to enterprise-level organizations.',
     icon: TrendingUp,
     accentColor: '#D4AF37',
+    glowColor: 'rgba(212, 175, 55, 0.15)',
+    image: '💰',
   },
   {
     value: 120,
     suffix: '+',
     prefix: '',
     label: 'Campaigns Built',
-    description: 'Performance-driven campaigns launched and optimized',
+    description: 'Performance-driven campaigns launched, optimized, and scaled across every major platform.',
     icon: BarChart3,
     accentColor: '#0F766E',
+    glowColor: 'rgba(15, 118, 110, 0.15)',
+    image: '🚀',
   },
   {
     value: 4.8,
@@ -29,18 +33,22 @@ const metrics = [
     prefix: '',
     label: 'Avg ROAS',
     decimal: true,
-    description: 'Average return on ad spend across all accounts',
+    description: 'Average return on ad spend across all accounts — beating industry benchmarks by 2.3x.',
     icon: Target,
     accentColor: '#2D1B69',
+    glowColor: 'rgba(45, 27, 105, 0.15)',
+    image: '🎯',
   },
   {
     value: 97,
     suffix: '%',
     prefix: '',
     label: 'Client Retention',
-    description: 'Clients who stay and scale with us year over year',
+    description: 'Clients who stay and scale with us year over year — because growth compounds when systems work.',
     icon: Heart,
     accentColor: '#D4AF37',
+    glowColor: 'rgba(212, 175, 55, 0.15)',
+    image: '🤝',
   },
 ]
 
@@ -120,13 +128,17 @@ export default function MetricsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-aethon-gold mb-3">
+          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-aethon-gold mb-3">
+            <Zap className="w-3.5 h-3.5" />
             Proven Results
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-aethon-text tracking-tight">
-            Numbers That Speak
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text tracking-tight">
+            Growth, <span className="text-gold-gradient">Proven.</span>
           </h2>
-          <div className="mx-auto mt-4 w-16 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
+          <p className="mt-4 text-aethon-text-secondary max-w-lg mx-auto">
+            Real numbers from real clients. No vanity metrics — just the data that drives decisions.
+          </p>
+          <div className="mx-auto mt-5 w-16 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
         </motion.div>
 
         {/* Metrics Grid */}
@@ -139,54 +151,80 @@ export default function MetricsSection() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.12, duration: 0.6 }}
-                className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-aethon-gray-dark/60 hover:border-transparent hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+                className="group relative rounded-2xl cursor-pointer"
               >
-                {/* Top accent line */}
+                {/* Glow background - appears on hover */}
                 <div
-                  className="absolute top-0 left-6 right-6 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)` }}
+                  className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"
+                  style={{ backgroundColor: metric.glowColor }}
                 />
 
-                {/* Icon */}
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: `${metric.accentColor}12` }}
-                >
-                  <Icon
-                    className="w-5 h-5"
+                {/* Card */}
+                <div className="relative bg-white rounded-2xl p-6 sm:p-7 border border-aethon-gray-dark/60 group-hover:border-transparent group-hover:shadow-2xl group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                  {/* Top accent line */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)` }}
+                  />
+
+                  {/* Icon with background glow */}
+                  <div className="relative mb-5">
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg"
+                      style={{
+                        backgroundColor: `${metric.accentColor}10`,
+                        boxShadow: `0 0 0 0 ${metric.accentColor}00`,
+                      }}
+                    >
+                      <Icon
+                        className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
+                        style={{ color: metric.accentColor }}
+                      />
+                    </div>
+                    {/* Floating glow dot */}
+                    <div
+                      className="absolute -top-1 -right-1 w-3 h-3 rounded-full opacity-0 group-hover:opacity-60 transition-all duration-500 group-hover:scale-125"
+                      style={{ backgroundColor: metric.accentColor, filter: `blur(1px)` }}
+                    />
+                  </div>
+
+                  {/* Value */}
+                  <div
+                    className="text-3xl sm:text-4xl font-bold tracking-tight mb-2 transition-all duration-300"
                     style={{ color: metric.accentColor }}
+                  >
+                    <AnimatedCounter
+                      value={metric.value}
+                      suffix={metric.suffix}
+                      prefix={metric.prefix}
+                      decimal={metric.decimal}
+                      isInView={isInView}
+                    />
+                  </div>
+
+                  {/* Label */}
+                  <h3 className="text-sm sm:text-base font-semibold text-aethon-text mb-2 transition-colors duration-300">
+                    {metric.label}
+                  </h3>
+
+                  {/* Description - always visible but highlighted on hover */}
+                  <p className="text-xs sm:text-sm text-aethon-text-secondary leading-relaxed group-hover:text-aethon-text transition-colors duration-300">
+                    {metric.description}
+                  </p>
+
+                  {/* Bottom-right decorative corner */}
+                  <div
+                    className="absolute bottom-0 right-0 w-24 h-24 rounded-tl-3xl opacity-[0.02] group-hover:opacity-[0.07] transition-opacity duration-500"
+                    style={{ backgroundColor: metric.accentColor }}
+                  />
+
+                  {/* Hover shine effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl pointer-events-none"
+                    style={{
+                      background: `linear-gradient(135deg, ${metric.accentColor}06 0%, transparent 50%, ${metric.accentColor}03 100%)`,
+                    }}
                   />
                 </div>
-
-                {/* Value */}
-                <div
-                  className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
-                  style={{ color: metric.accentColor }}
-                >
-                  <AnimatedCounter
-                    value={metric.value}
-                    suffix={metric.suffix}
-                    prefix={metric.prefix}
-                    decimal={metric.decimal}
-                    isInView={isInView}
-                  />
-                </div>
-
-                {/* Label */}
-                <h3 className="text-sm sm:text-base font-semibold text-aethon-text mb-1.5">
-                  {metric.label}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-aethon-text-secondary leading-relaxed">
-                  {metric.description}
-                </p>
-
-                {/* Subtle bottom-right corner accent */}
-                <div
-                  className="absolute bottom-0 right-0 w-20 h-20 rounded-bl-3xl rounded-tr-2xl opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500"
-                  style={{ backgroundColor: metric.accentColor }}
-                />
               </motion.div>
             )
           })}

@@ -1,15 +1,25 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRight, TrendingUp, BarChart3, Target } from 'lucide-react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { ArrowRight, TrendingUp, BarChart3, Target, ChevronDown, Play, Award, Shield, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import ProcessFlow from './ProcessFlow'
 
+const rotatingWords = ['Scale', 'Dominate', 'Compound', 'Accelerate']
+
 export default function HeroSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [wordIndex, setWordIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length)
+    }, 2500)
+    return () => clearInterval(interval)
+  }, [])
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -50,9 +60,24 @@ export default function HeroSection() {
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
-              We Build{' '}
-              <span className="text-gold-gradient">Growth Engines</span>
+              We Help Brands{' '}
+              <br className="hidden sm:block" />
+              <span className="inline-flex items-center relative">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
+                    transition={{ duration: 0.5 }}
+                    className="text-gold-gradient"
+                  >
+                    {rotatingWords[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
               <br />
+              <span className="text-gold-gradient">Growth Engines</span>{' '}
               That{' '}
               <span className="text-gold-gradient">Compound.</span>
             </h1>
@@ -65,6 +90,28 @@ export default function HeroSection() {
             >
               THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.
             </motion.p>
+
+            {/* Awards / Recognition badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+              className="flex items-center gap-3 sm:gap-4 mt-5 justify-center lg:justify-start flex-wrap"
+            >
+              {[
+                { icon: Award, label: 'Clutch Top Agency', color: '#D4AF37' },
+                { icon: Shield, label: 'Google Partner', color: '#0F766E' },
+                { icon: Star, label: '5.0 Rated', color: '#2D1B69' },
+              ].map((badge) => {
+                const BadgeIcon = badge.icon
+                return (
+                  <div key={badge.label} className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-aethon-gray-dark/40 shadow-sm">
+                    <BadgeIcon className="w-3.5 h-3.5" style={{ color: badge.color }} />
+                    <span className="text-[11px] font-semibold text-aethon-text tracking-wide">{badge.label}</span>
+                  </div>
+                )
+              })}
+            </motion.div>
           </motion.div>
 
           {/* Block B: Image + ProcessFlow — mobile: between paragraph & buttons | desktop: right column */}
@@ -95,6 +142,20 @@ export default function HeroSection() {
                 />
                 {/* Subtle overlay for blend */}
                 <div className="absolute inset-0 bg-gradient-to-t from-aethon-dark/10 to-transparent" />
+
+                {/* Video Play Button */}
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 1, duration: 0.5, type: 'spring' }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center cursor-pointer group/play z-10"
+                  aria-label="Watch showreel"
+                >
+                  <div className="absolute inset-0 rounded-full bg-aethon-gold/20 animate-ping opacity-30" />
+                  <Play className="w-5 h-5 sm:w-6 sm:h-6 text-aethon-dark fill-aethon-dark ml-0.5 group-hover/play:text-aethon-gold group-hover/play:fill-aethon-gold transition-colors" />
+                </motion.button>
               </motion.div>
 
               {/* Floating stat cards around the image */}
@@ -221,7 +282,24 @@ export default function HeroSection() {
         </div>
       </div>
 
-
+      {/* Scroll down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
+        onClick={() => scrollToSection('marquee')}
+      >
+        <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-aethon-text-muted">
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDown className="w-4 h-4 text-aethon-gold" />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
