@@ -51,86 +51,60 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="fixed top-0 left-0 right-0 z-50"
       >
-        <div
-          className={`transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-            scrolled
-              ? 'mx-3 sm:mx-5 lg:mx-8 mt-3 rounded-2xl bg-white/80 backdrop-blur-xl shadow-lg shadow-aethon-dark/5 border border-aethon-gray-dark/30'
-              : 'mx-0 mt-0 bg-white/50 backdrop-blur-sm border-b border-transparent'
-          }`}
-        >
-          <nav className={`flex items-center justify-between transition-all duration-700 max-w-7xl mx-auto ${
-            scrolled ? 'px-4 sm:px-5 lg:px-6 h-14 sm:h-16' : 'px-4 sm:px-6 lg:px-8 h-16 sm:h-20'
-          }`}>
-            {/* Left: Logo */}
-            <div
-              className="flex items-center gap-2 group cursor-pointer shrink-0"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* ===== DEFAULT STATE: Full-width nav bar ===== */}
+          <AnimatePresence mode="wait">
+            {!scrolled ? (
               <motion.div
-                animate={{ scale: scrolled ? 0.85 : 1 }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300"
+                key="default-nav"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white/50 backdrop-blur-sm border-b border-transparent"
               >
-                <span className="text-white font-bold text-sm sm:text-base">A</span>
-              </motion.div>
-              <div className="flex flex-col">
-                <span className={`font-bold tracking-tight leading-none transition-all duration-500 ${
-                  scrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'
-                } text-aethon-text`}>
-                  AETHON
-                </span>
-                <span className={`tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5 transition-all duration-500 ${
-                  scrolled ? 'text-[7px]' : 'text-[8px] sm:text-[9px]'
-                }`}>
-                  SHAPING BUSINESSES
-                </span>
-              </div>
-            </div>
-
-            {/* Center: Nav links - visible only when NOT scrolled */}
-            <AnimatePresence>
-              {!scrolled && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2"
-                >
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.href}
-                      onClick={() => scrollToSection(link.href)}
-                      className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
-                    >
-                      {link.label}
-                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Right side - changes based on scroll state */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-              {/* NOT scrolled: "Discuss a Project" button + hamburger for mobile */}
-              <AnimatePresence mode="wait">
-                {!scrolled ? (
-                  <motion.div
-                    key="default-right"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center gap-3"
+                <nav className="flex items-center justify-between h-16 sm:h-20">
+                  {/* Logo */}
+                  <div
+                    className="flex items-center gap-2 group cursor-pointer shrink-0"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   >
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+                      <span className="text-white font-bold text-sm sm:text-base">A</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xl sm:text-2xl font-bold tracking-tight leading-none text-aethon-text">
+                        AETHON
+                      </span>
+                      <span className="text-[8px] sm:text-[9px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
+                        SHAPING BUSINESSES
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Center: Nav links */}
+                  <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+                    {navLinks.map((link) => (
+                      <button
+                        key={link.href}
+                        onClick={() => scrollToSection(link.href)}
+                        className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
+                      >
+                        {link.label}
+                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Right: Discuss button + mobile hamburger */}
+                  <div className="flex items-center gap-3 shrink-0">
                     <Button
                       onClick={openContactModal}
                       className="hidden sm:flex bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-5 lg:px-6 rounded-full cursor-pointer btn-primary text-sm"
                     >
                       Discuss a Project
                     </Button>
-                    {/* Mobile hamburger - only on small screens when not scrolled */}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -144,87 +118,112 @@ export default function Navbar() {
                         <span className="block w-2.5 h-[1.5px] bg-white rounded-full" />
                       </div>
                     </motion.button>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="scrolled-right"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center gap-2 sm:gap-2.5"
+                  </div>
+                </nav>
+              </motion.div>
+            ) : (
+              /* ===== SCROLLED STATE: Two separate floating pills ===== */
+              <motion.div
+                key="split-nav"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="flex items-center justify-between pt-3"
+              >
+                {/* Left pill: Logo only */}
+                <motion.button
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-aethon-dark/5 border border-aethon-gray-dark/30 cursor-pointer hover:shadow-xl transition-shadow duration-300 group"
+                >
+                  <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+                    <span className="text-white font-bold text-xs">A</span>
+                  </div>
+                  <span className="text-base sm:text-lg font-bold tracking-tight text-aethon-text leading-none">
+                    AETHON
+                  </span>
+                </motion.button>
+
+                {/* Right pill: Icons */}
+                <motion.div
+                  initial={{ x: 20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-aethon-dark/5 border border-aethon-gray-dark/30"
+                >
+                  {/* Discuss project icon */}
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={openContactModal}
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
+                    aria-label="Discuss a project"
                   >
-                    {/* Discuss project icon */}
-                    <motion.button
-                      whileHover={{ scale: 1.08 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={openContactModal}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 border border-aethon-gold/20 flex items-center justify-center cursor-pointer transition-all duration-300"
-                      aria-label="Discuss a project"
-                    >
-                      <MessageSquare className="w-4 h-4 text-aethon-gold" />
-                    </motion.button>
+                    <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
+                  </motion.button>
 
-                    {/* Call icon */}
-                    <motion.a
-                      href="tel:+919876543210"
-                      whileHover={{ scale: 1.08 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 border border-aethon-gold/20 flex items-center justify-center cursor-pointer transition-all duration-300"
-                      aria-label="Make a call"
-                    >
-                      <Phone className="w-4 h-4 text-aethon-gold" />
-                    </motion.a>
+                  {/* Call icon */}
+                  <motion.a
+                    href="tel:+919876543210"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
+                    aria-label="Make a call"
+                  >
+                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
+                  </motion.a>
 
-                    {/* Hamburger */}
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setMenuOpen(!menuOpen)}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-aethon-dark hover:bg-aethon-gold flex items-center justify-center cursor-pointer transition-colors duration-300"
-                      aria-label="Toggle menu"
-                    >
-                      <div className="relative w-4 h-4 flex flex-col items-center justify-center">
-                        <motion.span
-                          animate={{
-                            rotate: menuOpen ? 45 : 0,
-                            y: menuOpen ? 0 : -3.5,
-                            width: menuOpen ? 14 : 12,
-                          }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="block h-[1.5px] bg-white rounded-full origin-center"
-                          style={{ width: 12 }}
-                        />
-                        <motion.span
-                          animate={{
-                            opacity: menuOpen ? 0 : 1,
-                            scaleX: menuOpen ? 0 : 1,
-                          }}
-                          transition={{ duration: 0.2 }}
-                          className="block h-[1.5px] bg-white rounded-full"
-                          style={{ width: 8 }}
-                        />
-                        <motion.span
-                          animate={{
-                            rotate: menuOpen ? -45 : 0,
-                            y: menuOpen ? 0 : 3.5,
-                            width: menuOpen ? 14 : 10,
-                          }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="block h-[1.5px] bg-white rounded-full origin-center"
-                          style={{ width: 10 }}
-                        />
-                      </div>
-                    </motion.button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </nav>
+                  {/* Hamburger */}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-dark hover:bg-aethon-gold flex items-center justify-center cursor-pointer transition-colors duration-300"
+                    aria-label="Toggle menu"
+                  >
+                    <div className="relative w-3.5 h-3.5 flex flex-col items-center justify-center">
+                      <motion.span
+                        animate={{
+                          rotate: menuOpen ? 45 : 0,
+                          y: menuOpen ? 0 : -3,
+                          width: menuOpen ? 12 : 10,
+                        }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="block h-[1.5px] bg-white rounded-full origin-center"
+                        style={{ width: 10 }}
+                      />
+                      <motion.span
+                        animate={{
+                          opacity: menuOpen ? 0 : 1,
+                          scaleX: menuOpen ? 0 : 1,
+                        }}
+                        transition={{ duration: 0.2 }}
+                        className="block h-[1.5px] bg-white rounded-full"
+                        style={{ width: 6 }}
+                      />
+                      <motion.span
+                        animate={{
+                          rotate: menuOpen ? -45 : 0,
+                          y: menuOpen ? 0 : 3,
+                          width: menuOpen ? 12 : 8,
+                        }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="block h-[1.5px] bg-white rounded-full origin-center"
+                        style={{ width: 8 }}
+                      />
+                    </div>
+                  </motion.button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.header>
 
-      {/* Slide-in menu panel - clean Chrome-style */}
+      {/* Slide-in menu panel */}
       <AnimatePresence>
         {menuOpen && (
           <>
