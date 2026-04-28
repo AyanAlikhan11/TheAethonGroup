@@ -34,7 +34,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center lg:text-left order-2 lg:order-1"
+            className="text-center lg:text-left order-1"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -115,7 +115,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            className="relative order-1 lg:order-2"
+            className="relative order-2"
           >
             {/* Yellow circular background behind image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full bg-gradient-to-br from-aethon-yellow/30 via-aethon-gold-light/20 to-aethon-yellow/10 blur-sm" />
