@@ -32,11 +32,11 @@ export default function MarqueeSection() {
   return (
     <section
       ref={ref}
-      className="relative py-12 sm:py-16 bg-aethon-dark overflow-hidden"
+      className="relative py-12 sm:py-16 bg-white overflow-hidden"
     >
-      {/* Top and bottom golden lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/40 to-transparent" />
+      {/* Top and bottom subtle lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gray-dark to-transparent" />
 
       <div className="relative">
         {/* Single marquee line - large text scrolling left */}
@@ -58,10 +58,10 @@ export default function MarqueeSection() {
           >
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <div key={`m-${i}`} className="flex items-center shrink-0 mx-4 sm:mx-6">
-                <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white/90 tracking-tight whitespace-nowrap">
+                <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-aethon-dark/10 tracking-tight whitespace-nowrap">
                   {item}
                 </span>
-                <span className="ml-4 sm:ml-6 w-2.5 h-2.5 rounded-full bg-aethon-gold shrink-0" />
+                <span className="ml-4 sm:ml-6 w-2.5 h-2.5 rounded-full bg-aethon-gold/40 shrink-0" />
               </div>
             ))}
           </motion.div>
@@ -86,18 +86,18 @@ export default function MarqueeSection() {
           >
             {[...subtitleItems, ...subtitleItems].map((item, i) => (
               <div key={`s-${i}`} className="flex items-center shrink-0 mx-3 sm:mx-5">
-                <span className="text-sm sm:text-lg md:text-xl font-medium text-aethon-gold/50 tracking-wide whitespace-nowrap">
+                <span className="text-sm sm:text-lg md:text-xl font-medium text-aethon-dark/8 tracking-wide whitespace-nowrap">
                   {item}
                 </span>
-                <span className="ml-3 sm:ml-5 w-1.5 h-1.5 rounded-full bg-aethon-gold/30 shrink-0" />
+                <span className="ml-3 sm:ml-5 w-1.5 h-1.5 rounded-full bg-aethon-gold/20 shrink-0" />
               </div>
             ))}
           </motion.div>
         </div>
 
         {/* Gradient overlays on edges */}
-        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-aethon-dark to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-gradient-to-l from-aethon-dark to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
       </div>
     </section>
   )

@@ -57,3 +57,23 @@ Stage Summary:
 - TrustSection is now glassy moving text on dark bg (no static cards/logos)
 - Hero has stat cards, trust bar, golden accents matching the design reference
 - All 12+ section components updated to gold theme
+
+---
+Task ID: 4
+Agent: Main
+Task: Match design reference exactly - hero with team image + process flow, revert trust section, remove marquee bg
+
+Work Log:
+- Analyzed new design reference image using VLM: hero has team photo on left, process flow (Strategy→Content→Marketing→Data→Growth) with icons + curved arrows on right, stat cards (Revenue Growth 230%, ROI 3X, Growth Score 92), yellow circular background accent
+- Generated team collaboration image using AI image generation (team-hero.png, 1152x864)
+- Created ProcessFlow component with 5 steps (Strategy/Lightbulb, Content/FileText, Marketing/Megaphone, Data/BarChart3, Growth/TrendingUp), each with colored icon in rounded container, curved gold SVG arrows between steps, staggered entrance animations
+- Redesigned HeroSection: 2-column layout, left=content with gold gradient text + CTA buttons + trust bar, right=team image with yellow circular bg accent + 3 floating stat cards + ProcessFlow below image
+- Reverted TrustSection back to logo image version: 10 brands with SVG logo icons, hover glow effects, responsive grid (2→3→5 cols), gold accent divider
+- Updated MarqueeSection: removed bg-aethon-dark → bg-white, changed text colors to subtle (text-aethon-dark/10 for main, text-aethon-dark/8 for subtitle), changed gradient overlays from dark to white, gold dot separators at reduced opacity
+- Lint passes clean, dev server returns 200
+
+Stage Summary:
+- Hero now matches reference: team photo + yellow circle bg + stat cards + process flow
+- Trust section reverted to clean logo grid with gold accents
+- Marquee section is now white bg with subtle ghost text effect
+- ProcessFlow component: Strategy→Content→Marketing→Data→Growth with icons and curved arrows

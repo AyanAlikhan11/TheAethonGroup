@@ -4,7 +4,8 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight, TrendingUp, BarChart3, Target } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import RotatingGlobe from './RotatingGlobe'
+import Image from 'next/image'
+import ProcessFlow from './ProcessFlow'
 
 export default function HeroSection() {
   const ref = useRef(null)
@@ -21,39 +22,19 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-white"
     >
       {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-aethon-cream/50 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-aethon-cream/30" />
 
       {/* Dotted pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03] dotted-pattern" />
-
-      {/* Decorative golden circles */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.5, delay: 0.5 }}
-        className="absolute top-[10%] right-[5%] w-72 h-72 rounded-full border border-aethon-gold/10 hidden xl:block"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.5, delay: 0.7 }}
-        className="absolute top-[15%] right-[8%] w-48 h-48 rounded-full border border-aethon-gold/5 hidden xl:block"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.5, delay: 0.9 }}
-        className="absolute bottom-[15%] left-[3%] w-32 h-32 rounded-full border border-aethon-gold/8 hidden xl:block"
-      />
+      <div className="absolute inset-0 opacity-[0.02] dotted-pattern" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left - Content */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left order-2 lg:order-1"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -115,7 +96,7 @@ export default function HeroSection() {
             >
               <div className="flex -space-x-2">
                 {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center`}>
+                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}>
                     <span className="text-[10px] font-bold text-white">
                       {['SK', 'AR', 'JM', 'PL'][i]}
                     </span>
@@ -129,89 +110,115 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right - Globe with stat cards */}
+          {/* Right - Team image + Stat cards + Process Flow */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
-            className="relative h-[350px] sm:h-[420px] lg:h-[520px]"
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            className="relative order-1 lg:order-2"
           >
-            <RotatingGlobe />
+            {/* Yellow circular background behind image */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-full bg-gradient-to-br from-aethon-yellow/30 via-aethon-gold-light/20 to-aethon-yellow/10 blur-sm" />
 
-            {/* Floating stat cards */}
-            {[
-              { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '2%', right: '0%', color: '#D4AF37' },
-              { icon: BarChart3, label: 'ROI', value: '3X', top: '30%', left: '0%', color: '#0F766E' },
-              { icon: Target, label: 'Growth Score', value: '92', bottom: '8%', right: '5%', color: '#2D1B69' },
-            ].map((metric, i) => {
-              const Icon = metric.icon
-              return (
-                <motion.div
-                  key={metric.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={
-                    isInView
-                      ? {
-                          opacity: 1,
-                          scale: 1,
-                          y: [0, -8, 0],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    opacity: { delay: 0.8 + i * 0.2, duration: 0.5 },
-                    scale: { delay: 0.8 + i * 0.2, duration: 0.5 },
-                    y: {
-                      delay: 1.5 + i * 0.4,
-                      duration: 3 + i * 0.5,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                  }}
-                  className="absolute bg-white rounded-2xl px-5 py-4 shadow-lg border border-aethon-gray-dark/30 hidden lg:block"
-                  style={{
-                    top: metric.top,
-                    bottom: metric.bottom,
-                    left: metric.left,
-                    right: metric.right,
-                  }}
-                >
-                  <div className="flex items-center gap-3">
+            {/* Team image */}
+            <div className="relative mx-auto max-w-md lg:max-w-lg">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative rounded-3xl overflow-hidden shadow-2xl"
+              >
+                <Image
+                  src="/team-hero.png"
+                  alt="AETHON team collaborating on growth strategy"
+                  width={576}
+                  height={432}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+                {/* Subtle overlay for blend */}
+                <div className="absolute inset-0 bg-gradient-to-t from-aethon-dark/10 to-transparent" />
+              </motion.div>
+
+              {/* Floating stat cards around the image */}
+              {[
+                { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '-8%', right: '-5%', color: '#D4AF37' },
+                { icon: BarChart3, label: 'ROI', value: '3X', bottom: '20%', left: '-8%', color: '#0F766E' },
+                { icon: Target, label: 'Growth Score', value: '92', bottom: '-5%', right: '5%', color: '#2D1B69' },
+              ].map((metric, i) => {
+                const Icon = metric.icon
+                return (
+                  <motion.div
+                    key={metric.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={
+                      isInView
+                        ? {
+                            opacity: 1,
+                            scale: 1,
+                            y: [0, -6, 0],
+                          }
+                        : {}
+                    }
+                    transition={{
+                      opacity: { delay: 0.8 + i * 0.15, duration: 0.5 },
+                      scale: { delay: 0.8 + i * 0.15, duration: 0.5 },
+                      y: {
+                        delay: 1.5 + i * 0.3,
+                        duration: 3 + i * 0.5,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      },
+                    }}
+                    className="absolute bg-white rounded-2xl px-4 py-3 shadow-lg border border-aethon-gray-dark/20 hidden sm:flex items-center gap-3 z-20"
+                    style={{
+                      top: metric.top,
+                      bottom: metric.bottom,
+                      left: metric.left,
+                      right: metric.right,
+                    }}
+                  >
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ backgroundColor: `${metric.color}15` }}
+                      className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${metric.color}12` }}
                     >
-                      <Icon className="w-5 h-5" style={{ color: metric.color }} />
+                      <Icon className="w-4 h-4" style={{ color: metric.color }} />
                     </div>
                     <div>
-                      <div className="text-xl font-bold text-aethon-text">{metric.value}</div>
-                      <div className="text-xs text-aethon-text-secondary">{metric.label}</div>
+                      <div className="text-lg font-bold text-aethon-text leading-tight">{metric.value}</div>
+                      <div className="text-[10px] text-aethon-text-secondary leading-tight">{metric.label}</div>
                     </div>
-                  </div>
-                  {/* Growth indicator */}
-                  {metric.label === 'Growth Score' && (
-                    <div className="mt-2 flex items-center gap-2">
-                      <div className="flex-1 h-1.5 bg-aethon-gray rounded-full overflow-hidden">
+                    {/* Growth score bar */}
+                    {metric.label === 'Growth Score' && (
+                      <div className="absolute -bottom-0.5 left-2 right-2 h-1 bg-aethon-gray rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={isInView ? { width: '92%' } : {}}
                           transition={{ delay: 1.5, duration: 1.5, ease: 'easeOut' }}
-                          className="h-full rounded-full"
-                          style={{ background: `linear-gradient(90deg, ${metric.color}, #FFD23F)` }}
+                          className="h-full rounded-full bg-gradient-to-r from-aethon-purple to-aethon-gold"
                         />
                       </div>
-                      <span className="text-[10px] font-semibold text-aethon-gold">Excellent</span>
-                    </div>
-                  )}
-                </motion.div>
-              )
-            })}
+                    )}
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Process Flow below the image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="mt-6 sm:mt-8"
+            >
+              <ProcessFlow />
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
       {/* Bottom gradient to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-aethon-dark to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-aethon-dark to-transparent" />
     </section>
   )
 }
