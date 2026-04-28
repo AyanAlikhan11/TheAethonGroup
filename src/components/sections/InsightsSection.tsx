@@ -16,13 +16,13 @@ interface BlogPost {
 }
 
 const gradients = [
-  'from-aethon-orange/20 via-aethon-yellow/10 to-aethon-cream',
+  'from-aethon-gold/20 via-aethon-yellow/10 to-aethon-cream',
   'from-aethon-blue/20 via-aethon-purple/10 to-aethon-cream',
-  'from-aethon-pink/20 via-aethon-orange/10 to-aethon-cream',
+  'from-aethon-pink/20 via-aethon-gold/10 to-aethon-cream',
 ]
 
 const categoryColors: Record<string, string> = {
-  'Strategy': 'bg-aethon-orange text-white',
+  'Strategy': 'bg-aethon-gold text-white',
   'AI & Automation': 'bg-aethon-purple text-white',
   'Funnel Systems': 'bg-aethon-pink text-white',
   'Paid Media': 'bg-aethon-blue text-white',
@@ -100,7 +100,7 @@ export default function InsightsSection() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
             Growth{' '}
-            <span className="text-orange-gradient">Intelligence</span>
+            <span className="text-gold-gradient">Intelligence</span>
           </h2>
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Strategic insights and frameworks from the frontlines of growth engineering.
@@ -122,7 +122,7 @@ export default function InsightsSection() {
               >
                 <div className="absolute bottom-4 left-4">
                   <Badge
-                    className={`${categoryColors[insight.category] || 'bg-aethon-orange text-white'} text-xs border-0 rounded-full px-3 py-1`}
+                    className={`${categoryColors[insight.category] || 'bg-aethon-gold text-white'} text-xs border-0 rounded-full px-3 py-1`}
                   >
                     {insight.category}
                   </Badge>
@@ -130,13 +130,13 @@ export default function InsightsSection() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-semibold text-aethon-text group-hover:text-aethon-orange transition-colors duration-300 mb-3 leading-snug">
+                <h3 className="text-lg font-semibold text-aethon-text group-hover:text-aethon-gold transition-colors duration-300 mb-3 leading-snug">
                   {insight.title}
                 </h3>
                 <p className="text-sm text-aethon-text-secondary leading-relaxed mb-4">
                   {insight.excerpt}
                 </p>
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-orange group-hover:text-aethon-orange-dark transition-colors duration-300">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-gold group-hover:text-aethon-gold-dark transition-colors duration-300">
                   Read More
                   <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </span>
@@ -151,7 +151,7 @@ export default function InsightsSection() {
           transition={{ delay: 0.8 }}
           className="text-center mt-12"
         >
-          <button className="inline-flex items-center gap-2 text-aethon-orange hover:text-aethon-orange-dark font-medium transition-colors duration-300 cursor-pointer">
+          <button className="inline-flex items-center gap-2 text-aethon-gold hover:text-aethon-gold-dark font-medium transition-colors duration-300 cursor-pointer">
             View All Insights
             <ArrowUpRight className="size-4" />
           </button>

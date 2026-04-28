@@ -2,22 +2,9 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, TrendingUp, BarChart3, Target } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import RotatingGlobe from './RotatingGlobe'
-
-const floatingShapes = [
-  { type: 'circle', size: 80, color: 'bg-aethon-orange/20', top: '10%', right: '8%', delay: 0 },
-  { type: 'circle', size: 40, color: 'bg-aethon-blue/20', top: '25%', right: '20%', delay: 0.2 },
-  { type: 'circle', size: 60, color: 'bg-aethon-pink/20', bottom: '20%', right: '5%', delay: 0.4 },
-  { type: 'circle', size: 30, color: 'bg-aethon-green/25', top: '50%', right: '30%', delay: 0.6 },
-  { type: 'dot', color: 'bg-aethon-orange/30', top: '15%', right: '35%', delay: 0.8 },
-  { type: 'dot', color: 'bg-aethon-purple/20', bottom: '30%', right: '15%', delay: 1 },
-  { type: 'dot', color: 'bg-aethon-pink/25', top: '60%', right: '40%', delay: 1.2 },
-  { type: 'circle', size: 50, color: 'bg-aethon-yellow/40', bottom: '10%', right: '25%', delay: 0.3 },
-  { type: 'dot', color: 'bg-aethon-blue/30', top: '35%', right: '10%', delay: 0.5 },
-  { type: 'circle', size: 20, color: 'bg-aethon-orange/25', top: '75%', right: '38%', delay: 0.7 },
-]
 
 export default function HeroSection() {
   const ref = useRef(null)
@@ -31,78 +18,36 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-aethon-yellow"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-white"
     >
-      {/* Animated SVG Chart Line */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-64 opacity-10"
-        viewBox="0 0 1200 200"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#2D1B69" />
-            <stop offset="50%" stopColor="#FF6B35" />
-            <stop offset="100%" stopColor="#2D1B69" />
-          </linearGradient>
-        </defs>
-        <motion.path
-          d="M0,180 C200,180 300,100 500,80 C700,60 800,120 1000,40 C1100,10 1150,30 1200,20"
-          fill="none"
-          stroke="url(#chartGradient)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-          transition={{ duration: 2, ease: 'easeInOut', delay: 0.5 }}
-        />
-        <motion.path
-          d="M0,180 C200,180 300,100 500,80 C700,60 800,120 1000,40 C1100,10 1150,30 1200,20 L1200,200 L0,200 Z"
-          fill="url(#chartGradient)"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.05 } : { opacity: 0 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        />
-      </svg>
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-aethon-cream/50 to-white" />
 
-      {/* Floating geometric shapes */}
-      {floatingShapes.map((shape, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={
-            isInView
-              ? {
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -12, 0],
-                }
-              : {}
-          }
-          transition={{
-            opacity: { delay: 0.8 + shape.delay, duration: 0.5 },
-            scale: { delay: 0.8 + shape.delay, duration: 0.5 },
-            y: {
-              delay: 1.5 + i * 0.3,
-              duration: 3 + i * 0.4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            },
-          }}
-          className={`absolute ${shape.color} hidden lg:block ${
-            shape.type === 'circle' ? 'rounded-full' : 'rounded-full'
-          }`}
-          style={{
-            width: shape.type === 'circle' ? shape.size : 12,
-            height: shape.type === 'circle' ? shape.size : 12,
-            top: shape.top,
-            right: shape.right,
-            bottom: shape.bottom,
-          }}
-        />
-      ))}
+      {/* Dotted pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03] dotted-pattern" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      {/* Decorative golden circles */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="absolute top-[10%] right-[5%] w-72 h-72 rounded-full border border-aethon-gold/10 hidden xl:block"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 1.5, delay: 0.7 }}
+        className="absolute top-[15%] right-[8%] w-48 h-48 rounded-full border border-aethon-gold/5 hidden xl:block"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 1.5, delay: 0.9 }}
+        className="absolute bottom-[15%] left-[3%] w-32 h-32 rounded-full border border-aethon-gold/8 hidden xl:block"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left - Content */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -114,20 +59,20 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-aethon-purple/10 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-aethon-gold/10 border border-aethon-gold/20 mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-aethon-orange animate-pulse" />
-              <span className="text-xs font-medium text-aethon-purple tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-aethon-gold animate-pulse" />
+              <span className="text-xs font-semibold text-aethon-gold-dark tracking-wide uppercase">
                 Growth Intelligence Company
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-aethon-text">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
               We Build{' '}
-              <span className="text-orange-gradient">Growth Engines</span>
+              <span className="text-gold-gradient">Growth Engines</span>
               <br />
               That{' '}
-              <span className="text-orange-gradient">Compound.</span>
+              <span className="text-gold-gradient">Compound.</span>
             </h1>
 
             <motion.p
@@ -147,35 +92,126 @@ export default function HeroSection() {
             >
               <Button
                 onClick={() => scrollToSection('cta')}
-                className="bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary"
+                className="bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
               >
-                Book Strategy Call
-                <ArrowRight className="ml-2 size-4" />
+                Let&apos;s Build Your Growth Engine
+                <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 onClick={() => scrollToSection('services')}
                 variant="outline"
-                className="border-aethon-text/20 text-aethon-text hover:bg-aethon-text hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
+                className="border-aethon-dark/20 text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
               >
-                Explore Our System
+                See How We Work
               </Button>
+            </motion.div>
+
+            {/* Trust mini bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.8 }}
+              className="flex items-center gap-3 mt-8 justify-center lg:justify-start"
+            >
+              <div className="flex -space-x-2">
+                {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
+                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center`}>
+                    <span className="text-[10px] font-bold text-white">
+                      {['SK', 'AR', 'JM', 'PL'][i]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-aethon-text">50+ businesses</p>
+                <p className="text-xs text-aethon-text-muted">trust us to grow</p>
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Right - Rotating Globe */}
+          {/* Right - Globe with stat cards */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
-            className="relative h-[350px] sm:h-[450px] lg:h-[520px]"
+            className="relative h-[350px] sm:h-[420px] lg:h-[520px]"
           >
             <RotatingGlobe />
+
+            {/* Floating stat cards */}
+            {[
+              { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '2%', right: '0%', color: '#D4AF37' },
+              { icon: BarChart3, label: 'ROI', value: '3X', top: '30%', left: '0%', color: '#0F766E' },
+              { icon: Target, label: 'Growth Score', value: '92', bottom: '8%', right: '5%', color: '#2D1B69' },
+            ].map((metric, i) => {
+              const Icon = metric.icon
+              return (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={
+                    isInView
+                      ? {
+                          opacity: 1,
+                          scale: 1,
+                          y: [0, -8, 0],
+                        }
+                      : {}
+                  }
+                  transition={{
+                    opacity: { delay: 0.8 + i * 0.2, duration: 0.5 },
+                    scale: { delay: 0.8 + i * 0.2, duration: 0.5 },
+                    y: {
+                      delay: 1.5 + i * 0.4,
+                      duration: 3 + i * 0.5,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    },
+                  }}
+                  className="absolute bg-white rounded-2xl px-5 py-4 shadow-lg border border-aethon-gray-dark/30 hidden lg:block"
+                  style={{
+                    top: metric.top,
+                    bottom: metric.bottom,
+                    left: metric.left,
+                    right: metric.right,
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      style={{ backgroundColor: `${metric.color}15` }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: metric.color }} />
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold text-aethon-text">{metric.value}</div>
+                      <div className="text-xs text-aethon-text-secondary">{metric.label}</div>
+                    </div>
+                  </div>
+                  {/* Growth indicator */}
+                  {metric.label === 'Growth Score' && (
+                    <div className="mt-2 flex items-center gap-2">
+                      <div className="flex-1 h-1.5 bg-aethon-gray rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={isInView ? { width: '92%' } : {}}
+                          transition={{ delay: 1.5, duration: 1.5, ease: 'easeOut' }}
+                          className="h-full rounded-full"
+                          style={{ background: `linear-gradient(90deg, ${metric.color}, #FFD23F)` }}
+                        />
+                      </div>
+                      <span className="text-[10px] font-semibold text-aethon-gold">Excellent</span>
+                    </div>
+                  )}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom gradient to white */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
+      {/* Bottom gradient to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-aethon-dark to-transparent" />
     </section>
   )
 }

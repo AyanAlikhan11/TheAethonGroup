@@ -27,7 +27,7 @@ const fallbackCaseStudies = [
     stat: '8.2x ROAS',
     description:
       'Transformed a struggling D2C fashion brand into a high-growth engine through systematic paid media scaling, funnel optimization, and creative systems.',
-    color: 'bg-aethon-orange',
+    color: 'bg-aethon-gold',
   },
   {
     id: '2',
@@ -71,9 +71,9 @@ export default function CaseStudiesSection() {
       })
   }, [])
 
-  const colorClasses = ['bg-aethon-orange', 'bg-aethon-blue', 'bg-aethon-pink']
-  const colorTextClasses = ['text-aethon-orange', 'text-aethon-blue', 'text-aethon-pink']
-  const colorBgLightClasses = ['bg-aethon-orange/10', 'bg-aethon-blue/10', 'bg-aethon-pink/10']
+  const colorClasses = ['bg-aethon-gold', 'bg-aethon-blue', 'bg-aethon-pink']
+  const colorTextClasses = ['text-aethon-gold', 'text-aethon-blue', 'text-aethon-pink']
+  const colorBgLightClasses = ['bg-aethon-gold/10', 'bg-aethon-blue/10', 'bg-aethon-pink/10']
 
   const displayStudies = caseStudies.length > 0
     ? caseStudies.map((cs, idx) => {
@@ -110,7 +110,7 @@ export default function CaseStudiesSection() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
             Growth,{' '}
-            <span className="text-orange-gradient">Proven.</span>
+            <span className="text-gold-gradient">Proven.</span>
           </h2>
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Real results from real partnerships. Here&apos;s what compounding growth looks like.
@@ -161,7 +161,7 @@ export default function CaseStudiesSection() {
                 </p>
 
                 {/* Link */}
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-orange group-hover:text-aethon-orange-dark transition-colors duration-300">
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-gold group-hover:text-aethon-gold-dark transition-colors duration-300">
                   View Case Study
                   <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </span>

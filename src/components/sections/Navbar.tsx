@@ -47,15 +47,19 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-1 group cursor-pointer"
+            className="flex items-center gap-2 group cursor-pointer"
           >
-            <span className="text-2xl sm:text-3xl font-bold tracking-tighter text-aethon-text">
-              AETHON
-            </span>
-            <span className="w-2 h-2 rounded-full bg-aethon-orange mt-1 group-hover:scale-125 transition-transform duration-300" />
-            <span className="block text-[10px] tracking-[0.3em] text-aethon-text-secondary font-medium -mt-0.5 ml-0.5">
-              GROUP
-            </span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+              <span className="text-white font-bold text-sm sm:text-base">A</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-aethon-text leading-none">
+                AETHON
+              </span>
+              <span className="text-[8px] sm:text-[9px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
+                SHAPING BUSINESSES
+              </span>
+            </div>
           </button>
 
           {/* Desktop Nav */}
@@ -64,17 +68,17 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-orange transition-colors duration-300 cursor-pointer group"
+                className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-orange group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
               </button>
             ))}
             <Button
               onClick={() => scrollToSection('cta')}
-              className="ml-4 bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold px-6 rounded-full cursor-pointer btn-primary"
+              className="ml-4 bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-6 rounded-full cursor-pointer btn-primary"
             >
-              Book a Call
+              Discuss a Project
             </Button>
           </div>
 
@@ -82,7 +86,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-aethon-text hover:text-aethon-orange cursor-pointer">
+                <Button variant="ghost" size="icon" className="text-aethon-text hover:text-aethon-gold cursor-pointer">
                   <Menu className="size-6" />
                 </Button>
               </SheetTrigger>
@@ -92,14 +96,18 @@ export default function Navbar() {
               >
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="flex flex-col gap-2 pt-8">
-                  <div className="mb-6 flex items-center gap-1">
-                    <span className="text-2xl font-bold tracking-tighter text-aethon-text">
-                      AETHON
-                    </span>
-                    <span className="w-2 h-2 rounded-full bg-aethon-orange" />
-                    <span className="block text-[10px] tracking-[0.3em] text-aethon-text-secondary font-medium">
-                      GROUP
-                    </span>
+                  <div className="mb-6 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-aethon-dark flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">A</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xl font-bold tracking-tight text-aethon-text leading-none">
+                        AETHON
+                      </span>
+                      <span className="text-[8px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
+                        SHAPING BUSINESSES
+                      </span>
+                    </div>
                   </div>
                   {navLinks.map((link, i) => (
                     <motion.button
@@ -108,7 +116,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                       onClick={() => scrollToSection(link.href)}
-                      className="text-left py-3 px-4 text-lg font-medium text-aethon-text-secondary hover:text-aethon-orange hover:bg-aethon-gray rounded-xl transition-all duration-300 cursor-pointer"
+                      className="text-left py-3 px-4 text-lg font-medium text-aethon-text-secondary hover:text-aethon-gold hover:bg-aethon-gray rounded-xl transition-all duration-300 cursor-pointer"
                     >
                       {link.label}
                     </motion.button>
@@ -116,9 +124,9 @@ export default function Navbar() {
                   <div className="mt-6 px-4">
                     <Button
                       onClick={() => scrollToSection('cta')}
-                      className="w-full bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold rounded-full cursor-pointer btn-primary"
+                      className="w-full bg-aethon-dark hover:bg-aethon-gold text-white font-semibold rounded-full cursor-pointer btn-primary"
                     >
-                      Book Strategy Call
+                      Discuss a Project
                     </Button>
                   </div>
                 </div>

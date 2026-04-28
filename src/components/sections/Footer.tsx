@@ -37,7 +37,7 @@ export default function Footer() {
   }
 
   return (
-    <footer id="footer" ref={ref} className="relative bg-aethon-green">
+    <footer id="footer" ref={ref} className="relative bg-aethon-dark">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,19 +47,23 @@ export default function Footer() {
         >
           {/* Column 1: Logo + tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-1">
-              <span className="text-2xl font-bold tracking-tighter text-white">
-                AETHON
-              </span>
-              <span className="w-2 h-2 rounded-full bg-aethon-yellow" />
-              <span className="block text-[10px] tracking-[0.3em] text-white/50 font-medium">
-                GROUP
-              </span>
+            <div className="mb-4 flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-aethon-gold flex items-center justify-center">
+                <span className="text-white font-bold text-sm">A</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold tracking-tight text-white leading-none">
+                  AETHON
+                </span>
+                <span className="text-[8px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
+                  SHAPING BUSINESSES
+                </span>
+              </div>
             </div>
-            <p className="text-sm text-white/80 leading-relaxed mb-2">
+            <p className="text-sm text-aethon-gold/80 leading-relaxed mb-2 font-medium">
               Growth, Engineered.
             </p>
-            <p className="text-sm text-white/50 leading-relaxed">
+            <p className="text-sm text-white/40 leading-relaxed">
               Premium growth intelligence for ambitious brands. We build systems that compound.
             </p>
           </div>
@@ -74,7 +78,7 @@ export default function Footer() {
                 <li key={service}>
                   <button
                     onClick={() => scrollToSection('services')}
-                    className="text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300 cursor-pointer"
                   >
                     {service}
                   </button>
@@ -93,7 +97,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300 cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -110,7 +114,7 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href="mailto:hello@aethongroup.com"
-                className="block text-sm text-white/50 hover:text-aethon-yellow transition-colors duration-300"
+                className="block text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300"
               >
                 hello@aethongroup.com
               </a>
@@ -120,9 +124,9 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-aethon-yellow/20 transition-all duration-300"
+                    className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-aethon-gold/10 hover:border-aethon-gold/30 transition-all duration-300"
                   >
-                    <social.icon className="size-4 text-white/60 hover:text-aethon-yellow transition-colors duration-300" />
+                    <social.icon className="size-4 text-white/40 hover:text-aethon-gold transition-colors duration-300" />
                   </a>
                 ))}
               </div>
@@ -131,15 +135,15 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/30">
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/20">
             &copy; 2025 THE AETHON GROUP. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <button className="text-xs text-white/30 hover:text-white/60 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/20 hover:text-white/40 transition-colors duration-300 cursor-pointer">
               Privacy
             </button>
-            <button className="text-xs text-white/30 hover:text-white/60 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/20 hover:text-white/40 transition-colors duration-300 cursor-pointer">
               Terms
             </button>
           </div>

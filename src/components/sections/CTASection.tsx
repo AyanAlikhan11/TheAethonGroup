@@ -14,7 +14,7 @@ export default function CTASection() {
   }
 
   return (
-    <section id="cta" ref={ref} className="relative py-20 sm:py-28 bg-aethon-orange overflow-hidden">
+    <section id="cta" ref={ref} className="relative py-20 sm:py-28 bg-aethon-gold overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Subtle circles */}
@@ -77,7 +77,7 @@ export default function CTASection() {
         >
           <Button
             onClick={openContactModal}
-            className="bg-white text-aethon-orange font-semibold px-8 py-6 text-base rounded-full hover:bg-white/90 cursor-pointer btn-primary"
+            className="bg-white text-aethon-gold font-semibold px-8 py-6 text-base rounded-full hover:bg-white/90 cursor-pointer btn-primary"
           >
             Book Strategy Call
             <ArrowRight className="ml-2 size-4" />

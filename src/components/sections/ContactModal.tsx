@@ -90,7 +90,7 @@ export default function ContactModal() {
         <DialogHeader>
           <DialogTitle className="text-aethon-text text-xl">
             Book Your{' '}
-            <span className="text-orange-gradient">Strategy Call</span>
+            <span className="text-gold-gradient">Strategy Call</span>
           </DialogTitle>
           <DialogDescription className="text-aethon-text-secondary">
             Tell us about your brand and growth goals. We&apos;ll get back within 24 hours.
@@ -123,7 +123,7 @@ export default function ContactModal() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Your full name"
-                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20"
                 />
               </div>
               <div>
@@ -138,7 +138,7 @@ export default function ContactModal() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="you@company.com"
-                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20"
                 />
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function ContactModal() {
                     setFormData({ ...formData, company: e.target.value })
                   }
                   placeholder="Company name"
-                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20"
                 />
               </div>
               <div>
@@ -168,7 +168,7 @@ export default function ContactModal() {
                     setFormData({ ...formData, phone: e.target.value })
                   }
                   placeholder="+91 98765 43210"
-                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20"
+                  className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20"
                 />
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function ContactModal() {
                   setFormData({ ...formData, service: value })
                 }
               >
-                <SelectTrigger className="w-full bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20">
+                <SelectTrigger className="w-full bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-aethon-gray-dark/50">
@@ -191,7 +191,7 @@ export default function ContactModal() {
                     <SelectItem
                       key={service}
                       value={service}
-                      className="text-aethon-text-secondary focus:bg-aethon-orange/10 focus:text-aethon-orange"
+                      className="text-aethon-text-secondary focus:bg-aethon-gold/10 focus:text-aethon-gold"
                     >
                       {service}
                     </SelectItem>
@@ -210,14 +210,14 @@ export default function ContactModal() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 placeholder="Tell us about your growth goals..."
-                className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-orange/50 focus-visible:ring-aethon-orange/20 min-h-[100px]"
+                className="bg-aethon-gray border-aethon-gray-dark/50 text-aethon-text placeholder:text-aethon-text-muted focus-visible:border-aethon-gold/50 focus-visible:ring-aethon-gold/20 min-h-[100px]"
               />
             </div>
 
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-aethon-orange hover:bg-aethon-orange-dark text-white font-semibold py-6 rounded-full cursor-pointer btn-primary"
+              className="w-full bg-aethon-gold hover:bg-aethon-gold-dark text-white font-semibold py-6 rounded-full cursor-pointer btn-primary"
             >
               {loading ? (
                 <>

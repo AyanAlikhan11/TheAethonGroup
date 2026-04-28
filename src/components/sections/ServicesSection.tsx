@@ -19,7 +19,7 @@ const services = [
     title: 'Growth Strategy',
     description:
       'Data-driven strategic frameworks that identify your highest-leverage growth opportunities and build compounding momentum.',
-    color: 'bg-aethon-orange',
+    color: 'bg-aethon-gold',
     iconColor: 'text-white',
   },
   {
@@ -95,9 +95,9 @@ export default function ServicesSection() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
             What We{' '}
-            <span className="text-orange-gradient">Engineer</span>
+            <span className="text-gold-gradient">Engineer</span>
           </h2>
-          <div className="mt-4 mx-auto w-20 h-1 bg-aethon-orange rounded-full" />
+          <div className="mt-4 mx-auto w-20 h-1 bg-aethon-gold rounded-full" />
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Every engagement is engineered for compounding returns — not quick wins.
           </p>
@@ -115,7 +115,7 @@ export default function ServicesSection() {
               <div className={`w-12 h-12 rounded-2xl ${service.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
                 <service.icon className={`size-5 ${service.iconColor}`} />
               </div>
-              <h3 className="text-lg font-semibold text-aethon-text mb-2 group-hover:text-aethon-orange transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-aethon-text mb-2 group-hover:text-aethon-gold transition-colors duration-300">
                 {service.title}
               </h3>
               <p className="text-sm text-aethon-text-secondary leading-relaxed">

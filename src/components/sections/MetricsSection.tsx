@@ -12,7 +12,7 @@ const metrics = [
     label: 'Revenue Influenced',
     description: 'Total revenue generated for our clients across industries',
     icon: TrendingUp,
-    accentColor: '#FF6B35',
+    accentColor: '#D4AF37',
   },
   {
     value: 120,
@@ -40,7 +40,7 @@ const metrics = [
     label: 'Client Retention',
     description: 'Clients who stay and scale with us year over year',
     icon: Heart,
-    accentColor: '#F472B6',
+    accentColor: '#D4AF37',
   },
 ]
 
@@ -103,7 +103,7 @@ export default function MetricsSection() {
       className="relative py-20 sm:py-28 bg-aethon-cream overflow-hidden"
     >
       {/* Subtle decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-aethon-orange/3 -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-aethon-gold/3 -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-aethon-green/3 translate-y-1/2 -translate-x-1/2" />
 
       {/* Dotted pattern */}
@@ -120,13 +120,13 @@ export default function MetricsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-aethon-orange mb-3">
+          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-aethon-gold mb-3">
             Proven Results
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-aethon-text tracking-tight">
             Numbers That Speak
           </h2>
-          <div className="mx-auto mt-4 w-16 h-[2px] bg-gradient-to-r from-aethon-orange to-aethon-yellow rounded-full" />
+          <div className="mx-auto mt-4 w-16 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
         </motion.div>
 
         {/* Metrics Grid */}

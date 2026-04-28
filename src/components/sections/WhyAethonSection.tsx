@@ -9,8 +9,8 @@ const pillars = [
     statement: 'Intelligence before execution',
     description:
       'We invest in deep understanding before deploying resources. Every strategy is built on rigorous analysis, market intelligence, and first-principles thinking — not assumptions.',
-    color: 'border-aethon-orange',
-    numberColor: 'text-aethon-orange/10',
+    color: 'border-aethon-gold',
+    numberColor: 'text-aethon-gold/10',
   },
   {
     number: '02',
@@ -44,7 +44,7 @@ export default function WhyAethonSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
-            <span className="text-orange-gradient">Why AETHON</span>
+            <span className="text-gold-gradient">Why AETHON</span>
           </h2>
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Three principles that separate us from every other growth partner.
