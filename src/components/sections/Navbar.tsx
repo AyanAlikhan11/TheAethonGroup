@@ -51,176 +51,180 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="fixed top-0 left-0 right-0 z-50"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* ===== DEFAULT STATE: Full-width nav bar ===== */}
-          <AnimatePresence mode="wait">
-            {!scrolled ? (
-              <motion.div
-                key="default-nav"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/50 backdrop-blur-sm border-b border-transparent"
-              >
-                <nav className="flex items-center justify-between h-16 sm:h-20">
-                  {/* Logo */}
-                  <div
-                    className="flex items-center gap-2 group cursor-pointer shrink-0"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  >
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
-                      <span className="text-white font-bold text-sm sm:text-base">A</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xl sm:text-2xl font-bold tracking-tight leading-none text-aethon-text">
-                        AETHON
-                      </span>
-                      <span className="text-[8px] sm:text-[9px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
-                        SHAPING BUSINESSES
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Center: Nav links */}
-                  <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
-                    {navLinks.map((link) => (
-                      <button
-                        key={link.href}
-                        onClick={() => scrollToSection(link.href)}
-                        className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
-                      >
-                        {link.label}
-                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Right: Discuss button + mobile hamburger */}
-                  <div className="flex items-center gap-3 shrink-0">
-                    <Button
-                      onClick={openContactModal}
-                      className="hidden sm:flex bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-5 lg:px-6 rounded-full cursor-pointer btn-primary text-sm"
-                    >
-                      Discuss a Project
-                    </Button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setMenuOpen(true)}
-                      className="sm:hidden w-9 h-9 rounded-full bg-aethon-dark/80 flex items-center justify-center cursor-pointer"
-                      aria-label="Open menu"
-                    >
-                      <div className="relative w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
-                        <span className="block w-3 h-[1.5px] bg-white rounded-full" />
-                        <span className="block w-4 h-[1.5px] bg-white rounded-full" />
-                        <span className="block w-2.5 h-[1.5px] bg-white rounded-full" />
-                      </div>
-                    </motion.button>
-                  </div>
-                </nav>
-              </motion.div>
-            ) : (
-              /* ===== SCROLLED STATE: Two separate floating pills ===== */
-              <motion.div
-                key="split-nav"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="flex items-center justify-between pt-3"
-              >
-                {/* Left pill: Logo only */}
-                <motion.button
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
+        <AnimatePresence mode="wait">
+          {!scrolled ? (
+            /* ===== DEFAULT STATE: Full-width nav bar ===== */
+            <motion.div
+              key="default-nav"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white/50 backdrop-blur-sm border-b border-transparent"
+            >
+              <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
+                {/* Logo */}
+                <div
+                  className="flex items-center gap-2 group cursor-pointer shrink-0"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-aethon-dark/5 border border-aethon-gray-dark/30 cursor-pointer hover:shadow-xl transition-shadow duration-300 group"
                 >
-                  <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
-                    <span className="text-white font-bold text-xs">A</span>
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+                    <span className="text-white font-bold text-sm sm:text-base">A</span>
                   </div>
-                  <span className="text-base sm:text-lg font-bold tracking-tight text-aethon-text leading-none">
-                    AETHON
-                  </span>
-                </motion.button>
+                  <div className="flex flex-col">
+                    <span className="text-xl sm:text-2xl font-bold tracking-tight leading-none text-aethon-text">
+                      AETHON
+                    </span>
+                    <span className="text-[8px] sm:text-[9px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
+                      SHAPING BUSINESSES
+                    </span>
+                  </div>
+                </div>
 
-                {/* Right pill: Icons */}
-                <motion.div
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-aethon-dark/5 border border-aethon-gray-dark/30"
-                >
-                  {/* Discuss project icon */}
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                {/* Center: Nav links */}
+                <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+                  {navLinks.map((link) => (
+                    <button
+                      key={link.href}
+                      onClick={() => scrollToSection(link.href)}
+                      className="relative px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                    </button>
+                  ))}
+                </div>
+
+                {/* Right: Discuss button + mobile hamburger */}
+                <div className="flex items-center gap-3 shrink-0">
+                  <Button
                     onClick={openContactModal}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
-                    aria-label="Discuss a project"
+                    className="hidden sm:flex bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-5 lg:px-6 rounded-full cursor-pointer btn-primary text-sm"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
-                  </motion.button>
-
-                  {/* Call icon */}
-                  <motion.a
-                    href="tel:+919876543210"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
-                    aria-label="Make a call"
-                  >
-                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
-                  </motion.a>
-
-                  {/* Hamburger */}
+                    Discuss a Project
+                  </Button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-dark hover:bg-aethon-gold flex items-center justify-center cursor-pointer transition-colors duration-300"
-                    aria-label="Toggle menu"
+                    onClick={() => setMenuOpen(true)}
+                    className="sm:hidden w-9 h-9 rounded-full bg-aethon-dark/80 flex items-center justify-center cursor-pointer"
+                    aria-label="Open menu"
                   >
-                    <div className="relative w-3.5 h-3.5 flex flex-col items-center justify-center">
-                      <motion.span
-                        animate={{
-                          rotate: menuOpen ? 45 : 0,
-                          y: menuOpen ? 0 : -3,
-                          width: menuOpen ? 12 : 10,
-                        }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="block h-[1.5px] bg-white rounded-full origin-center"
-                        style={{ width: 10 }}
-                      />
-                      <motion.span
-                        animate={{
-                          opacity: menuOpen ? 0 : 1,
-                          scaleX: menuOpen ? 0 : 1,
-                        }}
-                        transition={{ duration: 0.2 }}
-                        className="block h-[1.5px] bg-white rounded-full"
-                        style={{ width: 6 }}
-                      />
-                      <motion.span
-                        animate={{
-                          rotate: menuOpen ? -45 : 0,
-                          y: menuOpen ? 0 : 3,
-                          width: menuOpen ? 12 : 8,
-                        }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="block h-[1.5px] bg-white rounded-full origin-center"
-                        style={{ width: 8 }}
-                      />
+                    <div className="relative w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
+                      <span className="block w-3 h-[1.5px] bg-white rounded-full" />
+                      <span className="block w-4 h-[1.5px] bg-white rounded-full" />
+                      <span className="block w-2.5 h-[1.5px] bg-white rounded-full" />
                     </div>
                   </motion.button>
-                </motion.div>
+                </div>
+              </nav>
+            </motion.div>
+          ) : (
+            /* ===== SCROLLED STATE: Two INDEPENDENT floating pills ===== */
+            <motion.div
+              key="split-nav"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="relative w-full"
+            >
+              {/* Left floating pill: Logo — absolutely positioned */}
+              <motion.button
+                initial={{ x: -30, opacity: 0, y: 8 }}
+                animate={{ x: 0, opacity: 1, y: 0 }}
+                exit={{ x: -30, opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="absolute left-4 sm:left-6 lg:left-8 top-3 flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/85 backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60 cursor-pointer hover:shadow-xl hover:bg-white/95 transition-all duration-300 group"
+                style={{ zIndex: 10 }}
+              >
+                <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
+                  <span className="text-white font-bold text-xs">A</span>
+                </div>
+                <span className="text-base sm:text-lg font-bold tracking-tight text-aethon-text leading-none">
+                  AETHON
+                </span>
+              </motion.button>
+
+              {/* Right floating pill: Icons — absolutely positioned */}
+              <motion.div
+                initial={{ x: 30, opacity: 0, y: 8 }}
+                animate={{ x: 0, opacity: 1, y: 0 }}
+                exit={{ x: 30, opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full bg-white/85 backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60"
+                style={{ zIndex: 10 }}
+              >
+                {/* Discuss project icon */}
+                <motion.button
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={openContactModal}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Discuss a project"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
+                </motion.button>
+
+                {/* Call icon */}
+                <motion.a
+                  href="tel:+919876543210"
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-gold/10 hover:bg-aethon-gold/20 flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Make a call"
+                >
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-aethon-gold" />
+                </motion.a>
+
+                {/* Hamburger */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-aethon-dark hover:bg-aethon-gold flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Toggle menu"
+                >
+                  <div className="relative w-3.5 h-3.5 flex flex-col items-center justify-center">
+                    <motion.span
+                      animate={{
+                        rotate: menuOpen ? 45 : 0,
+                        y: menuOpen ? 0 : -3,
+                        width: menuOpen ? 12 : 10,
+                      }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="block h-[1.5px] bg-white rounded-full origin-center"
+                      style={{ width: 10 }}
+                    />
+                    <motion.span
+                      animate={{
+                        opacity: menuOpen ? 0 : 1,
+                        scaleX: menuOpen ? 0 : 1,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      className="block h-[1.5px] bg-white rounded-full"
+                      style={{ width: 6 }}
+                    />
+                    <motion.span
+                      animate={{
+                        rotate: menuOpen ? -45 : 0,
+                        y: menuOpen ? 0 : 3,
+                        width: menuOpen ? 12 : 8,
+                      }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="block h-[1.5px] bg-white rounded-full origin-center"
+                      style={{ width: 8 }}
+                    />
+                  </div>
+                </motion.button>
               </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+
+              {/* Spacer to maintain header height */}
+              <div className="h-16 sm:h-[4.5rem]" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       {/* Slide-in menu panel */}
