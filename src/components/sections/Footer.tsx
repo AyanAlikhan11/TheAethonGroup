@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Linkedin, Twitter, ArrowUpRight } from 'lucide-react'
 
 const serviceLinks = [
   'Growth Strategy',
@@ -37,18 +37,54 @@ export default function Footer() {
   }
 
   return (
-    <footer id="footer" ref={ref} className="relative bg-aethon-dark">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <footer id="footer" ref={ref} className="relative overflow-hidden">
+      {/* Rich gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]" />
+
+      {/* Subtle gold glow at top */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-aethon-gold/5 rounded-full blur-[120px]" />
+
+      {/* Dot pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #D4AF37 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Top CTA band */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8"
+          className="pt-12 pb-10 border-b border-white/5"
+        >
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                Ready to <span className="text-aethon-gold">compound</span> your growth?
+              </h3>
+              <p className="mt-2 text-sm text-white/40">
+                Let&apos;s build a growth engine that never stops.
+              </p>
+            </div>
+            <button
+              onClick={() => scrollToSection('cta')}
+              className="group flex items-center gap-2 bg-aethon-gold hover:bg-aethon-gold-dark text-aethon-dark font-semibold px-7 py-3.5 rounded-full transition-all duration-300 cursor-pointer shrink-0"
+            >
+              Start a Project
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Main footer grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 py-12 sm:py-16"
         >
           {/* Column 1: Logo + tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-aethon-gold flex items-center justify-center">
+            <div className="mb-5 flex items-center gap-2">
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-aethon-gold to-aethon-gold-dark flex items-center justify-center shadow-lg shadow-aethon-gold/20">
                 <span className="text-white font-bold text-sm">A</span>
               </div>
               <div className="flex flex-col">
@@ -60,25 +96,25 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="text-sm text-aethon-gold/80 leading-relaxed mb-2 font-medium">
+            <p className="text-sm text-aethon-gold font-medium leading-relaxed mb-2">
               Growth, Engineered.
             </p>
-            <p className="text-sm text-white/40 leading-relaxed">
+            <p className="text-sm text-white/35 leading-relaxed max-w-xs">
               Premium growth intelligence for ambitious brands. We build systems that compound.
             </p>
           </div>
 
           {/* Column 2: Services */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
+            <h4 className="text-xs font-bold text-aethon-gold/80 mb-5 tracking-[0.2em] uppercase">
               Services
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
                   <button
                     onClick={() => scrollToSection('services')}
-                    className="text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/35 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
                   >
                     {service}
                   </button>
@@ -89,15 +125,15 @@ export default function Footer() {
 
           {/* Column 3: Company */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
+            <h4 className="text-xs font-bold text-aethon-gold/80 mb-5 tracking-[0.2em] uppercase">
               Company
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300 cursor-pointer"
+                    className="text-sm text-white/35 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -108,42 +144,40 @@ export default function Footer() {
 
           {/* Column 4: Connect */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
+            <h4 className="text-xs font-bold text-aethon-gold/80 mb-5 tracking-[0.2em] uppercase">
               Connect
             </h4>
-            <div className="space-y-3">
-              <a
-                href="mailto:hello@aethongroup.com"
-                className="block text-sm text-white/40 hover:text-aethon-gold transition-colors duration-300"
-              >
-                hello@aethongroup.com
-              </a>
-              <div className="flex gap-3 mt-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-aethon-gold/10 hover:border-aethon-gold/30 transition-all duration-300"
-                  >
-                    <social.icon className="size-4 text-white/40 hover:text-aethon-gold transition-colors duration-300" />
-                  </a>
-                ))}
-              </div>
+            <a
+              href="mailto:hello@aethongroup.com"
+              className="block text-sm text-white/35 hover:text-aethon-gold transition-colors duration-300 mb-5"
+            >
+              hello@aethongroup.com
+            </a>
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-aethon-gold/15 hover:border-aethon-gold/30 hover:scale-110 transition-all duration-300"
+                >
+                  <social.icon className="size-4 text-white/40 group-hover:text-aethon-gold transition-colors duration-300" />
+                </a>
+              ))}
             </div>
           </div>
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/20">
             &copy; 2025 THE AETHON GROUP. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <button className="text-xs text-white/20 hover:text-white/40 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/20 hover:text-white/50 transition-colors duration-300 cursor-pointer">
               Privacy
             </button>
-            <button className="text-xs text-white/20 hover:text-white/40 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/20 hover:text-white/50 transition-colors duration-300 cursor-pointer">
               Terms
             </button>
           </div>
