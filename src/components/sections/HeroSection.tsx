@@ -134,7 +134,7 @@ export default function HeroSection() {
                 className="relative"
               >
                 <Image
-                  src="/team-transparent.png"
+                  src="/team-transparent-colorful.png"
                   alt="AETHON team collaborating on growth strategy"
                   width={672}
                   height={384}
