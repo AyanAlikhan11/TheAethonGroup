@@ -1,29 +1,39 @@
-'use client'
+"use client";
 
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
-import { ArrowRight, TrendingUp, BarChart3, Target, ChevronDown, Play, Award, Shield, Star } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import ProcessFlow from './ProcessFlow'
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import {
+  ArrowRight,
+  TrendingUp,
+  BarChart3,
+  Target,
+  ChevronDown,
+  Play,
+  Award,
+  Shield,
+  Star,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import ProcessFlow from "./ProcessFlow";
 
-const rotatingWords = ['Scale', 'Dominate', 'Compound', 'Accelerate']
+const rotatingWords = ["Scale", "Dominate", "Compound", "Accelerate"];
 
 export default function HeroSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [wordIndex, setWordIndex] = useState(0)
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section
@@ -44,7 +54,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left order-1 lg:col-start-1 lg:row-start-1"
           >
             <motion.div
@@ -54,40 +64,42 @@ export default function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-aethon-gold/10 border border-aethon-gold/20 mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-aethon-gold animate-pulse" />
-              <span className="text-xs font-semibold text-aethon-gold-dark tracking-wide uppercase">
+              <span className="text-xs font-['Montserrat',sans-serif] text-aethon-gold-dark tracking-wide uppercase">
                 Growth Intelligence Company
               </span>
             </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-aethon-dark"> 
-              We Help Brands{' '} 
-              <br className="hidden sm:block" /> 
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-['Montserrat',sans-serif] font-bold leading-[1.05] tracking-tight text-aethon-dark">
+              We Help Brands <br className="hidden sm:block" />
               <span className="relative inline-block w-full sm:w-[280px] lg:w-[300px] h-[1.1em] align-middle">
-  <AnimatePresence mode="wait">
-    <motion.span
-      key={wordIndex}
-      initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      exit={{ opacity: 0, y: -15, filter: "blur(8px)" }}
-      transition={{ duration: 0.45 }}
-      className="absolute inset-0 flex items-center justify-center lg:justify-start text-gold-gradient"
-    >
-      {rotatingWords[wordIndex]}
-    </motion.span>
-  </AnimatePresence>
-</span> 
-                  <br /> 
-                  <span className="text-gold-gradient">Growth Engines</span>{' '} 
-                  That{' '} <span className="text-gold-gradient">Compound.</span> 
-                  </h1>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -15, filter: "blur(8px)" }}
+                    transition={{ duration: 0.45 }}
+                    className="absolute inset-0 flex items-center justify-center lg:justify-start text-gold-gradient"
+                  >
+                    {rotatingWords[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+              <br />
+              <span className="text-gold-gradient">
+                Growth Engines
+              </span> That <span className="text-gold-gradient">Compound.</span>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="mt-6 text-base sm:text-l text-aethon-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="mt-6 text-base sm:text-l font-['Montserrat',sans-serif] text-aethon-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.
+              THE AETHON GROUP helps ambitious brands scale through strategy, AI
+              systems, media buying, creative execution, and precision growth
+              operations.
             </motion.p>
 
             {/* Awards / Recognition badges */}
@@ -98,69 +110,98 @@ export default function HeroSection() {
               className="flex items-center gap-3 sm:gap-4 mt-5 justify-center lg:justify-start flex-wrap"
             >
               {[
-                { icon: Award, label: 'Clutch Top Agency', color: '#D4AF37' },
-                { icon: Shield, label: 'Google Partner', color: '#0F766E' },
-                { icon: Star, label: '5.0 Rated', color: '#2D1B69' },
+                { icon: Award, label: "Clutch Top Agency", color: "#D4AF37" },
+                { icon: Shield, label: "Google Partner", color: "#0F766E" },
+                { icon: Star, label: "5.0 Rated", color: "#2D1B69" },
               ].map((badge) => {
-                const BadgeIcon = badge.icon
+                const BadgeIcon = badge.icon;
                 return (
-                  <div key={badge.label} className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-aethon-gray-dark/40 shadow-sm">
-                    <BadgeIcon className="w-3.5 h-3.5" style={{ color: badge.color }} />
-                    <span className="text-[11px] font-semibold text-aethon-text tracking-wide">{badge.label}</span>
+                  <div
+                    key={badge.label}
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-aethon-gray-dark/40 shadow-sm"
+                  >
+                    <BadgeIcon
+                      className="w-3.5 h-3.5"
+                      style={{ color: badge.color }}
+                    />
+                    <span className="text-[11px] font-semibold text-aethon-text tracking-wide">
+                      {badge.label}
+                    </span>
                   </div>
-                )
+                );
               })}
             </motion.div>
           </motion.div>
 
           {/* Block B: Transparent Image + ProcessFlow */}
-<motion.div
-  initial={{ opacity: 0, x: 40 }}
-  animate={isInView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-  className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
->
-  {/* Gold circular glow */}
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-aethon-gold/15 via-aethon-gold-light/10 to-aethon-yellow/5" />
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-aethon-gold/20 via-aethon-gold-light/15 to-transparent blur-2xl" />
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="relative order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+          >
+            {/* Gold circular glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-gradient-to-br from-aethon-gold/15 via-aethon-gold-light/10 to-aethon-yellow/5" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-gradient-to-br from-aethon-gold/20 via-aethon-gold-light/15 to-transparent blur-2xl" />
 
-  {/* IMAGE CONTAINER */}
-  <div className="relative mx-auto max-w-md lg:max-w-lg mt-8 lg:mt-14">
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.3 }}
-      className="relative"
-    >
-      <Image
-        src="/team-transparent-colorful.png"
-        alt="AETHON team collaborating"
-        width={672}
-        height={384}
-        className="w-full h-auto object-contain drop-shadow-2xl"
-        priority
-      />
+            {/* IMAGE CONTAINER */}
+            <div className="relative mx-auto max-w-md lg:max-w-lg mt-8 lg:mt-14">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative"
+              >
+                <Image
+                  src="/team-hero.png"
+                  alt="AETHON team collaborating"
+                  width={672}
+                  height={384}
+                  className="w-full h-auto object-contain drop-shadow-2xl"
+                  priority
+                />
 
-      {/* Play button */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ delay: 1, duration: 0.5, type: 'spring' }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center z-10"
-      >
-        <Play className="w-5 h-5 sm:w-6 sm:h-6 text-aethon-dark fill-aethon-dark ml-0.5" />
-      </motion.button>
-    </motion.div>
+                {/* Play button */}
+                {/* <motion.button
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 1, duration: 0.5, type: "spring" }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm shadow-xl flex items-center justify-center z-10"
+                >
+                  <Play className="w-5 h-5 sm:w-6 sm:h-6 text-aethon-dark fill-aethon-dark ml-0.5" />
+                </motion.button> */}
+              </motion.div>
 
-    {/* Floating stat cards around the image */}
+              {/* Floating stat cards around the image */}
               {[
-                { icon: TrendingUp, label: 'Revenue Growth', value: '230%', top: '-5%', right: '-3%', color: '#D4AF37' },
-                { icon: BarChart3, label: 'ROI', value: '3X', bottom: '25%', left: '-3%', color: '#0F766E' },
-                { icon: Target, label: 'Growth Score', value: '92', bottom: '0%', right: '3%', color: '#2D1B69' },
+                {
+                  icon: TrendingUp,
+                  label: "Revenue Growth",
+                  value: "230%",
+                  top: "-5%",
+                  right: "-3%",
+                  color: "#D4AF37",
+                },
+                {
+                  icon: BarChart3,
+                  label: "ROI",
+                  value: "3X",
+                  bottom: "25%",
+                  left: "-3%",
+                  color: "#0F766E",
+                },
+                {
+                  icon: Target,
+                  label: "Growth Score",
+                  value: "92",
+                  bottom: "0%",
+                  right: "3%",
+                  color: "#2D1B69",
+                },
               ].map((metric, i) => {
-                const Icon = metric.icon
+                const Icon = metric.icon;
                 return (
                   <motion.div
                     key={metric.label}
@@ -181,7 +222,7 @@ export default function HeroSection() {
                         delay: 1.5 + i * 0.3,
                         duration: 3 + i * 0.5,
                         repeat: Infinity,
-                        ease: 'easeInOut',
+                        ease: "easeInOut",
                       },
                     }}
                     className="absolute bg-white rounded-2xl px-4 py-3 shadow-lg border border-aethon-gray-dark/20 hidden sm:flex items-center gap-3 z-20"
@@ -196,27 +237,34 @@ export default function HeroSection() {
                       className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
                       style={{ backgroundColor: `${metric.color}12` }}
                     >
-                      <Icon className="w-4 h-4" style={{ color: metric.color }} />
+                      <Icon
+                        className="w-4 h-4"
+                        style={{ color: metric.color }}
+                      />
                     </div>
                     <div>
-                      <div className="text-lg font-bold text-aethon-text leading-tight">{metric.value}</div>
-                      <div className="text-[10px] text-aethon-text-secondary leading-tight">{metric.label}</div>
+                      <div className="text-lg font-bold text-aethon-text leading-tight">
+                        {metric.value}
+                      </div>
+                      <div className="text-[10px] text-aethon-text-secondary leading-tight">
+                        {metric.label}
+                      </div>
                     </div>
                   </motion.div>
-                )
+                );
               })}
-  </div>
+            </div>
 
-  {/* Process Flow */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={isInView ? { opacity: 1, y: 0 } : {}}
-    transition={{ delay: 0.6, duration: 0.6 }}
-    className="mt-8 sm:mt-15 lg:mt-15"
-  >
-    <ProcessFlow />
-  </motion.div>
-</motion.div>
+            {/* Process Flow */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="mt-8 sm:mt-15 lg:mt-15"
+            >
+              <ProcessFlow />
+            </motion.div>
+          </motion.div>
 
           {/* Block C: Buttons + Trust bar — mobile: after image | desktop: left column below text */}
           <motion.div
@@ -227,14 +275,14 @@ export default function HeroSection() {
           >
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
-                onClick={() => scrollToSection('cta')}
+                onClick={() => scrollToSection("cta")}
                 className="bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
               >
                 Let&apos;s Build Your Growth Engine
                 <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
-                onClick={() => scrollToSection('services')}
+                onClick={() => scrollToSection("services")}
                 variant="outline"
                 className="border-aethon-dark/20 text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
               >
@@ -250,27 +298,34 @@ export default function HeroSection() {
               className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
             >
               <div className="flex -space-x-2">
-                {['bg-aethon-gold', 'bg-aethon-green', 'bg-aethon-blue', 'bg-aethon-pink'].map((color, i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}>
+                {[
+                  "bg-aethon-gold",
+                  "bg-aethon-green",
+                  "bg-aethon-blue",
+                  "bg-aethon-pink",
+                ].map((color, i) => (
+                  <div
+                    key={i}
+                    className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}
+                  >
                     <span className="text-[10px] font-bold text-white">
-                      {['SK', 'AR', 'JM', 'PL'][i]}
+                      {["SK", "AR", "JM", "PL"][i]}
                     </span>
                   </div>
                 ))}
               </div>
               <div>
-                <p className="text-sm font-semibold text-aethon-text">50+ businesses</p>
-                <p className="text-xs text-aethon-text-muted">trust us to grow</p>
+                <p className="text-sm font-semibold text-aethon-text">
+                  50+ businesses
+                </p>
+                <p className="text-xs text-aethon-text-muted">
+                  trust us to grow
+                </p>
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-
-
-
- 
