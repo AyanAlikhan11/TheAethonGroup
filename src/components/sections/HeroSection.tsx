@@ -59,28 +59,27 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-aethon-dark">
-              We Help Brands{' '}
-              <br className="hidden sm:block" />
-              <span className="inline-flex items-center relative min-w-[180px]">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={wordIndex}
-                    initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
-                    transition={{ duration: 0.5 }}
-                    className="text-gold-gradient"
-                  >
-                    {rotatingWords[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
-              <br />
-              <span className="text-gold-gradient">Growth Engines</span>{' '}
-              That{' '}
-              <span className="text-gold-gradient">Compound.</span>
-            </h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] tracking-tight text-aethon-dark"> 
+              We Help Brands{' '} 
+              <br className="hidden sm:block" /> 
+              <span className="relative inline-block w-full sm:w-[280px] lg:w-[300px] h-[1.1em] align-middle">
+  <AnimatePresence mode="wait">
+    <motion.span
+      key={wordIndex}
+      initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      exit={{ opacity: 0, y: -15, filter: "blur(8px)" }}
+      transition={{ duration: 0.45 }}
+      className="absolute inset-0 flex items-center justify-center lg:justify-start text-gold-gradient"
+    >
+      {rotatingWords[wordIndex]}
+    </motion.span>
+  </AnimatePresence>
+</span> 
+                  <br /> 
+                  <span className="text-gold-gradient">Growth Engines</span>{' '} 
+                  That{' '} <span className="text-gold-gradient">Compound.</span> 
+                  </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 10 }}

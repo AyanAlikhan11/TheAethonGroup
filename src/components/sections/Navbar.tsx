@@ -1,86 +1,141 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { MessageSquare, Phone, ArrowRight, ChevronDown, Target, DollarSign, Filter, Bot, BarChart3, TrendingUp, Shield, Sparkles } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  MessageSquare,
+  Phone,
+  ArrowRight,
+  ChevronDown,
+  Target,
+  DollarSign,
+  Filter,
+  Bot,
+  BarChart3,
+  TrendingUp,
+  Shield,
+  Sparkles,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { label: 'About', href: 'trust' },
-  { label: 'Services', href: 'services', hasMega: true },
-  { label: 'Case Studies', href: 'case-studies' },
-  { label: 'Insights', href: 'insights' },
-  { label: 'Contact', href: 'cta' },
-]
+  { label: "About", href: "trust" },
+  { label: "Services", href: "services", hasMega: true },
+  { label: "Case Studies", href: "case-studies" },
+  { label: "Insights", href: "insights" },
+  { label: "Contact", href: "cta" },
+];
 
 const megaServices = [
-  { icon: Target, title: 'Growth Strategy', desc: 'Data-driven strategic frameworks', color: '#F59E0B' },
-  { icon: DollarSign, title: 'Paid Media', desc: 'AI-optimized media buying', color: '#14B8A6' },
-  { icon: Filter, title: 'Funnel Systems', desc: 'End-to-end conversion funnels', color: '#FB7185' },
-  { icon: Bot, title: 'AI Automation', desc: 'Intelligent automation systems', color: '#8B5CF6' },
-  { icon: BarChart3, title: 'Analytics Intelligence', desc: 'Strategic insight from data', color: '#3B82F6' },
-  { icon: TrendingUp, title: 'Conversion Optimization', desc: 'Systematic CRO programs', color: '#F97316' },
-  { icon: Shield, title: 'Brand Positioning', desc: 'Premium brand authority', color: '#6366F1' },
-  { icon: Sparkles, title: 'Creative Systems', desc: 'Scalable creative pipelines', color: '#EC4899' },
-]
+  {
+    icon: Target,
+    title: "Growth Strategy",
+    desc: "Data-driven strategic frameworks",
+    color: "#F59E0B",
+  },
+  {
+    icon: DollarSign,
+    title: "Paid Media",
+    desc: "AI-optimized media buying",
+    color: "#14B8A6",
+  },
+  {
+    icon: Filter,
+    title: "Funnel Systems",
+    desc: "End-to-end conversion funnels",
+    color: "#FB7185",
+  },
+  {
+    icon: Bot,
+    title: "AI Automation",
+    desc: "Intelligent automation systems",
+    color: "#8B5CF6",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Intelligence",
+    desc: "Strategic insight from data",
+    color: "#3B82F6",
+  },
+  {
+    icon: TrendingUp,
+    title: "Conversion Optimization",
+    desc: "Systematic CRO programs",
+    color: "#F97316",
+  },
+  {
+    icon: Shield,
+    title: "Brand Positioning",
+    desc: "Premium brand authority",
+    color: "#6366F1",
+  },
+  {
+    icon: Sparkles,
+    title: "Creative Systems",
+    desc: "Scalable creative pipelines",
+    color: "#EC4899",
+  },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [megaOpen, setMegaOpen] = useState(false)
-  const megaTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
+  const megaTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 60);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   // Close mega menu on scroll
   useEffect(() => {
-    const handleScroll = () => setMegaOpen(false)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setMegaOpen(false);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setMenuOpen(false)
-    setMegaOpen(false)
-  }
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+    setMegaOpen(false);
+  };
 
   const openContactModal = () => {
-    window.dispatchEvent(new Event('openContactModal'))
-  }
+    window.dispatchEvent(new Event("openContactModal"));
+  };
 
   const handleMegaEnter = useCallback(() => {
-    if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current)
-    setMegaOpen(true)
-  }, [])
+    if (megaTimeoutRef.current) clearTimeout(megaTimeoutRef.current);
+    setMegaOpen(true);
+  }, []);
 
   const handleMegaLeave = useCallback(() => {
     megaTimeoutRef.current = setTimeout(() => {
-      setMegaOpen(false)
-    }, 200)
-  }, [])
+      setMegaOpen(false);
+    }, 200);
+  }, []);
 
   return (
     <>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="fixed top-0 left-0 right-0 z-50"
       >
         <AnimatePresence mode="wait">
@@ -97,20 +152,20 @@ export default function Navbar() {
               <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
                 {/* Logo */}
                 <div
-                  className="flex items-center gap-2 group cursor-pointer shrink-0"
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="flex items-center gap-1 group cursor-pointer shrink-0"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                 >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
-                    <span className="text-white font-bold text-sm sm:text-base">A</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xl sm:text-2xl font-bold tracking-tight leading-none text-aethon-text">
-                      AETHON
-                    </span>
-                    <span className="text-[8px] sm:text-[9px] tracking-[0.25em] text-aethon-gold font-semibold leading-none mt-0.5">
-                      SHAPING BUSINESSES
-                    </span>
-                  </div>
+                  <img
+                    src="/logo2.png" // put your logo inside /public folder
+                    alt="AETHON Logo"
+                    className="w-15 h-15 sm:w-20 sm:h-20 object-contain"
+                  />
+
+                  <span className=" font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
+                    THE AETHON GROUP
+                  </span>
                 </div>
 
                 {/* Center: Nav links */}
@@ -146,20 +201,29 @@ export default function Navbar() {
                               initial={{ opacity: 0, y: 8, scaleY: 0.96 }}
                               animate={{ opacity: 1, y: 0, scaleY: 1 }}
                               exit={{ opacity: 0, y: 8, scaleY: 0.96 }}
-                              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+                              transition={{
+                                duration: 0.25,
+                                ease: [0.25, 0.46, 0.45, 0.94],
+                              }}
                               className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50"
-                              style={{ width: '680px' }}
+                              style={{ width: "680px" }}
                             >
                               <div className="bg-white/90 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-aethon-dark/10 border border-aethon-gray-dark/30 overflow-hidden">
                                 {/* Header */}
                                 <div className="px-6 pt-5 pb-3 border-b border-aethon-gray-dark/20">
                                   <div className="flex items-center justify-between">
                                     <div>
-                                      <h3 className="text-sm font-bold text-aethon-text">Our Capabilities</h3>
-                                      <p className="text-xs text-aethon-text-muted mt-0.5">What we engineer for compounding growth</p>
+                                      <h3 className="text-sm font-bold text-aethon-text">
+                                        Our Capabilities
+                                      </h3>
+                                      <p className="text-xs text-aethon-text-muted mt-0.5">
+                                        What we engineer for compounding growth
+                                      </p>
                                     </div>
                                     <button
-                                      onClick={() => scrollToSection('services')}
+                                      onClick={() =>
+                                        scrollToSection("services")
+                                      }
                                       className="flex items-center gap-1 text-xs font-semibold text-aethon-gold hover:text-aethon-gold-dark transition-colors cursor-pointer group"
                                     >
                                       View All
@@ -171,14 +235,19 @@ export default function Navbar() {
                                 {/* Services Grid */}
                                 <div className="grid grid-cols-2 gap-0">
                                   {megaServices.map((service, i) => {
-                                    const Icon = service.icon
+                                    const Icon = service.icon;
                                     return (
                                       <motion.button
                                         key={service.title}
                                         initial={{ opacity: 0, y: 8 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.04, duration: 0.3 }}
-                                        onClick={() => scrollToSection('services')}
+                                        transition={{
+                                          delay: i * 0.04,
+                                          duration: 0.3,
+                                        }}
+                                        onClick={() =>
+                                          scrollToSection("services")
+                                        }
                                         className="flex items-start gap-3 px-5 py-3.5 text-left hover:bg-aethon-cream/60 transition-colors duration-200 cursor-pointer group/item border-b border-r border-aethon-gray-dark/15 last:border-b-0 even:border-r-0"
                                       >
                                         <div
@@ -188,7 +257,10 @@ export default function Navbar() {
                                             border: `1px solid ${service.color}25`,
                                           }}
                                         >
-                                          <Icon className="w-4 h-4" style={{ color: service.color }} />
+                                          <Icon
+                                            className="w-4 h-4"
+                                            style={{ color: service.color }}
+                                          />
                                         </div>
                                         <div className="min-w-0">
                                           <h4 className="text-sm font-semibold text-aethon-text group-hover/item:text-aethon-gold transition-colors leading-tight">
@@ -199,7 +271,7 @@ export default function Navbar() {
                                           </p>
                                         </div>
                                       </motion.button>
-                                    )
+                                    );
                                   })}
                                 </div>
 
@@ -253,124 +325,128 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="relative w-full"
             >
-             {/* Left floating pill: Logo — Bigger Version */}
-<motion.button
-  initial={{ x: -30, opacity: 0, y: 8 }}
-  animate={{ x: 0, opacity: 1, y: 0 }}
-  exit={{ x: -30, opacity: 0 }}
-  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-  className="absolute left-4 sm:left-6 lg:left-8 top-3 flex items-center gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-transparent backdrop-blur-2xl shadow-lg shadow-aethon-dark/8 border border-white/60 cursor-pointer hover:shadow-xl hover:bg-white/95 transition-all duration-300 group"
-  style={{ zIndex: 10 }}
->
-  {/* Logo Box */}
-  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-aethon-dark flex items-center justify-center group-hover:bg-aethon-gold transition-colors duration-300">
-    <span className="text-white font-bold text-sm sm:text-base">A</span>
-  </div>
+              {/* Left floating pill: Logo — Bigger Version */}
+              <motion.button
+                initial={{ x: -30, opacity: 0, y: 8 }}
+                animate={{ x: 0, opacity: 1, y: 0 }}
+                exit={{ x: -30, opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="absolute left-4 sm:left-6 lg:left-8  flex items-center gap-1 px-1 sm:px-1 py-2.5 sm:py-3   cursor-pointer transition-all duration-300 group"
+                style={{ zIndex: 10 }}
+              >
+                {/* Logo Box */}
+                {/* <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-lg  flex items-center justify-center  transition-colors duration-300"> */}
+                  <img
+                    src="/logo2.png" // put your logo inside /public folder
+                    alt="AETHON Logo"
+                    className="w-18 h-18 sm:w-20 sm:h-20 object-contain"
+                  />
+                {/* </div> */}
 
-  {/* Text */}
-  <span className="text-lg sm:text-xl font-bold tracking-tight text-aethon-text leading-none">
-    AETHON
-  </span>
-</motion.button>
+                {/* Text */}
+                {/* <span className=" font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
+                    AETHON
+                  </span> */}
+              </motion.button>
 
               {/* ================= RIGHT FLOATING PILL : macOS Style Icons ================= */}
-<motion.div
-  initial={{ x: 30, opacity: 0, y: 8 }}
-  animate={{ x: 0, opacity: 1, y: 0 }}
-  exit={{ x: 30, opacity: 0 }}
-  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-  className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2"
-  style={{ zIndex: 10 }}
->
-  {/* Message Icon */}
-  <motion.button
-    whileHover={{ scale: 1.12 }}
-    whileTap={{ scale: 0.9 }}
-    onClick={openContactModal}
-    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
-    aria-label="Discuss a project"
-  >
-    {/* macOS style chat bubble */}
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M6 7.5C6 6.12 7.12 5 8.5 5h7C16.88 5 18 6.12 18 7.5v5c0 1.38-1.12 2.5-2.5 2.5H11l-3.5 3v-3H8.5A2.5 2.5 0 0 1 6 12.5v-5Z" />
-    </svg>
-  </motion.button>
+              <motion.div
+                initial={{ x: 30, opacity: 0, y: 8 }}
+                animate={{ x: 0, opacity: 1, y: 0 }}
+                exit={{ x: 30, opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2"
+                style={{ zIndex: 10 }}
+              >
+                {/* Message Icon */}
+                <motion.button
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={openContactModal}
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Discuss a project"
+                >
+                  {/* macOS style chat bubble */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M6 7.5C6 6.12 7.12 5 8.5 5h7C16.88 5 18 6.12 18 7.5v5c0 1.38-1.12 2.5-2.5 2.5H11l-3.5 3v-3H8.5A2.5 2.5 0 0 1 6 12.5v-5Z" />
+                  </svg>
+                </motion.button>
 
-  {/* Phone Icon */}
-  <motion.a
-    href="tel:+919876543210"
-    whileHover={{ scale: 1.12 }}
-    whileTap={{ scale: 0.9 }}
-    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
-    aria-label="Make a call"
-  >
-    {/* macOS style phone */}
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7.8 5.5c.5-.5 1.2-.6 1.8-.2l2 1.2c.6.4.8 1.2.5 1.8l-.8 1.6c1 1.8 2.5 3.3 4.3 4.3l1.6-.8c.6-.3 1.4-.1 1.8.5l1.2 2c.4.6.3 1.4-.2 1.8l-1.2 1.2c-.8.8-2 .9-3 .4C10.8 18.7 5.3 13.2 4.4 7.7c-.5-1 .-4 2.2-3.6l1.2-1.2Z" />
-    </svg>
-  </motion.a>
+                {/* Phone Icon */}
+                <motion.a
+                  href="tel:+919876543210"
+                  whileHover={{ scale: 1.12 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Make a call"
+                >
+                  {/* macOS style phone */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7.8 5.5c.5-.5 1.2-.6 1.8-.2l2 1.2c.6.4.8 1.2.5 1.8l-.8 1.6c1 1.8 2.5 3.3 4.3 4.3l1.6-.8c.6-.3 1.4-.1 1.8.5l1.2 2c.4.6.3 1.4-.2 1.8l-1.2 1.2c-.8.8-2 .9-3 .4C10.8 18.7 5.3 13.2 4.4 7.7c-.5-1 .-4 2.2-3.6l1.2-1.2Z" />
+                  </svg>
+                </motion.a>
 
-  {/* Hamburger */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={() => setMenuOpen(!menuOpen)}
-    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
-    aria-label="Toggle menu"
-  >
-    <div className="relative w-5 h-5 flex flex-col items-center justify-center">
-      <motion.span
-        animate={{
-          rotate: menuOpen ? 45 : 0,
-          y: menuOpen ? 0 : -4,
-          width: menuOpen ? 20 : 20,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="block h-[4px] bg-aethon-gold rounded-full origin-center"
-        style={{ width: 14 }}
-      />
-      <motion.span
-        animate={{
-          opacity: menuOpen ? 0 : 1,
-          scaleX: menuOpen ? 0 : 1,
-        }}
-        transition={{ duration: 0.2 }}
-        className="block h-[4px] bg-aethon-gold rounded-full"
-        style={{ width: 10 }}
-      />
-      <motion.span
-        animate={{
-          rotate: menuOpen ? -45 : 0,
-          y: menuOpen ? 0 : 4,
-          width: menuOpen ? 20 : 20,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="block h-[4px] bg-aethon-gold rounded-full origin-center"
-        style={{ width: 14 }}
-      />
-    </div>
-  </motion.button>
-</motion.div>
+                {/* Hamburger */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  aria-label="Toggle menu"
+                >
+                  <div className="relative w-5 h-5 flex flex-col items-center justify-center">
+                    <motion.span
+                      animate={{
+                        rotate: menuOpen ? 45 : 0,
+                        y: menuOpen ? 0 : -4,
+                        width: menuOpen ? 20 : 20,
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="block h-[4px] bg-aethon-gold rounded-full origin-center"
+                      style={{ width: 14 }}
+                    />
+                    <motion.span
+                      animate={{
+                        opacity: menuOpen ? 0 : 1,
+                        scaleX: menuOpen ? 0 : 1,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      className="block h-[4px] bg-aethon-gold rounded-full"
+                      style={{ width: 10 }}
+                    />
+                    <motion.span
+                      animate={{
+                        rotate: menuOpen ? -45 : 0,
+                        y: menuOpen ? 0 : 4,
+                        width: menuOpen ? 20 : 20,
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="block h-[4px] bg-aethon-gold rounded-full origin-center"
+                      style={{ width: 14 }}
+                    />
+                  </div>
+                </motion.button>
+              </motion.div>
 
               {/* Spacer to maintain header height */}
               <div className="h-16 sm:h-[4.5rem]" />
@@ -395,9 +471,9 @@ export default function Navbar() {
 
             {/* Side panel */}
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
+              exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               className="fixed top-0 right-0 bottom-0 z-50 w-[200px] sm:w-[340px] bg-white shadow-2xl"
             >
@@ -407,7 +483,9 @@ export default function Navbar() {
                   <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center">
                     <span className="text-white font-bold text-xs">A</span>
                   </div>
-                  <span className="text-sm font-bold tracking-tight text-aethon-text">AETHON</span>
+                  <span className="text-sm font-bold tracking-tight text-aethon-text">
+                    AETHON
+                  </span>
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
@@ -417,7 +495,12 @@ export default function Navbar() {
                   aria-label="Close menu"
                 >
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M1 1L11 11M11 1L1 11" stroke="#1A1A2E" strokeWidth="1.5" strokeLinecap="round" />
+                    <path
+                      d="M1 1L11 11M11 1L1 11"
+                      stroke="#1A1A2E"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </motion.button>
               </div>
@@ -450,8 +533,8 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35, duration: 0.3 }}
                   onClick={() => {
-                    setMenuOpen(false)
-                    openContactModal()
+                    setMenuOpen(false);
+                    openContactModal();
                   }}
                   className="w-full flex items-center justify-center mt-18 gap-2 py-3 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white font-semibold text-sm cursor-pointer transition-colors duration-300"
                 >
@@ -477,13 +560,28 @@ export default function Navbar() {
                 transition={{ delay: 0.5, duration: 0.3 }}
                 className="absolute bottom-0 left-0 right-0 px-5 py-5 border-t border-aethon-gray-dark/30"
               >
-                <p className="text-xs text-aethon-text-muted mb-2">Get in touch</p>
-                <a href="mailto:hello@aethongroup.com" className="text-sm text-aethon-text hover:text-aethon-gold transition-colors font-medium">
+                <p className="text-xs text-aethon-text-muted mb-2">
+                  Get in touch
+                </p>
+                <a
+                  href="mailto:hello@aethongroup.com"
+                  className="text-sm text-aethon-text hover:text-aethon-gold transition-colors font-medium"
+                >
                   hello@aethongroup.com
                 </a>
                 <div className="flex gap-4 mt-3">
-                  <a href="#" className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors">LinkedIn</a>
-                  <a href="#" className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors">Twitter</a>
+                  <a
+                    href="#"
+                    className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors"
+                  >
+                    Twitter
+                  </a>
                 </div>
               </motion.div>
             </motion.div>
@@ -491,5 +589,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
