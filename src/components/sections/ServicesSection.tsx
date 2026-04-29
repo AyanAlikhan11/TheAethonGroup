@@ -566,7 +566,7 @@ export default function ServicesSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="services" ref={ref} className="relative py-20 sm:py-28 bg-white overflow-hidden">
+    <section id="services" ref={ref} className="relative py-10 sm:py-15 bg-white overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-aethon-cream/20" />
 
@@ -600,17 +600,17 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14 sm:mb-18"
         >
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-aethon-gold/5 border border-aethon-gold/15 mb-5"
           >
-            <span className="text-sm">🚀</span>
+            {/* <span className="text-sm">🚀</span>
             <span className="text-xs font-semibold tracking-[0.15em] uppercase text-aethon-gold">
               Our Capabilities
-            </span>
-          </motion.div>
+            </span> */}
+          {/* </motion.div>  */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
             What We{' '}
             <span className="text-gold-gradient">Engineer</span>

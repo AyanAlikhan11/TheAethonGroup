@@ -35,8 +35,8 @@ export default function WhyAethonSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="why" ref={ref} className="relative py-20 sm:py-28 bg-aethon-cream dotted-pattern">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="why" ref={ref} className="relative py-10 sm:py-13 bg-aethon-cream dotted-pattern">
+      <div className="relative z-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -77,8 +77,7 @@ export default function WhyAethonSection() {
           ))}
         </div>
       </div>
-
-      <div className="section-divider mt-16 sm:mt-20" />
+      <div className="section-divider mt-3 sm:mt-3" />
     </section>
   )
 }

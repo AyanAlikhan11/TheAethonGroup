@@ -100,7 +100,7 @@ export default function CaseStudiesSection() {
       }))
 
   return (
-    <section id="case-studies" ref={ref} className="relative py-20 sm:py-28 bg-white">
+    <section id="case-studies" ref={ref} className="relative py-10 sm:py-15 bg-white">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -170,8 +170,6 @@ export default function CaseStudiesSection() {
           ))}
         </div>
       </div>
-
-      <div className="section-divider mt-16 sm:mt-20" />
     </section>
   )
 }

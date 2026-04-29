@@ -71,10 +71,10 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <p className="text-sm text-aethon-gold font-medium leading-relaxed mb-2">
+            <p className="text-sm text-aethon-gold font-['Poppins',sans-serif] leading-relaxed mb-2">
               Growth, Engineered.
             </p>
-            <p className="text-sm text-white/35 leading-relaxed max-w-xs">
+            <p className="text-sm font-['Poppins',sans-serif] text-white/100 leading-relaxed max-w-xs">
               Premium growth intelligence for ambitious brands. We build systems that compound.
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function Footer() {
                 <li key={service}>
                   <button
                     onClick={() => scrollToSection('services')}
-                    className="text-sm text-white/35 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
+                    className="text-sm  font-['Poppins',sans-serif] text-white/100 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
                   >
                     {service}
                   </button>
@@ -108,7 +108,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-sm text-white/35 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
+                    className="text-sm font-['Poppins',sans-serif] text-white/100 hover:text-aethon-gold hover:translate-x-1 transition-all duration-300 cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -123,10 +123,10 @@ export default function Footer() {
               Connect
             </h4>
             <a
-              href="mailto:hello@aethongroup.com"
-              className="block text-sm text-white/35 hover:text-aethon-gold transition-colors duration-300 mb-5"
+              href="mailto:theethongroup@gmail.com"
+              className="block text-sm text-white/100 hover:text-aethon-gold transition-colors duration-300 mb-5"
             >
-              hello@aethongroup.com
+              theaethongroup@gmail.com
             </a>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -144,15 +144,15 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/20">
-            &copy; 2025 THE AETHON GROUP. All rights reserved.
+        <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/35">
+            &copy; 2026 THE AETHON GROUP. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <button className="text-xs text-white/20 hover:text-white/50 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/35 hover:text-white/50 transition-colors duration-300 cursor-pointer">
               Privacy
             </button>
-            <button className="text-xs text-white/20 hover:text-white/50 transition-colors duration-300 cursor-pointer">
+            <button className="text-xs text-white/35 hover:text-white/50 transition-colors duration-300 cursor-pointer">
               Terms
             </button>
           </div>

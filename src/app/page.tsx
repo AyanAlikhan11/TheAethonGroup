@@ -61,8 +61,8 @@ export default function Home() {
         <ServicesSection />
         <WhyAethonSection />
         <CaseStudiesSection />
-        <TestimonialsSection />
         <InsightsSection />
+        <TestimonialsSection />
         <CTASection />
         <Footer />
         <ContactModal />

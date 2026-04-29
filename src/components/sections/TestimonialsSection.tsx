@@ -103,14 +103,14 @@ export default function TestimonialsSection() {
     : fallbackTestimonials
 
   return (
-    <section id="testimonials" ref={ref} className="relative py-20 sm:py-28 bg-aethon-purple overflow-hidden">
+    <section id="testimonials" ref={ref} className="relative py-20 sm:py-28 bg-aethon-green-dark overflow-hidden">
       {/* Decorative circles */}
       <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/5 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-aethon-gold/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 30 }} 
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
