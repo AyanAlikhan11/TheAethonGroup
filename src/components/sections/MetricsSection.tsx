@@ -123,13 +123,13 @@ export default function MetricsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8 sm:mb-10"
         >
-          <span className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase text-aethon-gold mb-2">
-            <Zap className="w-3 h-3" />
+          <span className="inline-flex items-center gap-2 text-[20px] font-bold tracking-[0.3em] uppercase text-aethon-gold mb-2">
+            <Zap className="w-8 h-8" />
             Proven Results
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-aethon-text tracking-tight">
+          {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-aethon-text tracking-tight">
             Growth, <span className="text-gold-gradient">Proven.</span>
-          </h2>
+          </h2> */}
         </motion.div>
 
         {/* Metrics Grid - compact, premium, dark cards */}

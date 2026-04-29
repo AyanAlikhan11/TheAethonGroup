@@ -44,7 +44,7 @@ export default function ProcessFlow() {
                   />
                 </div>
                 {/* Label */}
-                <span className="text-[10px] sm:text-xs md:text-sm font-semibold text-aethon-dark tracking-wide whitespace-nowrap">
+                <span className="text-[10px] sm:text-xs md:text-sm font-['Poppins',sans-serif] text-aethon-dark tracking-wide whitespace-nowrap">
                   {step.label}
                 </span>
               </motion.div>

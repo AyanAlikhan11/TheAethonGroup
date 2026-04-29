@@ -480,11 +480,8 @@ export default function Navbar() {
               {/* Panel header */}
               <div className="flex items-center justify-between px-5 sm:px-6 h-16 border-b border-aethon-gray-dark/40">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-md bg-aethon-dark flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">A</span>
-                  </div>
-                  <span className="text-sm font-bold tracking-tight text-aethon-text">
-                    AETHON
+                  <span className="text-[#f1c75b] font-['Roboto',sans-serif] fonf-bold tracking-tight ">
+                    THE AETHON GROUP
                   </span>
                 </div>
                 <motion.button
@@ -536,9 +533,9 @@ export default function Navbar() {
                     setMenuOpen(false);
                     openContactModal();
                   }}
-                  className="w-full flex items-center justify-center mt-18 gap-2 py-3 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white font-semibold text-sm cursor-pointer transition-colors duration-300"
+                  className="w-full flex items-center justify-center mt-24 sm:mt-5 gap-2 py-3 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white font-['Montserrat',sans-serif] text-sm cursor-pointer transition-colors duration-300"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 font-['Montserrat',sans-serif]" />
                   Discuss a Project
                 </motion.button>
                 <motion.a

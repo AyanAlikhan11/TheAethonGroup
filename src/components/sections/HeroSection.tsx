@@ -41,12 +41,7 @@ export default function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden pt-5 bg-white"
     >
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-aethon-cream/30" />
-
-      {/* Dotted pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02] dotted-pattern" />
-
+      
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Mobile: flex-col with order | Desktop: 2-col grid with explicit placement */}
         <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:gap-10 lg:items-center">
@@ -153,11 +148,11 @@ export default function HeroSection() {
                 className="relative"
               >
                 <Image
-                  src="/team-hero.png"
+                  src="/showcase.png"
                   alt="AETHON team collaborating"
                   width={672}
                   height={384}
-                  className="w-full h-auto object-contain drop-shadow-2xl"
+                  className="w-full h-auto object-contain drop-shadow-2xl rounded-xl"
                   priority
                 />
 
@@ -276,7 +271,7 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 onClick={() => scrollToSection("cta")}
-                className="bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
+                className="bg-aethon-dark hover:bg-aethon-gold text-white font-['Inter',sans-serif] px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
               >
                 Let&apos;s Build Your Growth Engine
                 <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
@@ -284,45 +279,46 @@ export default function HeroSection() {
               <Button
                 onClick={() => scrollToSection("services")}
                 variant="outline"
-                className="border-aethon-dark/20 text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
+                className="border-aethon-dark/20 font-['Inter',sans-serif] text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
               >
                 See How We Work
               </Button>
             </div>
 
             {/* Trust mini bar */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.8 }}
-              className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
-            >
-              <div className="flex -space-x-2">
-                {[
-                  "bg-aethon-gold",
-                  "bg-aethon-green",
-                  "bg-aethon-blue",
-                  "bg-aethon-pink",
-                ].map((color, i) => (
-                  <div
-                    key={i}
-                    className={`w-8 h-8 rounded-full ${color} border-2 border-white flex items-center justify-center shadow-sm`}
-                  >
-                    <span className="text-[10px] font-bold text-white">
-                      {["SK", "AR", "JM", "PL"][i]}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-aethon-text">
-                  50+ businesses
-                </p>
-                <p className="text-xs text-aethon-text-muted">
-                  trust us to grow
-                </p>
-              </div>
-            </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={isInView ? { opacity: 1, y: 0 } : {}}
+  transition={{ delay: 0.8 }}
+  className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
+>
+  {/* Client Images */}
+  <div className="flex -space-x-3">
+    {[
+      "/man1.jpg",
+      "/man2.jpg",
+      "/man3.jpg",
+      "/man4.jpg",
+    ].map((img, i) => (
+      <img
+        key={i}
+        src={img}
+        alt={`Client ${i + 1}`}
+        className="w-14 h-14 rounded-full object-cover border-1 border-white shadow-md"
+      />
+    ))}
+  </div>
+
+  {/* Text */}
+  <div>
+    <p className="text-sm font-semibold text-aethon-text">
+      50+ businesses
+    </p>
+    <p className="text-xs text-aethon-text-muted">
+      trust us to grow
+    </p>
+  </div>
+</motion.div>
           </motion.div>
         </div>
       </div>

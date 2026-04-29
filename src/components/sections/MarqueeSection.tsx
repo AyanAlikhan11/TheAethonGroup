@@ -48,7 +48,7 @@ export default function MarqueeSection() {
             {[...marqueeItems, ...marqueeItems].map((item, i) => (
               <div key={`m-${i}`} className="flex items-center shrink-0 mx-5 sm:mx-8">
                 <span
-                  className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight whitespace-nowrap"
+                  className="text-7xl sm:text-8xl md:text-9xl font-extrabold tracking-tight whitespace-nowrap"
                   style={{
                     background: 'linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(255,255,255,0.5) 25%, rgba(212,175,55,0.18) 50%, rgba(255,255,255,0.5) 75%, rgba(212,175,55,0.12) 100%)',
                     WebkitBackgroundClip: 'text',
