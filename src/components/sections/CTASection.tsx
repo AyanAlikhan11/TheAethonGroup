@@ -5,7 +5,7 @@ import { ArrowRight, Gift, UserPlus, Briefcase, Phone } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="w-full bg-[#f7f7f5] py-10 px-4 md:px-8">
+    <section id="cta" className="w-full bg-[#f7f7f5] py-10 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Main Card */}
         <div className="bg-white rounded-[28px] shadow-sm border border-gray-200 overflow-hidden">

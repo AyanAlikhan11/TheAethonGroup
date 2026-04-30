@@ -3,7 +3,7 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
-  ArrowRight,
+  ArrowUpRight,
   TrendingUp,
   BarChart3,
   Target,
@@ -35,13 +35,16 @@ export default function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const openContactModal = () => {
+    window.dispatchEvent(new Event("openContactModal"));
+  };
+
   return (
     <section
       id="hero"
       ref={ref}
       className="relative min-h-screen flex items-center overflow-hidden pt-5 bg-white"
     >
-      
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Mobile: flex-col with order | Desktop: 2-col grid with explicit placement */}
         <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:gap-10 lg:items-center">
@@ -92,7 +95,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4 }}
               className="mt-6 text-base sm:text-l font-['Montserrat',sans-serif] text-aethon-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              THE AETHON GROUP helps ambitious brands scale through strategy, AI
+              THE AETHON GRID helps ambitious brands scale through strategy, AI
               systems, media buying, creative execution, and precision growth
               operations.
             </motion.p>
@@ -266,59 +269,124 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-center lg:text-left order-3 lg:col-start-1 lg:row-start-2"
+            className="text-center lg:text-left order-3 lg:col-start-1 lg:row-start-2 flex flex-col items-center lg:items-start"
           >
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-6 items-center lg:items-start justify-center lg:justify-start">
+              {/* Primary CTA */}
               <Button
-                onClick={() => scrollToSection("cta")}
-                className="bg-aethon-dark hover:bg-aethon-gold text-white font-['Inter',sans-serif] px-8 py-6 text-base rounded-full cursor-pointer btn-primary group"
+                onClick={openContactModal}
+                className="relative inline-flex items-center justify-center overflow-hidden group w-fit sm:w-auto
+font-['Inter',sans-serif] text-aethon-gold-light text-sm sm:text-base font-semibold
+px-5 sm:px-8 py-4 sm:py-6
+rounded-full cursor-pointer
+border border-white/15
+bg-gradient-to-br from-zinc-700/70 via-zinc-800/65 to-zinc-900/75
+backdrop-blur-2xl
+shadow-[0_10px_30px_rgba(0,0,0,0.24),inset_0_1px_1px_rgba(255,255,255,0.18)]
+transition-all duration-300
+hover:text-black
+hover:border-aethon-gold-light/45"
               >
-                Let&apos;s Build Your Growth Engine
-                <ArrowRight className="ml-2 size-4 group-hover:translate-x-1 transition-transform" />
+                {/* glossy top reflection */}
+                <span className="absolute top-0 left-[8%] h-[45%] w-[84%] rounded-full bg-gradient-to-b from-white/28 via-white/10 to-transparent blur-sm pointer-events-none" />
+
+                {/* hover shine streak */}
+                <span
+                  className="absolute inset-y-0 -left-1/3 w-1/3 rotate-12
+    bg-white/20 blur-md
+    group-hover:left-[120%]
+    transition-all duration-700 pointer-events-none"
+                />
+
+                {/* gold hover fill */}
+                <span
+                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100
+    bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+    transition-all duration-300 pointer-events-none"
+                />
+
+                {/* content */}
+                <span className="relative z-10 flex items-center gap-3 whitespace-nowrap">
+                  <span>Start Your Growth Journey</span>
+
+                  <span
+                    className="flex items-center justify-center
+      w-7 h-7 rounded-full
+      bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+      shadow-[0_6px_18px_rgba(201,162,39,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)]
+      group-hover:-translate-y-1 group-hover:scale-105
+      transition-all duration-300"
+                  >
+                    <ArrowUpRight className="size-4.5 text-black" />
+                  </span>
+                </span>
               </Button>
+
+              {/* Secondary CTA */}
               <Button
                 onClick={() => scrollToSection("services")}
                 variant="outline"
-                className="border-aethon-dark/20 font-['Inter',sans-serif] text-aethon-dark hover:bg-aethon-dark hover:text-white px-8 py-6 text-base rounded-full cursor-pointer"
-              >
-                See How We Work
+                className="relative overflow-hidden group w-fit sm:w-auto
+                    font-['Inter',sans-serif] text-black
+                    text-sm sm:text-base font-semibold
+                    px-5 sm:px-8 py-4 sm:py-6
+                    rounded-full cursor-pointer
+                    border border-zinc-400/45
+                    bg-gradient-to-br from-aethon-gold-light/55 via-aethon-gold/45 to-aethon-gold-dark/55
+                    backdrop-blur-2xl
+                    shadow-[0_10px_30px_rgba(201,162,39,0.18),inset_0_1px_1px_rgba(255,255,255,0.45)]
+                    transition-all duration-300
+                    hover:scale-[1.02]
+                    hover:border-zinc-300/60
+                    hover:shadow-[0_14px_42px_rgba(201,162,39,0.30),0_0_22px_rgba(201,162,39,0.22)]"
+                 >
+                {/* glossy top reflection */}
+                <span className="absolute top-0 left-[8%] h-[45%] w-[84%] rounded-full bg-gradient-to-b from-white/45 via-white/12 to-transparent blur-sm pointer-events-none" />
+
+                {/* continuous shine streak */}
+                <span
+                  className="absolute inset-y-0 -left-1/3 w-1/3 rotate-12 bg-white/28 blur-md
+                animate-[shine_2.8s_linear_infinite]"
+                />
+
+                {/* outer glow aura */}
+                <span className="absolute inset-0 rounded-full bg-aethon-gold/10 blur-xl animate-pulse pointer-events-none" />
+
+                <span className="relative z-10">See How We Work</span>
               </Button>
             </div>
 
             {/* Trust mini bar */}
-<motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={isInView ? { opacity: 1, y: 0 } : {}}
-  transition={{ delay: 0.8 }}
-  className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
->
-  {/* Client Images */}
-  <div className="flex -space-x-3">
-    {[
-      "/man1.jpg",
-      "/man2.jpg",
-      "/man3.jpg",
-      "/man4.jpg",
-    ].map((img, i) => (
-      <img
-        key={i}
-        src={img}
-        alt={`Client ${i + 1}`}
-        className="w-14 h-14 rounded-full object-cover border-1 border-white shadow-md"
-      />
-    ))}
-  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.8 }}
+              className="flex items-center gap-3 mt-5 justify-center lg:justify-start"
+            >
+              {/* Client Images */}
+              <div className="flex -space-x-2">
+                {["/man1.jpg", "/man2.jpg", "/man3.jpg", "/man4.jpg"].map(
+                  (img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt={`Client ${i + 1}`}
+                      className="w-15 h-15 rounded-full object-cover border-1 border-white shadow-md"
+                    />
+                  ),
+                )}
+              </div>
 
-  {/* Text */}
-  <div>
-    <p className="text-sm font-semibold text-aethon-text">
-      50+ businesses
-    </p>
-    <p className="text-xs text-aethon-text-muted">
-      trust us to grow
-    </p>
-  </div>
-</motion.div>
+              {/* Text */}
+              <div>
+                <p className="text-sm font-semibold text-aethon-text">
+                  50+ businesses
+                </p>
+                <p className="text-xs text-aethon-text-muted">
+                  trust us to grow
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

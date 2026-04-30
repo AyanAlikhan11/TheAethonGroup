@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
 const brands = [
@@ -117,9 +117,28 @@ export default function TrustSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
+  // 🔥 scroll-based parallax
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+
+  const yParallax = useTransform(scrollYProgress, [0, 1], [40, -40])
+
+  const depth = (i) => {
+    const center = brands.length / 2
+    return (i - center) * 12
+  }
+
   return (
-    <section id="trust" ref={ref} className="relative py-16 sm:py-20 bg-white overflow-hidden">
+    <section
+      id="trust"
+      ref={ref}
+      className="relative py-16 sm:py-20 bg-white overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -132,37 +151,55 @@ export default function TrustSection() {
           <div className="mx-auto w-12 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
         </motion.div>
 
-        {/* Logo Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8 items-center justify-items-center">
-          {brands.map((brand, i) => (
-            <motion.div
-              key={brand.name}
-              initial={{ opacity: 0, y: 15, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ delay: i * 0.06, duration: 0.5, ease: 'easeOut' }}
-              className="group relative flex flex-col items-center gap-3 py-5 px-4 rounded-2xl hover:bg-aethon-gray transition-all duration-300 cursor-pointer"
-            >
-              {/* Logo container */}
-              <div
-                className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-aethon-gray-dark/60 flex items-center justify-center group-hover:shadow-lg group-hover:border-aethon-gold/20 transition-all duration-300 group-hover:scale-105"
-                style={{ color: brand.color }}
-              >
-                {brand.icon}
-                {/* Hover glow effect */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    boxShadow: `0 4px 20px ${brand.color}20, 0 0 40px ${brand.color}10`,
-                  }}
-                />
-              </div>
-              {/* Brand name */}
-              <span className="text-xs sm:text-sm font-medium text-aethon-text-secondary group-hover:text-aethon-text transition-colors duration-300">
-                {brand.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+       <motion.div
+  style={{
+    y: useTransform(scrollYProgress, [0, 1], [20, -20]),
+  }}
+  className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8 items-center justify-items-center"
+>
+  {brands.map((brand, i) => (
+    <motion.div
+      key={brand.name}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+
+      transition={{
+        delay: i * 0.08,
+        duration: 0.6,
+        ease: "easeOut",
+      }}
+
+      whileHover={{
+        y: -6,
+        scale: 1.05,
+        transition: { duration: 0.2 },
+      }}
+
+      className="group relative flex flex-col items-center gap-3 py-5 px-4 rounded-2xl transition-all duration-300 cursor-pointer"
+    >
+      {/* Logo container */}
+      <div
+        className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-aethon-gray-dark/60 flex items-center justify-center group-hover:shadow-lg group-hover:border-aethon-gold/20 transition-all duration-300"
+        style={{ color: brand.color }}
+      >
+        {brand.icon}
+
+        {/* subtle glow */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            boxShadow: `0 8px 25px ${brand.color}15`,
+          }}
+        />
+      </div>
+
+      <span className="text-xs sm:text-sm font-medium text-aethon-text-secondary group-hover:text-aethon-text transition-colors duration-300">
+        {brand.name}
+      </span>
+    </motion.div>
+  ))}
+</motion.div>
       </div>
 
       <div className="section-divider mt-16 sm:mt-20" />

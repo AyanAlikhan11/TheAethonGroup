@@ -29,7 +29,7 @@ const jsonLd = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'hello@aethongroup.com',
+    email: 'theaethongrid@gmail.com',
     contactType: 'sales',
   },
   areaServed: 'Worldwide',

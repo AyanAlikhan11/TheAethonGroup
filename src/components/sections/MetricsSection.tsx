@@ -1,48 +1,48 @@
-'use client'
+"use client";
 
-import { motion, useInView } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
-import { TrendingUp, BarChart3, Target, Heart, Zap } from 'lucide-react'
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { TrendingUp, BarChart3, Target, Heart, BadgeCheck } from "lucide-react";
 
 const metrics = [
   {
     value: 12,
-    suffix: 'Cr+',
-    prefix: '₹',
-    label: 'Revenue Influenced',
-    description: 'Revenue generated for clients across industries',
+    suffix: "Cr+",
+    prefix: "₹",
+    label: "Revenue Influenced",
+    description: "Revenue generated for clients across industries",
     icon: TrendingUp,
-    accentColor: '#D4AF37',
+    accentColor: "#D4AF37",
   },
   {
     value: 120,
-    suffix: '+',
-    prefix: '',
-    label: 'Campaigns Built',
-    description: 'Performance campaigns launched & optimized',
+    suffix: "+",
+    prefix: "",
+    label: "Campaigns Built",
+    description: "Performance campaigns launched & optimized",
     icon: BarChart3,
-    accentColor: '#14B8A6',
+    accentColor: "#14B8A6",
   },
   {
     value: 4.8,
-    suffix: 'x',
-    prefix: '',
-    label: 'Avg ROAS',
+    suffix: "x",
+    prefix: "",
+    label: "Avg ROAS",
     decimal: true,
-    description: 'Return on ad spend — 2.3x above benchmark',
+    description: "Return on ad spend — 2.3x above benchmark",
     icon: Target,
-    accentColor: '#8B5CF6',
+    accentColor: "#8B5CF6",
   },
   {
     value: 97,
-    suffix: '%',
-    prefix: '',
-    label: 'Client Retention',
-    description: 'Clients who stay & scale with us year over year',
+    suffix: "%",
+    prefix: "",
+    label: "Client Retention",
+    description: "Clients who stay & scale with us year over year",
     icon: Heart,
-    accentColor: '#D4AF37',
+    accentColor: "#D4AF37",
   },
-]
+];
 
 function AnimatedCounter({
   value,
@@ -51,50 +51,52 @@ function AnimatedCounter({
   decimal,
   isInView,
 }: {
-  value: number
-  suffix: string
-  prefix: string
-  decimal?: boolean
-  isInView: boolean
+  value: number;
+  suffix: string;
+  prefix: string;
+  decimal?: boolean;
+  isInView: boolean;
 }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView) return;
 
-    const duration = 2000
-    const startTime = Date.now()
+    const duration = 2000;
+    const startTime = Date.now();
 
     const tick = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      const current = decimal ? eased * value : Math.floor(eased * value)
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = decimal ? eased * value : Math.floor(eased * value);
 
-      setCount(current)
+      setCount(current);
 
       if (progress < 1) {
-        requestAnimationFrame(tick)
+        requestAnimationFrame(tick);
       } else {
-        setCount(value)
+        setCount(value);
       }
-    }
+    };
 
-    requestAnimationFrame(tick)
-  }, [isInView, value, decimal])
+    requestAnimationFrame(tick);
+  }, [isInView, value, decimal]);
 
-  const displayValue = decimal ? count.toFixed(1) : count
+  const displayValue = decimal ? count.toFixed(1) : count;
 
   return (
     <span className="tabular-nums">
-      {prefix}{displayValue}{suffix}
+      {prefix}
+      {displayValue}
+      {suffix}
     </span>
-  )
+  );
 }
 
 export default function MetricsSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
@@ -107,10 +109,14 @@ export default function MetricsSection() {
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[250px] bg-aethon-gold/[0.02] rounded-full blur-[100px]" />
 
       {/* Dot grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle, #1A1A2E 0.5px, transparent 0.5px)',
-        backgroundSize: '24px 24px',
-      }} />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #1A1A2E 0.5px, transparent 0.5px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
 
       {/* Top gold line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/20 to-transparent" />
@@ -123,8 +129,36 @@ export default function MetricsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8 sm:mb-10"
         >
-          <span className="inline-flex items-center gap-2 text-[20px] font-bold tracking-[0.3em] uppercase text-aethon-gold mb-2">
-            <Zap className="w-8 h-8" />
+          <span className="inline-flex items-center gap-2 text-[20px] font-bold tracking-[0.3em] uppercase mb-2 bg-gradient-to-r from-black via-gray-800 to-yellow-500 bg-clip-text text-transparent">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <defs>
+                <linearGradient
+                  id="multiColor"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="50%" stopColor="gold" />
+                  <stop offset="70%" stopColor="black" />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M9 12l2 2 4-4"
+                stroke="url(#multiColor)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="url(#multiColor)"
+                strokeWidth="2"
+              />
+            </svg>
             Proven Results
           </span>
           {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-aethon-text tracking-tight">
@@ -135,7 +169,7 @@ export default function MetricsSection() {
         {/* Metrics Grid - compact, premium, dark cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {metrics.map((metric, i) => {
-            const Icon = metric.icon
+            const Icon = metric.icon;
             return (
               <motion.div
                 key={metric.label}
@@ -145,20 +179,24 @@ export default function MetricsSection() {
                 whileHover={{
                   y: -4,
                   scale: 1.02,
-                  transition: { duration: 0.25, ease: 'easeOut' },
+                  transition: { duration: 0.25, ease: "easeOut" },
                 }}
                 className="relative cursor-pointer"
               >
                 {/* Card */}
-                <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden border border-aethon-gray-dark/50 bg-white shadow-sm"
+                <div
+                  className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 overflow-hidden border border-aethon-gray-dark/50 bg-white shadow-sm"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)",
                   }}
                 >
                   {/* Top accent line */}
                   <div
                     className="absolute top-0 left-0 right-0 h-[2px] opacity-40"
-                    style={{ background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)` }}
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${metric.accentColor}, transparent)`,
+                    }}
                   />
 
                   {/* Icon */}
@@ -199,11 +237,14 @@ export default function MetricsSection() {
                   {/* Bottom-right glow accent */}
                   <div
                     className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full opacity-[0.04]"
-                    style={{ backgroundColor: metric.accentColor, filter: 'blur(20px)' }}
+                    style={{
+                      backgroundColor: metric.accentColor,
+                      filter: "blur(20px)",
+                    }}
                   />
                 </div>
               </motion.div>
-            )
+            );
           })}
         </div>
       </div>
@@ -211,5 +252,5 @@ export default function MetricsSection() {
       {/* Bottom gold line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aethon-gold/20 to-transparent" />
     </section>
-  )
+  );
 }

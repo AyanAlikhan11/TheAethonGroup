@@ -157,14 +157,23 @@ export default function Navbar() {
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
-                  <img
-                    src="/logo2.png" // put your logo inside /public folder
-                    alt="AETHON Logo"
-                    className="w-15 h-15 sm:w-20 sm:h-20 object-contain"
-                  />
+                  {/* iPhone Glass only on image */}
+                  <div
+                    className="relative rounded-full backdrop-blur-2xl overflow-hidden transition-all duration-300
+                        group-hover:scale-105"
+                  >
+                    {/* glossy reflection */}
+                    <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
 
-                  <span className=" font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
-                    THE AETHON GROUP
+                    <img
+                      src="/logo2.png"
+                      alt="AETHON Logo"
+                      className="relative z-10 w-15 h-15 sm:w-20 sm:h-20 object-contain"
+                    />
+                  </div>
+
+                  <span className="font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
+                    THE AETHON GRID
                   </span>
                 </div>
 
@@ -279,7 +288,7 @@ export default function Navbar() {
                                 <div className="px-5 py-3 bg-aethon-cream/30 border-t border-aethon-gray-dark/15">
                                   <button
                                     onClick={openContactModal}
-                                    className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-aethon-dark hover:bg-aethon-gold text-white text-xs font-semibold transition-colors duration-300 cursor-pointer"
+                                    className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-aethon-dark bg-aethon-gold hover:bg-aethon-gold text-white text-xs font-semibold transition-colors duration-300 cursor-pointer"
                                   >
                                     <MessageSquare className="w-3.5 h-3.5" />
                                     Discuss a Project
@@ -298,21 +307,48 @@ export default function Navbar() {
                 <div className="flex items-center gap-3 shrink-0">
                   <Button
                     onClick={openContactModal}
-                    className="hidden sm:flex bg-aethon-dark hover:bg-aethon-gold text-white font-semibold px-5 lg:px-6 rounded-full cursor-pointer btn-primary text-sm"
+                    className="hidden sm:flex relative overflow-hidden rounded-full px-5 lg:px-6 text-sm font-semibold text-gray-800 cursor-pointer
+  border border-white/25
+  bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+  backdrop-blur-2xl
+  shadow-[0_10px_35px_rgba(201,162,39,0.30),inset_0_1px_1px_rgba(255,255,255,0.55)]
+  hover:shadow-[0_14px_45px_rgba(201,162,39,0.42),inset_0_1px_1px_rgba(255,255,255,0.65)]
+  hover:scale-[1.03]
+  transition-all duration-300"
                   >
-                    Discuss a Project
+                    {/* glossy top reflection */}
+                    <span className="absolute top-0 left-[8%] h-[48%] w-[84%] rounded-full bg-gradient-to-b from-white/55 via-white/20 to-transparent blur-[2px]" />
+
+                    {/* moving light streak */}
+                    <span className="absolute inset-y-0 -left-1/3 w-1/3 rotate-12 bg-white/25 blur-md animate-[shine_3s_linear_infinite]" />
+
+                    {/* inner glass edge */}
+                    <span className="absolute inset-[1px] rounded-full border border-white/15" />
+
+                    <span className="relative z-10 tracking-tight">
+                      Discuss a Project
+                    </span>
                   </Button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setMenuOpen(true)}
-                    className="sm:hidden w-9 h-9 rounded-full bg-aethon-dark/80 flex items-center justify-center cursor-pointer"
+                    className="sm:hidden relative overflow-hidden w-9 h-9 rounded-full
+  border border-aethon-gold-light/35
+  bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+  backdrop-blur-2xl
+  flex items-center justify-center cursor-pointer
+  shadow-[0_8px_24px_rgba(201,162,39,0.24),inset_0_1px_1px_rgba(255,255,255,0.45)]
+  transition-all duration-300"
                     aria-label="Open menu"
                   >
-                    <div className="relative w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
-                      <span className="block w-3 h-[1.5px] bg-white rounded-full" />
-                      <span className="block w-4 h-[1.5px] bg-white rounded-full" />
-                      <span className="block w-2.5 h-[1.5px] bg-white rounded-full" />
+                    {/* iPhone glossy reflection */}
+                    <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 via-white/10 to-transparent blur-[2px]" />
+
+                    <div className="relative z-10 w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
+                      <span className="block w-3 h-[1.6px] bg-black rounded-full" />
+                      <span className="block w-4 h-[1.6px] bg-black rounded-full" />
+                      <span className="block w-2.5 h-[1.6px] bg-black rounded-full" />
                     </div>
                   </motion.button>
                 </div>
@@ -335,70 +371,98 @@ export default function Navbar() {
                 exit={{ x: -30, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="absolute left-4 sm:left-6 lg:left-8  flex items-center gap-1 px-1 sm:px-1 py-2.5 sm:py-3   cursor-pointer transition-all duration-300 group"
+                className="absolute left-4 sm:left-6 lg:left-6 flex items-center gap-1 px-1 sm:px-1 py-2.5 sm:py-3 cursor-pointer transition-all duration-300 group"
                 style={{ zIndex: 10 }}
               >
-                {/* Logo Box */}
-                {/* <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-lg  flex items-center justify-center  transition-colors duration-300"> */}
-                  <img
-                    src="/logo2.png" // put your logo inside /public folder
-                    alt="AETHON Logo"
-                    className="w-18 h-18 sm:w-20 sm:h-20 object-contain"
-                  />
-                {/* </div> */}
+                <div
+                  className="relative rounded-full backdrop-blur-240px
+    overflow-hidden 
+    group-hover:scale-105 transition-all duration-300"
+                >
+                  {/* glossy reflection */}
+                  <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
 
-                {/* Text */}
-                {/* <span className=" font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
-                    AETHON
-                  </span> */}
+                  <img
+                    src="/logo2.png"
+                    alt="AETHON Logo"
+                    className="relative z-10 w-18 h-18 sm:w-20 sm:h-20 object-contain"
+                  />
+                </div>
               </motion.button>
 
-              {/* ================= RIGHT FLOATING PILL : macOS Style Icons ================= */}
+              {/* ================= RIGHT FLOATING PILL : iPhone Gold Glass Icons ================= */}
               <motion.div
                 initial={{ x: 30, opacity: 0, y: 8 }}
                 animate={{ x: 0, opacity: 1, y: 0 }}
                 exit={{ x: 30, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2"
+                className="absolute right-4 sm:right-6 lg:right-8 top-3 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-full
+  
+  
+  
+  overflow-hidden"
                 style={{ zIndex: 10 }}
               >
-                {/* Message Icon */}
+                {/* top glossy reflection */}
+                <span className="absolute top-0 left-[8%] h-[45%] w-[84%] rounded-full bg-gradient-to-b from-white/35 via-white/10 to-transparent blur-sm pointer-events-none" />
+
+                {/* shared iphone gold glass button style */}
+
+                {/* Message / Premium Chat Icon */}
                 <motion.button
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
                   onClick={openContactModal}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full text-xl
+  border border-aethon-gold-light/35
+  bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+  backdrop-blur-xl
+  flex items-center justify-center cursor-pointer
+  shadow-[0_8px_24px_rgba(201,162,39,0.22),inset_0_1px_1px_rgba(255,255,255,0.45)]
+  hover:scale-105 hover:shadow-[0_12px_32px_rgba(201,162,39,0.32)]
+  transition-all duration-300"
                   aria-label="Discuss a project"
                 >
-                  {/* macOS style chat bubble */}
+                  <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 to-transparent blur-[2px]" />
+
+                  {/* Better modern iOS style message icon */}
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+                    className="relative z-10 w-6 h-6 sm:w-7 sm:h-7 text-black"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="2.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M6 7.5C6 6.12 7.12 5 8.5 5h7C16.88 5 18 6.12 18 7.5v5c0 1.38-1.12 2.5-2.5 2.5H11l-3.5 3v-3H8.5A2.5 2.5 0 0 1 6 12.5v-5Z" />
+                    <path d="M20 11.5C20 15.09 16.42 18 12 18c-.72 0-1.42-.08-2.08-.23L5 19l1.42-3.55C5.52 14.37 4 13.02 4 11.5 4 7.91 7.58 5 12 5s8 2.91 8 6.5Z" />
+                    <path d="M9 10.5h6" />
+                    <path d="M9 13h4" />
                   </svg>
                 </motion.button>
 
-                {/* Phone Icon */}
+                {/* Phone */}
                 <motion.a
                   href="tel:+919876543210"
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full
+    border border-aethon-gold-light/35
+    bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+    backdrop-blur-xl
+    flex items-center justify-center cursor-pointer
+    shadow-[0_8px_24px_rgba(201,162,39,0.22),inset_0_1px_1px_rgba(255,255,255,0.45)]
+    hover:scale-105 hover:shadow-[0_12px_32px_rgba(201,162,39,0.32)]
+    transition-all duration-300"
                   aria-label="Make a call"
                 >
-                  {/* macOS style phone */}
+                  <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 to-transparent blur-[2px]" />
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
-                    className="w-8 h-8 sm:w-10 sm:h-10 text-aethon-gold"
+                    className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 text-black"
                     stroke="currentColor"
-                    strokeWidth="2.5"
+                    strokeWidth="2.3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -408,22 +472,29 @@ export default function Navbar() {
 
                 {/* Hamburger */}
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
                   onClick={() => setMenuOpen(!menuOpen)}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full  flex items-center justify-center cursor-pointer transition-colors duration-300"
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full
+    border border-aethon-gold-light/35
+    bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+    backdrop-blur-xl
+    flex items-center justify-center cursor-pointer
+    shadow-[0_8px_24px_rgba(201,162,39,0.22),inset_0_1px_1px_rgba(255,255,255,0.45)]
+    hover:scale-105 hover:shadow-[0_12px_32px_rgba(201,162,39,0.32)]
+    transition-all duration-300"
                   aria-label="Toggle menu"
                 >
-                  <div className="relative w-5 h-5 flex flex-col items-center justify-center">
+                  <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 to-transparent blur-[2px]" />
+
+                  <div className="relative z-10 w-5 h-5 flex flex-col items-center justify-center gap-[3px]">
                     <motion.span
                       animate={{
                         rotate: menuOpen ? 45 : 0,
-                        y: menuOpen ? 0 : -4,
-                        width: menuOpen ? 20 : 20,
+                        y: menuOpen ? 6 : 0,
                       }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="block h-[4px] bg-aethon-gold rounded-full origin-center"
-                      style={{ width: 14 }}
+                      transition={{ duration: 0.3 }}
+                      className="block h-[3px] w-5 bg-black rounded-full"
                     />
                     <motion.span
                       animate={{
@@ -431,18 +502,15 @@ export default function Navbar() {
                         scaleX: menuOpen ? 0 : 1,
                       }}
                       transition={{ duration: 0.2 }}
-                      className="block h-[4px] bg-aethon-gold rounded-full"
-                      style={{ width: 10 }}
+                      className="block h-[3px] w-4 bg-black rounded-full"
                     />
                     <motion.span
                       animate={{
                         rotate: menuOpen ? -45 : 0,
-                        y: menuOpen ? 0 : 4,
-                        width: menuOpen ? 20 : 20,
+                        y: menuOpen ? -6 : 0,
                       }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="block h-[4px] bg-aethon-gold rounded-full origin-center"
-                      style={{ width: 14 }}
+                      transition={{ duration: 0.3 }}
+                      className="block h-[3px] w-5 bg-black rounded-full"
                     />
                   </div>
                 </motion.button>
@@ -481,7 +549,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between px-5 sm:px-6 h-16 border-b border-aethon-gray-dark/40">
                 <div className="flex items-center gap-2">
                   <span className="text-[#f1c75b] font-['Roboto',sans-serif] fonf-bold tracking-tight ">
-                    THE AETHON GROUP
+                    THE AETHON GRID
                   </span>
                 </div>
                 <motion.button
@@ -564,7 +632,7 @@ export default function Navbar() {
                   href="mailto:hello@aethongroup.com"
                   className="text-sm text-aethon-text hover:text-aethon-gold transition-colors font-medium"
                 >
-                  hello@aethongroup.com
+                  theaethongrid@gmail.com
                 </a>
                 <div className="flex gap-4 mt-3">
                   <a
