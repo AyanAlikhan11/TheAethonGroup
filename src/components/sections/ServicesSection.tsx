@@ -1,9 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import Link from 'next/link'
 
 /* ─── Cartoon SVG Icon Components — Super Colorful, No Background ─── */
 
@@ -316,328 +316,255 @@ function PaintPaletteIcon() {
 /* ─── Service Data ─── */
 
 const services = [
-  {
-    icon: RocketIcon,
-    title: 'Growth Strategy',
-    slug: 'growth-strategy',
-    description: 'Data-driven strategic frameworks that identify your highest-leverage growth opportunities and build compounding momentum.',
-    glowColor: 'rgba(212, 175, 55, 0.4)',
-    borderColor: 'rgba(212, 175, 55, 0.3)',
-    accentColor: '#F59E0B',
-    number: '01',
-  },
-  {
-    icon: MegaphoneIcon,
-    title: 'Paid Media',
-    slug: 'paid-media',
-    description: 'Precision media buying across platforms with AI-optimized bidding, creative testing, and ROAS-maximizing campaign structures.',
-    glowColor: 'rgba(15, 118, 110, 0.4)',
-    borderColor: 'rgba(15, 118, 110, 0.3)',
-    accentColor: '#14B8A6',
-    number: '02',
-  },
-  {
-    icon: FunnelIcon,
-    title: 'Funnel Systems',
-    slug: 'funnel-systems',
-    description: 'End-to-end conversion funnels engineered for maximum efficiency — from first click to lifetime value.',
-    glowColor: 'rgba(225, 29, 72, 0.4)',
-    borderColor: 'rgba(225, 29, 72, 0.3)',
-    accentColor: '#FB7185',
-    number: '03',
-  },
-  {
-    icon: RobotIcon,
-    title: 'AI Automation',
-    slug: 'ai-automation',
-    description: 'Intelligent automation systems that scale your operations, reduce costs, and unlock growth at machine speed.',
-    glowColor: 'rgba(124, 58, 237, 0.4)',
-    borderColor: 'rgba(124, 58, 237, 0.3)',
-    accentColor: '#8B5CF6',
-    number: '04',
-  },
-  {
-    icon: ChartBrainIcon,
-    title: 'Analytics Intelligence',
-    slug: 'analytics-intelligence',
-    description: 'Deep analytics infrastructure that turns raw data into strategic insight and real-time decision advantage.',
-    glowColor: 'rgba(59, 130, 246, 0.4)',
-    borderColor: 'rgba(59, 130, 246, 0.3)',
-    accentColor: '#3B82F6',
-    number: '05',
-  },
-  {
-    icon: GraphUpIcon,
-    title: 'Conversion Optimization',
-    slug: 'conversion-optimization',
-    description: 'Systematic CRO programs that continuously improve conversion rates through testing, learning, and compounding gains.',
-    glowColor: 'rgba(249, 115, 22, 0.4)',
-    borderColor: 'rgba(249, 115, 22, 0.3)',
-    accentColor: '#F97316',
-    number: '06',
-  },
-  {
-    icon: CrownShieldIcon,
-    title: 'Brand Positioning',
-    slug: 'brand-positioning',
-    description: 'Premium brand strategy that commands attention, builds authority, and creates pricing power in your market.',
-    glowColor: 'rgba(99, 102, 241, 0.4)',
-    borderColor: 'rgba(99, 102, 241, 0.3)',
-    accentColor: '#6366F1',
-    number: '07',
-  },
-  {
-    icon: PaintPaletteIcon,
-    title: 'Creative Systems',
-    slug: 'creative-systems',
-    description: 'Scalable creative production pipelines with data-informed design that drives engagement and conversion at scale.',
-    glowColor: 'rgba(236, 72, 153, 0.4)',
-    borderColor: 'rgba(236, 72, 153, 0.3)',
-    accentColor: '#EC4899',
-    number: '08',
-  },
-]
+    {
+      icon: RocketIcon,
+      title: 'Growth Strategy',
+      slug: 'growth-strategy',
+      description: 'Data-driven strategic frameworks that identify your highest-leverage growth opportunities and build compounding momentum.',
+      glowColor: 'rgba(212, 175, 55, 0.4)',
+      borderColor: 'rgba(212, 175, 55, 0.3)',
+      accentColor: '#F59E0B',
+      number: '01',
+    },
+    {
+      icon: MegaphoneIcon,
+      title: 'Paid Media',
+      slug: 'paid-media',
+      description: 'Precision media buying across platforms with AI-optimized bidding, creative testing, and ROAS-maximizing campaign structures.',
+      glowColor: 'rgba(15, 118, 110, 0.4)',
+      borderColor: 'rgba(15, 118, 110, 0.3)',
+      accentColor: '#14B8A6',
+      number: '02',
+    },
+    {
+      icon: FunnelIcon,
+      title: 'Funnel Systems',
+      slug: 'funnel-systems',
+      description: 'End-to-end conversion funnels engineered for maximum efficiency — from first click to lifetime value.',
+      glowColor: 'rgba(225, 29, 72, 0.4)',
+      borderColor: 'rgba(225, 29, 72, 0.3)',
+      accentColor: '#FB7185',
+      number: '03',
+    },
+    {
+      icon: RobotIcon,
+      title: 'AI Automation',
+      slug: 'ai-automation',
+      description: 'Intelligent automation systems that scale your operations, reduce costs, and unlock growth at machine speed.',
+      glowColor: 'rgba(124, 58, 237, 0.4)',
+      borderColor: 'rgba(124, 58, 237, 0.3)',
+      accentColor: '#8B5CF6',
+      number: '04',
+    },
+    {
+      icon: ChartBrainIcon,
+      title: 'Analytics Intelligence',
+      slug: 'analytics-intelligence',
+      description: 'Deep analytics infrastructure that turns raw data into strategic insight and real-time decision advantage.',
+      glowColor: 'rgba(59, 130, 246, 0.4)',
+      borderColor: 'rgba(59, 130, 246, 0.3)',
+      accentColor: '#3B82F6',
+      number: '05',
+    },
+    {
+      icon: GraphUpIcon,
+      title: 'Conversion Optimization',
+      slug: 'conversion-optimization',
+      description: 'Systematic CRO programs that continuously improve conversion rates through testing, learning, and compounding gains.',
+      glowColor: 'rgba(249, 115, 22, 0.4)',
+      borderColor: 'rgba(249, 115, 22, 0.3)',
+      accentColor: '#F97316',
+      number: '06',
+    },
+    {
+      icon: CrownShieldIcon,
+      title: 'Brand Positioning',
+      slug: 'brand-positioning',
+      description: 'Premium brand strategy that commands attention, builds authority, and creates pricing power in your market.',
+      glowColor: 'rgba(99, 102, 241, 0.4)',
+      borderColor: 'rgba(99, 102, 241, 0.3)',
+      accentColor: '#6366F1',
+      number: '07',
+    },
+    {
+      icon: PaintPaletteIcon,
+      title: 'Creative Systems',
+      slug: 'creative-systems',
+      description: 'Scalable creative production pipelines with data-informed design that drives engagement and conversion at scale.',
+      glowColor: 'rgba(236, 72, 153, 0.4)',
+      borderColor: 'rgba(236, 72, 153, 0.3)',
+      accentColor: '#EC4899',
+      number: '08',
+    },
+  ]
 
-/* ─── Card Component ─── */
+/* --------------------------------------------
+   Card Component
+--------------------------------------------- */
 
-function ServiceCard({ service, index, isInView }: { service: typeof services[0]; index: number; isInView: boolean }) {
+function ServiceCard({
+  service,
+  index,
+  isInView,
+}: {
+  service: (typeof services)[0]
+  index: number
+  isInView: boolean
+}) {
   const [isHovered, setIsHovered] = useState(false)
   const Icon = service.icon
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 35 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.08, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="snap-start shrink-0 w-[300px] sm:w-auto sm:shrink lg:w-auto"
+      transition={{
+        delay: index * 0.08,
+        duration: 0.55,
+      }}
+      className="snap-start shrink-0 w-[300px] lg:w-auto"
     >
-      <motion.div
-        whileHover={{
-          y: -8,
-          transition: { duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] },
-        }}
-        className="relative h-full rounded-2xl overflow-hidden cursor-pointer group"
+      {/* Whole card clickable for faster UX */}
+      <Link
+        href={`/services/${service.slug}`}
+        prefetch={true}
+        className="block h-full"
       >
-        {/* Background glow orb */}
         <motion.div
-          className="absolute -top-10 -right-10 w-40 h-40 rounded-full pointer-events-none z-0"
-          style={{
-            background: `radial-gradient(circle, ${service.glowColor} 0%, transparent 70%)`,
-          }}
-          animate={{
-            opacity: isHovered ? 0.6 : 0.15,
-            scale: isHovered ? 1.2 : 1,
-          }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        />
-
-        {/* Bottom glow orb */}
-        <motion.div
-          className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full pointer-events-none z-0"
-          style={{
-            background: `radial-gradient(circle, ${service.glowColor} 0%, transparent 70%)`,
-          }}
-          animate={{
-            opacity: isHovered ? 0.4 : 0,
-            scale: isHovered ? 1.1 : 0.8,
-          }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        />
-
-        {/* Glassmorphism card body */}
-        <motion.div
-          className="relative z-10 h-full rounded-2xl p-5 sm:p-6 backdrop-blur-xl border overflow-hidden"
-          style={{
-            background: isHovered
-              ? `linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.75) 100%)`
-              : `linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.35) 40%, rgba(255,255,255,0.5) 100%)`,
-            borderColor: isHovered ? service.borderColor : 'rgba(255,255,255,0.4)',
-            boxShadow: isHovered
-              ? `0 8px 32px rgba(0,0,0,0.08), 0 0 0 1px ${service.borderColor}, inset 0 1px 0 rgba(255,255,255,0.8)`
-              : '0 4px 24px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)',
-          }}
-          animate={{
-            borderColor: isHovered ? service.borderColor : 'rgba(255,255,255,0.4)',
-          }}
-          transition={{ duration: 0.3 }}
+          whileHover={{ y: -8 }}
+          whileTap={{ scale: 0.98 }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative h-full rounded-2xl overflow-hidden cursor-pointer group"
         >
-          {/* Top glass reflection */}
+          {/* Glow background */}
+          <motion.div
+            className="absolute -top-10 -right-10 w-40 h-40 rounded-full"
+            style={{
+              background: `radial-gradient(circle, ${service.glowColor} 0%, transparent 70%)`,
+            }}
+            animate={{
+              opacity: isHovered ? 0.7 : 0.2,
+              scale: isHovered ? 1.2 : 1,
+            }}
+          />
+
+          {/* Main card */}
           <div
-            className="absolute top-0 left-0 right-0 h-1/3 pointer-events-none rounded-t-2xl"
+            className="relative z-10 h-full rounded-2xl p-6 backdrop-blur-xl border bg-white/70"
             style={{
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)',
+              borderColor: service.borderColor,
+              boxShadow: `0 10px 30px rgba(0,0,0,0.05)`,
             }}
-          />
-
-          {/* Colored accent line at top */}
-          <motion.div
-            className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
-            style={{
-              background: `linear-gradient(90deg, transparent 0%, ${service.borderColor} 50%, transparent 100%)`,
-            }}
-            animate={{
-              opacity: isHovered ? 1 : 0,
-              scaleX: isHovered ? 1 : 0.5,
-            }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-          />
-
-          {/* Card number */}
-          <div className="flex items-center justify-between mb-4">
-            <motion.span
-              className="text-xs font-bold tracking-widest"
-              style={{
-                color: isHovered ? service.accentColor : 'rgba(156, 163, 175, 0.4)',
-              }}
-              animate={{
-                color: isHovered ? service.accentColor : 'rgba(156, 163, 175, 0.4)',
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {service.number}
-            </motion.span>
-
-            <Link href={`/services/${service.slug}`}>
-  <motion.div
-    animate={{
-      opacity: isHovered ? 1 : 0.9, // 👈 always visible on mobile
-      x: isHovered ? 0 : 0,
-    }}
-    whileTap={{ scale: 0.9 }} // 👈 mobile click feedback
-    transition={{ duration: 0.3 }}
-    className="cursor-pointer p-2 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center"
-  >
-    <ArrowUpRight
-      className="w-5 h-5 md:w-4 md:h-4"
-      style={{ color: service.accentColor }}
-    />
-  </motion.div>
-</Link>
-          </div>
-
-          {/* Cartoon Icon — NO background container, just floating with glow */}
-          <motion.div
-            className="relative flex items-center justify-center mb-5 w-16 h-16"
-            animate={{
-              scale: isHovered ? 1.12 : 1,
-              rotate: isHovered ? 5 : 0,
-            }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
           >
-            {/* Glow behind icon */}
+            {/* Top row */}
+            <div className="flex items-center justify-between mb-5">
+              <span
+                className="text-xs font-bold tracking-[0.3em]"
+                style={{ color: service.accentColor }}
+              >
+                {service.number}
+              </span>
+
+              {/* Arrow Button */}
+              <motion.div
+                animate={{
+                  opacity: isHovered ? 1 : 0.95,
+                  x: isHovered ? 0 : 0,
+                }}
+                className="p-2 rounded-full bg-white/70 border border-white shadow-sm"
+              >
+                <ArrowUpRight
+                  className="w-5 h-5"
+                  style={{ color: service.accentColor }}
+                />
+              </motion.div>
+            </div>
+
+            {/* Icon */}
             <motion.div
-              className="absolute inset-0 rounded-full"
+              animate={{
+                scale: isHovered ? 1.08 : 1,
+                rotate: isHovered ? 4 : 0,
+              }}
+              className="mb-5 w-16 h-16 flex items-center justify-center rounded-2xl"
               style={{
-                background: `radial-gradient(circle, ${service.glowColor} 0%, transparent 70%)`,
+                background: `radial-gradient(circle, ${service.glowColor}, transparent 70%)`,
+              }}
+            >
+              <Icon />
+            </motion.div>
+
+            {/* Title */}
+            <h3 className="text-lg font-bold text-black mb-2">
+              {service.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {service.description}
+            </p>
+
+            {/* Bottom glow line */}
+            <motion.div
+              className="mt-5 h-[2px] rounded-full"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${service.accentColor}, transparent)`,
               }}
               animate={{
-                opacity: isHovered ? 0.8 : 0.3,
-                scale: isHovered ? 1.3 : 1,
+                opacity: isHovered ? 1 : 0.4,
+                scaleX: isHovered ? 1 : 0.7,
               }}
-              transition={{ duration: 0.3 }}
             />
-            <div className="relative z-10">
-              <Icon />
-            </div>
-          </motion.div>
-
-          {/* Title */}
-          <h3 className="relative text-lg font-bold text-aethon-text mb-2.5 leading-tight">
-            {service.title}
-          </h3>
-
-          {/* Description */}
-          <p className="relative text-sm text-aethon-text-secondary leading-relaxed">
-            {service.description}
-          </p>
-
-          {/* Bottom accent glow line */}
-          <motion.div
-            className="absolute bottom-0 left-[10%] right-[10%] h-[2px] rounded-full"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${service.borderColor}, transparent)`,
-            }}
-            animate={{
-              opacity: isHovered ? 0.8 : 0,
-              scaleX: isHovered ? 1 : 0.3,
-            }}
-            transition={{ duration: 0.4 }}
-          />
+          </div>
         </motion.div>
-      </motion.div>
+      </Link>
     </motion.div>
   )
 }
 
-/* ─── Main Section ─── */
+/* --------------------------------------------
+   Main Section
+--------------------------------------------- */
 
 export default function ServicesSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, {
+    once: true,
+    margin: '-100px',
+  })
 
   return (
-    <section id="services" ref={ref} className="relative py-10 sm:py-15 bg-white overflow-hidden">
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-aethon-cream/20" />
+    <section
+      id="services"
+      ref={ref}
+      className="relative py-16 bg-white overflow-hidden"
+    >
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-yellow-50/20" />
 
-      {/* Decorative dots */}
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #1A1A2E 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
-
-      {/* Ambient glow orbs */}
-      <div
-        className="absolute top-20 -left-32 w-64 h-64 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%)',
-        }}
-      />
-      <div
-        className="absolute bottom-20 -right-32 w-72 h-72 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(45,27,105,0.05) 0%, transparent 70%)',
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14 sm:mb-18"
-        >
-          {/* <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-aethon-gold/5 border border-aethon-gold/15 mb-5"
-          >
-            {/* <span className="text-sm">🚀</span>
-            <span className="text-xs font-semibold tracking-[0.15em] uppercase text-aethon-gold">
-              Our Capabilities
-            </span> */}
-          {/* </motion.div>  */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl sm:text-5xl font-bold text-black">
             What We{' '}
-            <span className="text-gold-gradient">Engineer</span>
+            <span className="bg-gradient-to-r from-black to-yellow-500 bg-clip-text text-transparent">
+              Engineer
+            </span>
           </h2>
-          <div className="mx-auto mt-5 w-20 h-[2px] bg-gradient-to-r from-aethon-gold to-aethon-gold-light rounded-full" />
-          <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+
+          <div className="mx-auto mt-5 w-20 h-[2px] bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full" />
+
+          <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
             Every engagement is engineered for compounding returns — not quick wins.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Cards grid: horizontal scroll on mobile, 4-col on desktop */}
-        <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">
+        {/* Grid */}
+        <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-4 lg:overflow-visible">
           {services.map((service, i) => (
             <ServiceCard
-              key={service.title}
+              key={service.slug}
               service={service}
               index={i}
               isInView={isInView}
