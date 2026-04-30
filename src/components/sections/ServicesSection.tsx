@@ -502,14 +502,15 @@ function ServiceCard({ service, index, isInView }: { service: typeof services[0]
             <Link href={`/services/${service.slug}`}>
   <motion.div
     animate={{
-      opacity: isHovered ? 1 : 0,
-      x: isHovered ? 0 : -8,
+      opacity: isHovered ? 1 : 0.9, // 👈 always visible on mobile
+      x: isHovered ? 0 : 0,
     }}
+    whileTap={{ scale: 0.9 }} // 👈 mobile click feedback
     transition={{ duration: 0.3 }}
-    className="cursor-pointer"
+    className="cursor-pointer p-2 rounded-full bg-white/30 backdrop-blur-md border border-white/40 flex items-center justify-center"
   >
     <ArrowUpRight
-      className="w-4 h-4"
+      className="w-5 h-5 md:w-4 md:h-4"
       style={{ color: service.accentColor }}
     />
   </motion.div>
