@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aethongroup.com"),
-  title: "THE AETHON GROUP | Growth, Engineered.",
+  metadataBase: new URL("https://aethongrid.com"),
+  title: "THE AETHON GRID | Growth, Engineered.",
   description:
-    "THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations. Premium Growth Intelligence Company.",
+    "THE AETHON GRID helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations. Premium Growth Intelligence Company.",
   keywords: [
     "growth intelligence company",
     "premium growth agency",
@@ -32,16 +32,16 @@ export const metadata: Metadata = {
     "D2C growth partner",
     "SaaS growth agency",
   ],
-  authors: [{ name: "THE AETHON GROUP" }],
+  authors: [{ name: "THE AETHON GRID" }],
   icons: {
-    icon: "/aethon-logo.png",
+    icon: "/logo2.png",
   },
   openGraph: {
-    title: "THE AETHON GROUP | Growth, Engineered.",
+    title: "THE AETHON GRID | Growth, Engineered.",
     description:
       "We Build Growth Engines That Compound. Strategy, AI systems, media buying, creative execution, and precision growth operations.",
-    url: "https://aethongroup.com",
-    siteName: "THE AETHON GROUP",
+    url: "https://aethongrid.com",
+    siteName: "THE AETHON GRID",
     type: "website",
     locale: "en_US",
     images: [
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1344,
         height: 768,
-        alt: "THE AETHON GROUP - Growth, Engineered.",
+        alt: "THE AETHON GRID - Growth, Engineered.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "THE AETHON GROUP | Growth, Engineered.",
+    title: "THE AETHON GRID | Growth, Engineered.",
     description:
       "We Build Growth Engines That Compound. Premium Growth Intelligence for ambitious brands.",
     images: ["/og-image.png"],

@@ -6,6 +6,7 @@ import {
   Mail,
   Linkedin,
   Twitter,
+  Instagram,
   MapPin,
   Phone,
 } from "lucide-react";
@@ -30,8 +31,9 @@ const companyLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/theaethongrid/" },
   { icon: Twitter, label: "Twitter", href: "#" },
+  { icon: Instagram, label: "Instagram", href: "#" },
   { icon: Mail, label: "Email", href: "mailto:theaethongrid@gmail.com" },
 ];
 

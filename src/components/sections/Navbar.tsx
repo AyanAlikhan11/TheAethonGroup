@@ -636,10 +636,16 @@ export default function Navbar() {
                 </a>
                 <div className="flex gap-4 mt-3">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/theaethongrid/"
                     className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors"
                   >
                     LinkedIn
+                  </a>
+                  <a
+                    href="#"
+                    className="text-xs text-aethon-text-muted hover:text-aethon-gold transition-colors"
+                  >
+                    Instagram
                   </a>
                   <a
                     href="#"
