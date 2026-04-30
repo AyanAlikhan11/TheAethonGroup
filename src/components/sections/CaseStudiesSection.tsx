@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface CaseStudyData {
   id: string
@@ -20,6 +21,7 @@ interface CaseStudyData {
 const fallbackCaseStudies = [
   {
     id: '1',
+    slug: 'premium-fashion-brand',
     industry: 'D2C Fashion',
     client: 'Premium Fashion Brand',
     metric: 'From ₹2L to ₹48L',
@@ -31,6 +33,7 @@ const fallbackCaseStudies = [
   },
   {
     id: '2',
+    slug: 'b2b-saas-platform',
     industry: 'SaaS',
     client: 'B2B SaaS Platform',
     metric: '340% MRR Growth',
@@ -42,6 +45,7 @@ const fallbackCaseStudies = [
   },
   {
     id: '3',
+    slug: 'premium-wellness-brand',
     industry: 'Wellness',
     client: 'Premium Wellness Brand',
     metric: '₹1.2Cr Revenue',
@@ -66,41 +70,57 @@ export default function CaseStudiesSection() {
           setCaseStudies(data.caseStudies)
         }
       })
-      .catch(() => {
-        // Use fallback
-      })
+      .catch(() => {})
   }, [])
 
   const colorClasses = ['bg-aethon-gold', 'bg-aethon-blue', 'bg-aethon-pink']
-  const colorTextClasses = ['text-aethon-gold', 'text-aethon-blue', 'text-aethon-pink']
-  const colorBgLightClasses = ['bg-aethon-gold/10', 'bg-aethon-blue/10', 'bg-aethon-pink/10']
+  const colorTextClasses = [
+    'text-aethon-gold',
+    'text-aethon-blue',
+    'text-aethon-pink',
+  ]
+  const colorBgLightClasses = [
+    'bg-aethon-gold/10',
+    'bg-aethon-blue/10',
+    'bg-aethon-pink/10',
+  ]
 
-  const displayStudies = caseStudies.length > 0
-    ? caseStudies.map((cs, idx) => {
-        const metricParts = cs.metrics?.split(' | ') || []
-        const firstMetric = metricParts[0] || 'Significant Growth'
-        const secondMetric = metricParts[1] || ''
-        return {
-          id: cs.id,
-          industry: cs.industry || 'General',
-          client: cs.client,
-          metric: firstMetric,
-          metricLabel: cs.results.split('.')[0] || 'Key Result',
-          stat: secondMetric || firstMetric,
-          description: cs.challenge.length > 120 ? cs.challenge.substring(0, 120) + '...' : cs.challenge,
-          color: colorClasses[idx % 3],
+  const displayStudies =
+    caseStudies.length > 0
+      ? caseStudies.map((cs, idx) => {
+          const metricParts = cs.metrics?.split(' | ') || []
+          const firstMetric = metricParts[0] || 'Significant Growth'
+          const secondMetric = metricParts[1] || ''
+
+          return {
+            id: cs.id,
+            slug: cs.slug,
+            industry: cs.industry || 'General',
+            client: cs.client,
+            metric: firstMetric,
+            metricLabel: cs.results.split('.')[0] || 'Key Result',
+            stat: secondMetric || firstMetric,
+            description:
+              cs.challenge.length > 120
+                ? cs.challenge.substring(0, 120) + '...'
+                : cs.challenge,
+            color: colorClasses[idx % 3],
+            colorText: colorTextClasses[idx % 3],
+            colorBgLight: colorBgLightClasses[idx % 3],
+          }
+        })
+      : fallbackCaseStudies.map((cs, idx) => ({
+          ...cs,
           colorText: colorTextClasses[idx % 3],
           colorBgLight: colorBgLightClasses[idx % 3],
-        }
-      })
-    : fallbackCaseStudies.map((cs, idx) => ({
-        ...cs,
-        colorText: colorTextClasses[idx % 3],
-        colorBgLight: colorBgLightClasses[idx % 3],
-      }))
+        }))
 
   return (
-    <section id="case-studies" ref={ref} className="relative py-10 sm:py-15 bg-white">
+    <section
+      id="case-studies"
+      ref={ref}
+      className="relative py-10 sm:py-15 bg-white"
+    >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -112,61 +132,83 @@ export default function CaseStudiesSection() {
             Growth,{' '}
             <span className="text-gold-gradient">Proven.</span>
           </h2>
+
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
-            Real results from real partnerships. Here&apos;s what compounding growth looks like.
+            Real results from real partnerships. Here&apos;s what compounding
+            growth looks like.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {displayStudies.map((study, i) => (
-            <motion.div
+            <Link
               key={study.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-aethon-gray-dark/30 card-hover group cursor-pointer"
+              href={`/case-studies/${study.slug}`}
+              prefetch={true}
+              className="block"
             >
-              {/* Colored top strip */}
-              <div className={`h-2 ${study.color}`} />
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-aethon-gray-dark/30 card-hover group cursor-pointer h-full transition-all duration-300"
+              >
+                {/* Colored top strip */}
+                <div className={`h-2 ${study.color}`} />
 
-              <div className="p-6 sm:p-8">
-                {/* Industry tag */}
-                <span className={`inline-block px-3 py-1 text-xs font-medium ${study.colorBgLight} ${study.colorText} rounded-full mb-4`}>
-                  {study.industry}
-                </span>
+                <div className="p-6 sm:p-8">
+                  {/* Industry tag */}
+                  <span
+                    className={`inline-block px-3 py-1 text-xs font-medium ${study.colorBgLight} ${study.colorText} rounded-full mb-4`}
+                  >
+                    {study.industry}
+                  </span>
 
-                {/* Client type */}
-                <p className="text-sm text-aethon-text-muted mb-4">{study.client}</p>
-
-                {/* Key Metric */}
-                <div className="mb-4">
-                  <p className={`text-2xl sm:text-3xl font-bold ${study.colorText}`}>
-                    {study.metric}
+                  {/* Client */}
+                  <p className="text-sm text-aethon-text-muted mb-4">
+                    {study.client}
                   </p>
-                  <p className="text-sm text-aethon-text-secondary">{study.metricLabel}</p>
-                </div>
 
-                {/* Stat badge */}
-                {study.stat && (
-                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${study.colorBgLight} mb-4`}>
-                    <span className={`text-sm font-semibold ${study.colorText}`}>
-                      {study.stat}
-                    </span>
+                  {/* Metric */}
+                  <div className="mb-4">
+                    <p
+                      className={`text-2xl sm:text-3xl font-bold ${study.colorText}`}
+                    >
+                      {study.metric}
+                    </p>
+                    <p className="text-sm text-aethon-text-secondary">
+                      {study.metricLabel}
+                    </p>
                   </div>
-                )}
 
-                {/* Description */}
-                <p className="text-sm text-aethon-text-secondary leading-relaxed mb-6">
-                  {study.description}
-                </p>
+                  {/* Stat */}
+                  {study.stat && (
+                    <div
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl ${study.colorBgLight} mb-4`}
+                    >
+                      <span
+                        className={`text-sm font-semibold ${study.colorText}`}
+                      >
+                        {study.stat}
+                      </span>
+                    </div>
+                  )}
 
-                {/* Link */}
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-gold group-hover:text-aethon-gold-dark transition-colors duration-300">
-                  View Case Study
-                  <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                </span>
-              </div>
-            </motion.div>
+                  {/* Description */}
+                  <p className="text-sm text-aethon-text-secondary leading-relaxed mb-6">
+                    {study.description}
+                  </p>
+
+                  {/* Link */}
+                  <span className="inline-flex items-center gap-1 text-sm font-medium text-aethon-gold group-hover:text-aethon-gold-dark transition-colors duration-300">
+                    View Case Study
+                    <ArrowUpRight className="size-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  </span>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
