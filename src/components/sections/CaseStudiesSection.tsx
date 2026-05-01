@@ -62,16 +62,16 @@ export default function CaseStudiesSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [caseStudies, setCaseStudies] = useState<CaseStudyData[]>([])
 
-  useEffect(() => {
-    fetch('/api/case-studies')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.caseStudies && data.caseStudies.length > 0) {
-          setCaseStudies(data.caseStudies)
-        }
-      })
-      .catch(() => {})
-  }, [])
+  // useEffect(() => {
+  //   fetch('')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.caseStudies && data.caseStudies.length > 0) {
+  //         setCaseStudies(data.caseStudies)
+  //       }
+  //     })
+  //     .catch(() => {})
+  // }, [])
 
   const colorClasses = ['bg-aethon-gold', 'bg-aethon-blue', 'bg-aethon-pink']
   const colorTextClasses = [

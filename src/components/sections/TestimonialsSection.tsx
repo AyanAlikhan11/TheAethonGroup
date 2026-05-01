@@ -71,16 +71,16 @@ export default function TestimonialsSection() {
     },
   ];
 
-  useEffect(() => {
-    fetch("/api/testimonials")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.testimonials?.length > 0) {
-          setTestimonials(data.testimonials);
-        }
-      })
-      .catch(() => {});
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/testimonials")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.testimonials?.length > 0) {
+  //         setTestimonials(data.testimonials);
+  //       }
+  //     })
+  //     .catch(() => {});
+  // }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {

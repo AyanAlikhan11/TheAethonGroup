@@ -166,9 +166,9 @@ export default function Navbar() {
                     <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
 
                     <img
-                      src="/logo2.png"
+                      src="/aethonlogo.png"
                       alt="AETHON Logo"
-                      className="relative z-10 w-15 h-15 sm:w-20 sm:h-20 object-contain"
+                      className="relative z-10 w-12 h-12 sm:w-20 sm:h-20 object-contain"
                     />
                   </div>
 
@@ -380,12 +380,12 @@ export default function Navbar() {
     group-hover:scale-105 transition-all duration-300"
                 >
                   {/* glossy reflection */}
-                  <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
+                  {/* <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" /> */}
 
                   <img
-                    src="/logo2.png"
+                    src="/aethonlogo.png"
                     alt="AETHON Logo"
-                    className="relative z-10 w-18 h-18 sm:w-20 sm:h-20 object-contain"
+                    className="relative z-10 w-13 h-13 sm:w-20 sm:h-20 object-contain"
                   />
                 </div>
               </motion.button>

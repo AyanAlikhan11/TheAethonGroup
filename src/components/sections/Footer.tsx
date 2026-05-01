@@ -88,7 +88,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-5">
                 <div className="relative w-11 h-11 rounded-2xl overflow-hidden">
                   <Image
-                    src="/logo2.png"
+                    src="/aethonlogo.png"
                     alt="AETHON Logo"
                     fill
                     className="object-cover"
@@ -101,7 +101,7 @@ export default function Footer() {
                     THE AETHON GRID
                   </h2>
                   <p className="text-[9px] tracking-[0.35em] text-aethon-gold uppercase mt-1">
-                    Growth Intelligence
+                    Shaping Businesses
                   </p>
                 </div>
               </div>
@@ -224,11 +224,14 @@ export default function Footer() {
             {/* BRAND */}
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="relative w-11 h-11 rounded-2xl overflow-hidden">
+                <div className="relative w-11 h-13 rounded-2xl overflow-hidden">
                   <Image
-                    src="/logo2.png"
+                    src="/aethonlogo.png"
                     alt="AETHON Logo"
                     fill
+                    sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"
                     className="object-cover"
                     priority
                   />
@@ -239,7 +242,7 @@ export default function Footer() {
                     THE AETHON GRID
                   </h2>
                   <p className="text-[9px] tracking-[0.35em] text-aethon-gold uppercase mt-1">
-                    Growth Intelligence
+                    Shaping Businesses
                   </p>
                 </div>
               </div>

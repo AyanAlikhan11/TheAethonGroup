@@ -73,16 +73,16 @@ export default function InsightsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [blogs, setBlogs] = useState<BlogPost[]>([])
 
-  useEffect(() => {
-    fetch('/api/blogs?limit=3')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.blogs && data.blogs.length > 0) {
-          setBlogs(data.blogs)
-        }
-      })
-      .catch(() => {})
-  }, [])
+  // useEffect(() => {
+  //   fetch('/api/blogs')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.blogs && data.blogs.length > 0) {
+  //         setBlogs(data.blogs)
+  //       }
+  //     })
+  //     .catch(() => {})
+  // }, [])
 
   const displayInsights =
     blogs.length > 0
@@ -137,6 +137,9 @@ export default function InsightsSection() {
                       src={insight.image}
                       alt={insight.title}
                       fill
+                      sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (

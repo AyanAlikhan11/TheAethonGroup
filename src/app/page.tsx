@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import SplashScreen from '@/components/SplashScreen'
 import Navbar from '@/components/sections/Navbar'
 import HeroSection from '@/components/sections/HeroSection'
 import MarqueeSection from '@/components/sections/MarqueeSection'
@@ -17,15 +19,15 @@ import ContactModal from '@/components/sections/ContactModal'
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'THE AETHON GROUP',
+  name: 'THE AETHON GRID',
   description:
-    'THE AETHON GROUP helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.',
-  url: 'https://aethongroup.com',
-  logo: 'https://aethongroup.com/aethon-logo.png',
+    'THE AETHON GRID helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations.',
+  url: 'https://theaethongrid.com',
+  logo: 'https://theaethongrid.com/aethon-logo.png',
   slogan: 'Growth, Engineered.',
   sameAs: [
-    'https://linkedin.com/company/aethongroup',
-    'https://twitter.com/aethongroup',
+    'https://linkedin.com/company/theaethongrid',
+    'https://twitter.com/theaethongrid',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -46,6 +48,20 @@ const jsonLd = {
 }
 
 export default function Home() {
+
+   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2500) // 2.5 seconds splash
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return <SplashScreen />
+  }
   return (
     <>
       <script

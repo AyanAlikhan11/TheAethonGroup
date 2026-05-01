@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "THE AETHON GRID" }],
   icons: {
-    icon: "/logo2.png",
+    icon: "/aethonlogo.png",
   },
   openGraph: {
     title: "THE AETHON GRID | Growth, Engineered.",
