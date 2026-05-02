@@ -91,6 +91,7 @@ export default function Footer() {
                     src="/aethonlogo.png"
                     alt="AETHON Logo"
                     fill
+                    sizes="(max-width: 640px) 80px, (max-width: 1024px) 96px, 120px"
                     className="object-cover"
                     priority
                   />
