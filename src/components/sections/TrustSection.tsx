@@ -9,10 +9,10 @@ const brands = [
   { name: 'Client Two', logo: '/logos/2.jpeg' },
   { name: 'Client Three', logo: '/logos/3.1.jpeg' },
   { name: 'Client Four', logo: '/logos/4.png' },
-  { name: 'Client Five', logo: '/logos/5.1.png' },
-  { name: 'Client Six', logo: '/logos/6.png' },
+  { name: 'Client Five', logo: '/logos/5.11.png' },
+  { name: 'Client Six', logo: '/logos/6.1.png' },
   { name: 'Client Seven', logo: '/logos/7.png' },
-  { name: 'Client Eight', logo: '/logos/8.jpeg' },
+  { name: 'Client Eight', logo: '/logos/8.1.png' },
 ]
 
 export default function TrustSection() {
@@ -73,7 +73,7 @@ export default function TrustSection() {
               className="group relative flex items-center justify-center w-full"
             >
               {/* Logo Box */}
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-aethon-gray-dark/40 flex items-center justify-center overflow-hidden p-3 transition-all duration-300 group-hover:shadow-[0_18px_35px_rgba(0,0,0,0.14)] group-hover:border-aethon-gold/30">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center overflow-hidden ">
                 
                 <Image
                   src={brand.logo}
