@@ -101,6 +101,7 @@ import MetricsSection from '@/components/sections/MetricsSection'
 import ServicesSection from '@/components/sections/ServicesSection'
 import WhyAethonSection from '@/components/sections/WhyAethonSection'
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection'
+import FounderSection from '@/components/sections/FounderSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import InsightsSection from '@/components/sections/InsightsSection'
 import CTASection from '@/components/sections/CTASection'
@@ -187,6 +188,7 @@ export default function Home() {
         <WhyAethonSection />
         <CaseStudiesSection />
         <InsightsSection />
+        <FounderSection/>
         <TestimonialsSection />
         <CTASection />
         <Footer />

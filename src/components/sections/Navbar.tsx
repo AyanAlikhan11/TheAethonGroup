@@ -35,6 +35,7 @@ const navLinks = [
   { label: "Case Studies", href: "case-studies" },
   { label: "Blog", href: "insights" },
   { label: "Referral", href: "cta" },
+  { label: "Founder", href: "founders" },
 ];
 
 import type { ComponentType, SVGProps } from 'react'

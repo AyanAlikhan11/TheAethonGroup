@@ -43,8 +43,8 @@ export default function WhyAethonSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aethon-text">
-            <span className="text-gold-gradient">Why AETHON</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black">
+            Why{' '}<span className="text-gold-gradient"> AETHON</span>
           </h2>
           <p className="mt-6 text-aethon-text-secondary max-w-2xl mx-auto text-base sm:text-lg">
             Three principles that separate us from every other growth partner.
