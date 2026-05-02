@@ -17,12 +17,12 @@ export default function FounderSection() {
     {
       name: "Rezaul Haque",
       role: "Founder & Growth Architect",
-      image: "/founders/1.png",
+      image: "/founders/1.PNG",
       title: "Founder",
       desc1:
-        "Built on performance, integrity, and long-term vision. The mind behind scalable systems that help ambitious brands grow faster.",
+        "In a market filled with agencies chasing trends and short-term spikes,Mr. Rezaul Haque started The Aethon Grid with a clear perspective:Most businesses don’t have a marketing problem.They have a structural problem.In today’s fast-evolving digital-first world, where attention is volatile and trends change overnight, he saw a deeper gap , businesses operating without clarity, without systems, and without real intelligence behind their decisions.",
       desc2:
-        "Focused on strategy, execution, and measurable growth through premium systems, paid media, and automation.",
+        "With a strong foundation in technology, AI, branding, and business strategy, he approaches every business like a system , not a project.At the core of his philosophy lies one principle:decisions should not be based on assumptions, but on data-backed clarity.Every move, every strategy, every iteration is driven by insights not guesswork.Because he believes sustainable growth is never accidental, it is measured, analyzed, and engineered step by step.“If you can’t measure what’s working you’re not building you’re guessing.”His vision is to build a new generation of businesses designed for the digital era — where technology, data, and strategy work together to create clarity, control, and precision; where every decision is backed by intelligence, every system is built to scale, and every brand is positioned not just to follow the market, but to define it.“We’re not here to play the marketing game.We’re here to change how it’s played.”",
       stats: [
         { value: "50+", label: "Brands Helped" },
         { value: "₹5Cr+", label: "Revenue Generated" },
@@ -36,7 +36,7 @@ export default function FounderSection() {
       image: "/founders/2.jpg",
       title: "Co-Founder",
       desc1:
-        "Leads brand authority, premium positioning, and market perception for fast-growing modern companies.",
+        "While most focus on ideas, Mr.Waleed Ayub focuses on execution.In a space where strategies often stay on paper, he ensures they are translated into structured, scalable operations that actually deliver results. Because without execution, even the best strategy holds no value.“A strategy is only as powerful as the system that executes it.”",
       desc2:
         "Transforms brands into trusted market leaders through storytelling, design psychology, and strategic messaging.",
       stats: [
@@ -49,7 +49,7 @@ export default function FounderSection() {
     {
       name: "Dr. Shahwar Ahmed Khan",
       role: "Co-Founder • Operations & Scale",
-      image: "/founders/3.png",
+      image: "/founders/3.PNG",
       title: "Co-Founder",
       desc1:
         "Builds backend systems, automation flows, and high-efficiency frameworks for scaling businesses.",
@@ -85,7 +85,7 @@ export default function FounderSection() {
   const member = team[index];
 
   return (
-    <section className="relative w-full bg-[#f7f7f5] py-20 px-4 md:px-8 overflow-hidden">
+    <section id="founders" className="relative w-full bg-[#f7f7f5] py-20 px-4 md:px-8 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#d4af37]/10 blur-3xl rounded-full" />
 
@@ -235,3 +235,10 @@ export default function FounderSection() {
     </section>
   );
 }
+
+
+
+
+
+
+

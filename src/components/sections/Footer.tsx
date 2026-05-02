@@ -34,7 +34,7 @@ const socialLinks = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/theaethongrid/" },
   { icon: Twitter, label: "Twitter", href: "#" },
   { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Mail, label: "Email", href: "mailto:theaethongrid@gmail.com" },
+  { icon: Mail, label: "Email", href: "mailto:info@theaethongrid.com" },
 ];
 
 export default function Footer() {
@@ -112,8 +112,10 @@ export default function Footer() {
               </p>
 
               <p className="text-sm text-white/70 max-w-sm leading-relaxed">
-                We're a dynamic team of experts helping businesses grow with
-                premium systems, strategy, and digital transformation.
+                We help businesses grow through strategy, marketing & technology. 
+                From brand building and social media to business development and 
+                AI tools — we handle the full picture. Based in Kolkata, working across 
+                India.
               </p>
             </div>
 
@@ -171,9 +173,9 @@ export default function Footer() {
                   </div>
 
                   <p className="text-sm text-white/80 leading-relaxed text-left">
-                    11/H/16, Moulana Md Ali Road,
+                    70P, Kalim Nexus, Tiljala Road, 
                     <br />
-                    Kidderpore, Kolkata - 700023,
+                     Kolkata - 700017,
                     <br />
                     West Bengal, India
                   </p>
@@ -185,10 +187,10 @@ export default function Footer() {
                   </div>
 
                   <a
-                    href="tel:+917439315210"
+                    href="tel:+918697585031"
                     className="text-sm text-white/80"
                   >
-                    +91 7439315210
+                    +91 86975 85031
                   </a>
                 </div>
 
@@ -322,10 +324,10 @@ export default function Footer() {
                     <MapPin className="size-4 text-aethon-gold" />
                   </div>
 
-                  <p className="text-sm text-white/80 leading-relaxed">
-                    11/H/16, Moulana Md Ali Road,
+                  <p className="text-sm text-white/80 leading-relaxed ">
+                    70P, Kalim Nexus, Tiljala Road, 
                     <br />
-                    Kidderpore, Kolkata - 700023,
+                     Kolkata  - 700017 ,
                     <br />
                     West Bengal, India
                   </p>
@@ -337,10 +339,10 @@ export default function Footer() {
                   </div>
 
                   <a
-                    href="tel:+917439315210"
+                    href="tel:+918697585031"
                     className="text-sm text-white/80"
                   >
-                    +91 7439315210
+                    +91 86975 85031
                   </a>
                 </div>
 
@@ -353,7 +355,7 @@ export default function Footer() {
                     href="mailto:theaethongroup@gmail.com"
                     className="text-sm text-white/80 break-all"
                   >
-                    theaethongrid@gmail.com
+                    info@theaethongrid.com
                   </a>
                 </div>
               </div>

@@ -466,7 +466,7 @@ export default function Navbar() {
 
                 {/* Phone */}
                 <motion.a
-                  href="tel:+917439315210"
+                  href="tel:+918697585031"
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.94 }}
                   className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full
@@ -633,7 +633,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.3 }}
-                  href="tel:+917439315210"
+                  href="tel:+918697585031"
                   className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-aethon-dark/15 text-aethon-dark hover:bg-aethon-dark hover:text-white font-semibold text-sm transition-all duration-300"
                 >
                   <Phone className="w-4 h-4" />
@@ -652,10 +652,10 @@ export default function Navbar() {
                   Get in touch
                 </p>
                 <a
-                  href="mailto:hello@aethongroup.com"
+                  href="mailto:info@aethongroup.com"
                   className="text-sm text-aethon-text hover:text-aethon-gold transition-colors font-medium"
                 >
-                  theaethongrid@gmail.com
+                  info@theaethongrid.com
                 </a>
                 <div className="flex gap-4 mt-3">
                   <a
