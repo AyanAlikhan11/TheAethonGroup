@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://aethongrid.com/sitemap.xml
+Sitemap: https://theaethongrid.com/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
