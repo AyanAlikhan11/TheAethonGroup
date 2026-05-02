@@ -17,6 +17,16 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  RocketIcon,
+  MegaphoneIcon,
+  FunnelIcon,
+  RobotIcon,
+  ChartBrainIcon,
+  GraphUpIcon,
+  CrownShieldIcon,
+  PaintPaletteIcon,
+} from '@/components/icons' // adjust if needed
 
 const navLinks = [
   { label: "About", href: "trust" },
@@ -26,56 +36,67 @@ const navLinks = [
   { label: "Contact", href: "cta" },
 ];
 
-const megaServices = [
+import type { ComponentType, SVGProps } from 'react'
+
+type IconType = ComponentType<SVGProps<SVGSVGElement>>
+
+type MegaService = {
+  icon: IconType
+  title: string
+  desc: string
+  color: string
+}
+
+const megaServices: MegaService[] = [
   {
-    icon: Target,
-    title: "Growth Strategy",
-    desc: "Data-driven strategic frameworks",
-    color: "#F59E0B",
+    icon: RocketIcon,
+    title: 'Growth Strategy',
+    desc: 'Data-driven strategic frameworks',
+    color: '#F59E0B',
   },
   {
-    icon: DollarSign,
-    title: "Paid Media",
-    desc: "AI-optimized media buying",
-    color: "#14B8A6",
+    icon: MegaphoneIcon,
+    title: 'Paid Media',
+    desc: 'AI-optimized media buying',
+    color: '#14B8A6',
   },
   {
-    icon: Filter,
-    title: "Funnel Systems",
-    desc: "End-to-end conversion funnels",
-    color: "#FB7185",
+    icon: FunnelIcon,
+    title: 'Funnel Systems',
+    desc: 'End-to-end conversion funnels',
+    color: '#FB7185',
   },
   {
-    icon: Bot,
-    title: "AI Automation",
-    desc: "Intelligent automation systems",
-    color: "#8B5CF6",
+    icon: RobotIcon,
+    title: 'AI Automation',
+    desc: 'Intelligent automation systems',
+    color: '#8B5CF6',
   },
   {
-    icon: BarChart3,
-    title: "Analytics Intelligence",
-    desc: "Strategic insight from data",
-    color: "#3B82F6",
+    icon: ChartBrainIcon,
+    title: 'Analytics Intelligence',
+    desc: 'Strategic insight from data',
+    color: '#3B82F6',
   },
   {
-    icon: TrendingUp,
-    title: "Conversion Optimization",
-    desc: "Systematic CRO programs",
-    color: "#F97316",
+    icon: GraphUpIcon,
+    title: 'Conversion Optimization',
+    desc: 'Systematic CRO programs',
+    color: '#F97316',
   },
   {
-    icon: Shield,
-    title: "Brand Positioning",
-    desc: "Premium brand authority",
-    color: "#6366F1",
+    icon: CrownShieldIcon,
+    title: 'Brand Positioning',
+    desc: 'Premium brand authority',
+    color: '#6366F1',
   },
   {
-    icon: Sparkles,
-    title: "Creative Systems",
-    desc: "Scalable creative pipelines",
-    color: "#EC4899",
+    icon: PaintPaletteIcon,
+    title: 'Creative Systems',
+    desc: 'Scalable creative pipelines',
+    color: '#EC4899',
   },
-];
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
