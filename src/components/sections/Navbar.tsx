@@ -29,11 +29,12 @@ import {
 } from '@/components/icons' // adjust if needed
 
 const navLinks = [
-  { label: "About", href: "trust" },
+  { label: "About", href: "why" },
   { label: "Services", href: "services", hasMega: true },
+  { label: "Our Clients", href: "trust" },
   { label: "Case Studies", href: "case-studies" },
-  { label: "Insights", href: "insights" },
-  { label: "Contact", href: "cta" },
+  { label: "Blog", href: "insights" },
+  { label: "Referral", href: "cta" },
 ];
 
 import type { ComponentType, SVGProps } from 'react'
@@ -199,7 +200,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Center: Nav links */}
-                <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+                <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 ">
                   {navLinks.map((link) => (
                     <div
                       key={link.href}

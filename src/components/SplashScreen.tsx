@@ -28,9 +28,9 @@ export default function SplashScreen({
       >
         {/* Logo */}
         <motion.img
-          src="/SplashLogo.png"
+          src="/og-image.png"
           alt="Logo"
-          className="w-72 h-72 md:w-85 md:h-80 object-contain"
+          className="w-72 h-72 md:w-85 md:h-100 object-contain"
           initial={{ opacity: 0, scale: 0.75 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
@@ -41,7 +41,7 @@ export default function SplashScreen({
 
         {/* Slogan */}
         <motion.p
-          className="mt-2 text-sm md:text-lg font-semibold tracking-[0.35em] text-aethon-gold-dark text-center px-6"
+          className=" text-bold md:text-lg font-semibold tracking-[0.35em] text-aethon-gold-dark text-center px-6"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
