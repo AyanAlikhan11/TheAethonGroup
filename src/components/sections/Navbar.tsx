@@ -51,53 +51,53 @@ type MegaService = {
 
 const megaServices: MegaService[] = [
   {
-    icon: RocketIcon,
-    title: 'Growth Strategy',
-    desc: 'Data-driven strategic frameworks',
-    color: '#F59E0B',
-  },
-  {
-    icon: MegaphoneIcon,
-    title: 'Paid Media',
-    desc: 'AI-optimized media buying',
-    color: '#14B8A6',
-  },
-  {
-    icon: FunnelIcon,
-    title: 'Funnel Systems',
-    desc: 'End-to-end conversion funnels',
-    color: '#FB7185',
-  },
-  {
-    icon: RobotIcon,
-    title: 'AI Automation',
-    desc: 'Intelligent automation systems',
-    color: '#8B5CF6',
-  },
-  {
-    icon: ChartBrainIcon,
-    title: 'Analytics Intelligence',
-    desc: 'Strategic insight from data',
-    color: '#3B82F6',
-  },
-  {
-    icon: GraphUpIcon,
-    title: 'Conversion Optimization',
-    desc: 'Systematic CRO programs',
-    color: '#F97316',
-  },
-  {
-    icon: CrownShieldIcon,
-    title: 'Brand Positioning',
-    desc: 'Premium brand authority',
-    color: '#6366F1',
-  },
-  {
-    icon: PaintPaletteIcon,
-    title: 'Creative Systems',
-    desc: 'Scalable creative pipelines',
-    color: '#EC4899',
-  },
+  icon: RocketIcon,
+  title: "Business Strategy",
+  desc: "Scalable growth systems & consulting",
+  color: "#D4AF37",
+},
+{
+  icon: RobotIcon,
+  title: "AI & Automation",
+  desc: "Smart systems that reduce dependency",
+  color: "#8B5CF6",
+},
+{
+  icon: FunnelIcon,
+  title: "Operations",
+  desc: "Structured workflows for scale",
+  color: "#14B8A6",
+},
+{
+  icon: CrownShieldIcon,
+  title: "Brand Identity",
+  desc: "Positioning, trust & authority",
+  color: "#6366F1",
+},
+{
+  icon: GraphUpIcon,
+  title: "Digital Presence",
+  desc: "Web, app, SEO & UI/UX systems",
+  color: "#3B82F6",
+},
+{
+  icon: PaintPaletteIcon,
+  title: "Creative Content",
+  desc: "Design, media & campaign assets",
+  color: "#EC4899",
+},
+{
+  icon: MegaphoneIcon,
+  title: "Marketing Media",
+  desc: "Paid growth & campaign execution",
+  color: "#F97316",
+},
+{
+  icon: ChartBrainIcon,
+  title: "PR & Influence",
+  desc: "Creators, celebrity & authority reach",
+  color: "#FB7185",
+}
 ]
 
 export default function Navbar() {

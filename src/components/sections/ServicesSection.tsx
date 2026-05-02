@@ -313,91 +313,129 @@ function PaintPaletteIcon() {
   )
 }
 
-/* ─── Service Data ─── */
-
 const services = [
-    {
-      icon: RocketIcon,
-      title: 'Growth Strategy',
-      slug: 'growth-strategy',
-      description: 'Data-driven strategic frameworks that identify your highest-leverage growth opportunities and build compounding momentum.',
-      glowColor: 'rgba(212, 175, 55, 0.4)',
-      borderColor: 'rgba(212, 175, 55, 0.3)',
-      accentColor: '#F59E0B',
-      number: '01',
-    },
-    {
-      icon: MegaphoneIcon,
-      title: 'Paid Media',
-      slug: 'paid-media',
-      description: 'Precision media buying across platforms with AI-optimized bidding, creative testing, and ROAS-maximizing campaign structures.',
-      glowColor: 'rgba(15, 118, 110, 0.4)',
-      borderColor: 'rgba(15, 118, 110, 0.3)',
-      accentColor: '#14B8A6',
-      number: '02',
-    },
-    {
-      icon: FunnelIcon,
-      title: 'Funnel Systems',
-      slug: 'funnel-systems',
-      description: 'End-to-end conversion funnels engineered for maximum efficiency — from first click to lifetime value.',
-      glowColor: 'rgba(225, 29, 72, 0.4)',
-      borderColor: 'rgba(225, 29, 72, 0.3)',
-      accentColor: '#FB7185',
-      number: '03',
-    },
-    {
-      icon: RobotIcon,
-      title: 'AI Automation',
-      slug: 'ai-automation',
-      description: 'Intelligent automation systems that scale your operations, reduce costs, and unlock growth at machine speed.',
-      glowColor: 'rgba(124, 58, 237, 0.4)',
-      borderColor: 'rgba(124, 58, 237, 0.3)',
-      accentColor: '#8B5CF6',
-      number: '04',
-    },
-    {
-      icon: ChartBrainIcon,
-      title: 'Analytics Intelligence',
-      slug: 'analytics-intelligence',
-      description: 'Deep analytics infrastructure that turns raw data into strategic insight and real-time decision advantage.',
-      glowColor: 'rgba(59, 130, 246, 0.4)',
-      borderColor: 'rgba(59, 130, 246, 0.3)',
-      accentColor: '#3B82F6',
-      number: '05',
-    },
-    {
-      icon: GraphUpIcon,
-      title: 'Conversion Optimization',
-      slug: 'conversion-optimization',
-      description: 'Systematic CRO programs that continuously improve conversion rates through testing, learning, and compounding gains.',
-      glowColor: 'rgba(249, 115, 22, 0.4)',
-      borderColor: 'rgba(249, 115, 22, 0.3)',
-      accentColor: '#F97316',
-      number: '06',
-    },
-    {
-      icon: CrownShieldIcon,
-      title: 'Brand Positioning',
-      slug: 'brand-positioning',
-      description: 'Premium brand strategy that commands attention, builds authority, and creates pricing power in your market.',
-      glowColor: 'rgba(99, 102, 241, 0.4)',
-      borderColor: 'rgba(99, 102, 241, 0.3)',
-      accentColor: '#6366F1',
-      number: '07',
-    },
-    {
-      icon: PaintPaletteIcon,
-      title: 'Creative Systems',
-      slug: 'creative-systems',
-      description: 'Scalable creative production pipelines with data-informed design that drives engagement and conversion at scale.',
-      glowColor: 'rgba(236, 72, 153, 0.4)',
-      borderColor: 'rgba(236, 72, 153, 0.3)',
-      accentColor: '#EC4899',
-      number: '08',
-    },
-  ]
-
+  {
+    icon: RocketIcon,
+    title: "Business Strategy & Consulting",
+    slug: "business-strategy-consulting",
+    description:
+      "Aligning business decisions with scalable growth through expansion strategy, market intelligence, and strategic planning.",
+    glowColor: "rgba(212, 175, 55, 0.4)",
+    borderColor: "rgba(212, 175, 55, 0.3)",
+    accentColor: "#D4AF37",
+    number: "01",
+  },
+  {
+    icon: RobotIcon,
+    title: "Technology, AI & Automation",
+    slug: "technology-ai-automation",
+    description:
+      "Building systems that reduce dependency and increase efficiency through AI workflows, custom software, CRM, and integrations.",
+    glowColor: "rgba(124, 58, 237, 0.4)",
+    borderColor: "rgba(124, 58, 237, 0.3)",
+    accentColor: "#8B5CF6",
+    number: "02",
+  },
+  {
+    icon: FunnelIcon,
+    title: "Operations & Management",
+    slug: "operations-management",
+    description:
+      "Structuring businesses for consistency and scale through workflows, process management, execution systems, and performance models.",
+    glowColor: "rgba(15, 118, 110, 0.4)",
+    borderColor: "rgba(15, 118, 110, 0.3)",
+    accentColor: "#14B8A6",
+    number: "03",
+  },
+  {
+    icon: CrownShieldIcon,
+    title: "Brand Strategy & Identity",
+    slug: "brand-strategy-identity",
+    description:
+      "Building brands with clarity, structure, and intent through positioning, identity systems, messaging, and architecture.",
+    glowColor: "rgba(99, 102, 241, 0.4)",
+    borderColor: "rgba(99, 102, 241, 0.3)",
+    accentColor: "#6366F1",
+    number: "04",
+  },
+  {
+    icon: GraphUpIcon,
+    title: "Digital Presence & Experience",
+    slug: "digital-presence-experience",
+    description:
+      "Designing high-performance digital ecosystems through websites, apps, UI/UX strategy, SEO, and analytics.",
+    glowColor: "rgba(59, 130, 246, 0.4)",
+    borderColor: "rgba(59, 130, 246, 0.3)",
+    accentColor: "#3B82F6",
+    number: "05",
+  },
+  {
+    icon: PaintPaletteIcon,
+    title: "Creative Production & Content",
+    slug: "creative-production-content",
+    description:
+      "Producing content backed by insight through photography, videography, campaign shoots, motion, and content systems.",
+    glowColor: "rgba(236, 72, 153, 0.4)",
+    borderColor: "rgba(236, 72, 153, 0.3)",
+    accentColor: "#EC4899",
+    number: "06",
+  },
+  {
+    icon: MegaphoneIcon,
+    title: "Marketing & Media Systems",
+    slug: "marketing-media-systems",
+    description:
+      "Executing marketing through data-driven campaigns, performance marketing, media buying, and content distribution.",
+    glowColor: "rgba(249, 115, 22, 0.4)",
+    borderColor: "rgba(249, 115, 22, 0.3)",
+    accentColor: "#F97316",
+    number: "07",
+  },
+  {
+    icon: ChartBrainIcon,
+    title: "Influencer, Celebrity & Community",
+    slug: "influencer-celebrity-community",
+    description:
+      "Turning attention into authority through influencer collaborations, celebrity partnerships, PR, and community systems.",
+    glowColor: "rgba(225, 29, 72, 0.4)",
+    borderColor: "rgba(225, 29, 72, 0.3)",
+    accentColor: "#FB7185",
+    number: "08",
+  },
+  {
+    icon: RocketIcon,
+    title: "Events & Brand Experiences",
+    slug: "events-brand-experiences",
+    description:
+      "Creating real-world impact through launches, activations, experiential events, and media coordination.",
+    glowColor: "rgba(34, 197, 94, 0.4)",
+    borderColor: "rgba(34, 197, 94, 0.3)",
+    accentColor: "#22C55E",
+    number: "09",
+  },
+  {
+    icon: CrownShieldIcon,
+    title: "Legalities & Compliance",
+    slug: "legalities-compliance",
+    description:
+      "Securing your brand foundation through trademarking, contracts, IP protection, licensing, and legal structuring.",
+    glowColor: "rgba(107, 114, 128, 0.4)",
+    borderColor: "rgba(107, 114, 128, 0.3)",
+    accentColor: "#6B7280",
+    number: "10",
+  },
+  {
+    icon: MegaphoneIcon,
+    title: "Network & Media Relations",
+    slug: "network-media-relations",
+    description:
+      "Expanding reach through press coverage, strategic partnerships, cross-industry alliances, and media positioning.",
+    glowColor: "rgba(6, 182, 212, 0.4)",
+    borderColor: "rgba(6, 182, 212, 0.3)",
+    accentColor: "#06B6D4",
+    number: "11",
+  },
+];
 /* --------------------------------------------
    Card Component
 --------------------------------------------- */
@@ -501,9 +539,9 @@ function ServiceCard({
             </h3>
 
             {/* Description */}
-            <p className="text-sm text-gray-600 leading-relaxed">
-              {service.description}
-            </p>
+            <div className="text-gray-500 text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+  {service.description}
+</div>
 
             {/* Bottom glow line */}
             <motion.div
@@ -549,9 +587,7 @@ export default function ServicesSection() {
           <h2 className="text-3xl sm:text-5xl font-bold text-black">
             What We{' '}
             <span className="bg-gradient-to-r from-black to-yellow-500 bg-clip-text text-transparent">
-              Engineer
-            </span>
-          </h2>
+              Engineer</span></h2>
 
           <div className="mx-auto mt-5 w-20 h-[2px] bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full" />
 

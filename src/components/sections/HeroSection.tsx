@@ -151,7 +151,7 @@ export default function HeroSection() {
                 className="relative"
               >
                 <Image
-                  src="/showcase.png"
+                  src="/shocse.png"
                   alt="AETHON team collaborating"
                   width={672}
                   height={384}

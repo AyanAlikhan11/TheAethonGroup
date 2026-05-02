@@ -31,9 +31,9 @@ export default async function Page({
           </div>
         </div>
 
-        <p className="text-lg text-gray-600">
-          {service.description}
-        </p>
+        <div className="text-gray-500 text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+  {service.description}
+</div>
 
       </div>
     </section>
