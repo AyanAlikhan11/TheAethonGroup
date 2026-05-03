@@ -51,32 +51,6 @@ const jsonLd = {
 }
 
 export default function Home() {
-  const [hydrated, setHydrated] = useState(false)
-  const [showSplash, setShowSplash] = useState(false)
-
-  useEffect(() => {
-    // mark client mounted
-    setHydrated(true)
-
-    // defer storage read until after mount cycle
-    const timer = setTimeout(() => {
-      const seen = sessionStorage.getItem('aethonSplash')
-      if (!seen) {
-        setShowSplash(true)
-      }
-    }, 0)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  const handleComplete = () => {
-    sessionStorage.setItem('aethonSplash', 'true')
-    setShowSplash(false)
-  }
-
-  // Prevent hydration mismatch
-  if (!hydrated) return null
-
   return (
     <>
     <script
@@ -84,9 +58,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {showSplash && (
-        <SplashScreen onComplete={handleComplete} />
-      )}
 
       <main className="min-h-screen flex flex-col bg-white">
         <Navbar />

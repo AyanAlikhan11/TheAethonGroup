@@ -5,25 +5,25 @@ const caseStudies = [
     slug: 'premium-fashion-brand',
     client: 'Premium Fashion Brand',
     industry: 'D2C Fashion',
-    result: 'From ₹2L to ₹48L Monthly Revenue',
+    result: 'From ₹2L to ₹12L Monthly Revenue',
     description:
-      'We transformed a struggling D2C fashion brand through paid media scaling, funnel optimization, and creative systems.',
+      'Transformed a struggling D2C fashion brand into a high-growth engine through systematic paid media scaling, funnel optimization, and creative systems.',
   },
   {
-    slug: 'b2b-saas-platform',
-    client: 'B2B SaaS Platform',
-    industry: 'SaaS',
-    result: '340% MRR Growth in 6 Months',
+    slug: 'kolkata-cafe-growth',
+    client: 'Kolkata Cafe Brand',
+    industry: 'Restaurant / Cafe',
+    result: '₹7K/day to ₹20K/day Avg Sales',
     description:
-      'Built an end-to-end lead generation and conversion engine that accelerated growth.',
+      'Scaled a newly launched Kolkata cafe in a hyper-competitive market through data-backed organic content systems, customer-driven offers, and retention-focused growth strategy — generating 100K+ daily reach and repeat customers without paid promotions.',
   },
   {
-    slug: 'premium-wellness-brand',
-    client: 'Premium Wellness Brand',
-    industry: 'Wellness',
-    result: '₹1.2Cr Revenue in 90 Days',
+    slug: 'sparkle-launderette-operations-growth',
+    client: 'Launderette',
+    industry: 'Laundry / Operations',
+    result: '35% Cost Reduction in 90 Days',
     description:
-      'Launched and scaled from zero using precision media buying and AI creative systems.',
+      'Optimized operations through leakage detection, workflow restructuring, and data-driven strategy systems. Identified hidden revenue losses, improved efficiency, and built scalable operations for sustainable growth.',
   },
 ]
 
@@ -41,7 +41,6 @@ export default async function Page({
   return (
     <section className="min-h-screen bg-white px-6 py-20">
       <div className="max-w-4xl mx-auto">
-
         <p className="text-sm text-aethon-gold font-semibold mb-3 uppercase tracking-[0.2em]">
           {study.industry}
         </p>
@@ -57,7 +56,6 @@ export default async function Page({
         <p className="text-lg text-gray-600 leading-relaxed">
           {study.description}
         </p>
-
       </div>
     </section>
   )

@@ -17,7 +17,7 @@ export default function FounderSection() {
       role: "Founder & Growth Architect",
       image: "/founders/1.webp",
       title: "Founder",
-      linkedin: "https://linkedin.com/in/your-founder-linkedin",
+      linkedin: "https://www.linkedin.com/in/rezaul-haque-1931bb210/",
 
       desc1: `In a market filled with agencies chasing trends and short-term spikes, Mr. Rezaul Haque started The Aethon Grid with a clear perspective:
 
