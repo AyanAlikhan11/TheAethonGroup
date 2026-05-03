@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aethongrid.com"),
-  title: "THE AETHON GRID | Growth, Engineered.",
+  metadataBase: new URL("https://theaethongrid.com"),
+  title: "THE AETHON GRID | Shaping Businesses.",
   description:
     "THE AETHON GRID helps ambitious brands scale through strategy, AI systems, media buying, creative execution, and precision growth operations. Premium Growth Intelligence Company.",
   keywords: [
@@ -34,19 +34,19 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "THE AETHON GRID" }],
   icons: {
-    icon: "/aethonlogo.png",
+    icon: "/aethonlogo.webp",
   },
   openGraph: {
-    title: "THE AETHON GRID | Growth, Engineered.",
+    title: "THE AETHON GRID | Shaping Businesses.",
     description:
       "We Build Growth Engines That Compound. Strategy, AI systems, media buying, creative execution, and precision growth operations.",
-    url: "https://aethongrid.com",
+    url: "https://theaethongrid.com",
     siteName: "THE AETHON GRID",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1344,
         height: 768,
         alt: "THE AETHON GRID - Growth, Engineered.",
@@ -55,10 +55,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "THE AETHON GRID | Growth, Engineered.",
+    title: "THE AETHON GRID | Shaping Businesses.",
     description:
       "We Build Growth Engines That Compound. Premium Growth Intelligence for ambitious brands.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
   robots: {
     index: true,
