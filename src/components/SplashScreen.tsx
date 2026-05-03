@@ -28,7 +28,7 @@ export default function SplashScreen({
       >
         {/* Logo */}
         <motion.img
-          src="/og-image.png"
+          src="/og-image.webp"
           alt="Logo"
           className="w-72 h-72 md:w-85 md:h-100 object-contain"
           initial={{ opacity: 0, scale: 0.75 }}
@@ -45,7 +45,7 @@ export default function SplashScreen({
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
-            delay: 1,
+            delay: 1.5,
             duration: 1,
             ease: 'easeOut',
           }}
@@ -60,7 +60,7 @@ export default function SplashScreen({
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
             transition={{
-              delay: 0.4,
+              delay: 1,
               duration: 2,
               ease: 'easeInOut',
             }}

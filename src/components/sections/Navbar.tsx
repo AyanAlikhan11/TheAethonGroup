@@ -189,7 +189,7 @@ export default function Navbar() {
                     <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
 
                     <img
-                      src="/aethonlogo.png"
+                      src="/aethonlogo.webp"
                       alt="AETHON Logo"
                       className="relative z-10 w-12 h-12 sm:w-20 sm:h-20 object-contain"
                     />
@@ -406,7 +406,7 @@ export default function Navbar() {
                   {/* <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" /> */}
 
                   <img
-                    src="/aethonlogo.png"
+                    src="/aethonlogo.webp"
                     alt="AETHON Logo"
                     className="relative z-10 w-13 h-13 sm:w-20 sm:h-20 object-contain"
                   />

@@ -88,7 +88,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-5">
                 <div className="relative w-11 h-11 rounded-2xl overflow-hidden">
                   <Image
-                    src="/aethonlogo.png"
+                    src="/aethonlogo.webp"
                     alt="AETHON Logo"
                     fill
                     sizes="(max-width: 640px) 80px, (max-width: 1024px) 96px, 120px"
@@ -229,7 +229,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 mb-5">
                 <div className="relative w-11 h-13 rounded-2xl overflow-hidden">
                   <Image
-                    src="/aethonlogo.png"
+                    src="/aethonlogo.webp"
                     alt="AETHON Logo"
                     fill
                     sizes="(max-width: 768px) 100vw,

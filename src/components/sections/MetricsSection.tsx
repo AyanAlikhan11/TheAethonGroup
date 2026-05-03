@@ -6,8 +6,8 @@ import { TrendingUp, BarChart3, Target, Heart, BadgeCheck } from "lucide-react";
 
 const metrics = [
   {
-    value: 12,
-    suffix: "Cr+",
+    value: 100,
+    suffix: "K+",
     prefix: "₹",
     label: "Revenue Influenced",
     description: "Revenue generated for clients across industries",
@@ -15,8 +15,8 @@ const metrics = [
     accentColor: "#D4AF37",
   },
   {
-    value: 120,
-    suffix: "+",
+    value: 185,
+    suffix: "%",
     prefix: "",
     label: "Campaigns Built",
     description: "Performance campaigns launched & optimized",

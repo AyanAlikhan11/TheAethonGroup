@@ -151,7 +151,7 @@ export default function HeroSection() {
                 className="relative"
               >
                 <Image
-                  src="/shocse.png"
+                  src="/shocse.webp"
                   alt="AETHON team collaborating"
                   width={672}
                   height={384}
@@ -365,7 +365,7 @@ hover:border-aethon-gold-light/45"
             >
               {/* Client Images */}
               <div className="flex -space-x-2">
-                {["/man1.jpg", "/man2.jpg", "/man3.jpg", "/man4.jpg"].map(
+                {["/images/trust-man/man1.webp", "/images/trust-man/man2.webp", "/images/trust-man/man3.webp", "/images/trust-man/man4.webp"].map(
                   (img, i) => (
                     <img
                       key={i}

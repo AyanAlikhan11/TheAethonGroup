@@ -30,46 +30,46 @@ export default function TestimonialsSection() {
   const [bgIndex, setBgIndex] = useState(0);
 
   const bgImages = [
-    "/images/testimonials/bg1.jpg",
-    "/images/testimonials/bg2.jpg",
-    "/images/testimonials/bg3.jpg",
-    "/images/testimonials/bg4.jpg",
+    "/images/testimonials/bg1.webp",
+    "/images/testimonials/bg2.webp",
+    "/images/testimonials/bg3.webp",
+    "/images/testimonials/bg4.webp",
   ];
 
   const fallbackTestimonials = [
-    {
-      id: "1",
-      quote:
-        "AETHON didn't just run our ads — they rebuilt our entire growth engine. Revenue 5x'd in 4 months and hasn't stopped since.",
-      name: "Rahul Sharma",
-      role: "Founder & CEO",
-      company: "NovaStar D2C",
-    },
-    {
-      id: "2",
-      quote:
-        "The systems they built compound every single month. We're now growing faster with less spend.",
-      name: "Priya Mehta",
-      role: "Head of Growth",
-      company: "TechX SaaS",
-    },
-    {
-      id: "3",
-      quote:
-        "Working with AETHON felt like having a world-class growth team embedded in our company.",
-      name: "Arjun Patel",
-      role: "Co-Founder",
-      company: "VertexR Wellness",
-    },
-    {
-      id: "4",
-      quote:
-        "They turned our scattered marketing into a precision growth machine. ROI speaks for itself.",
-      name: "Kavitha Rao",
-      role: "CMO",
-      company: "ApexCore Finance",
-    },
-  ];
+  {
+    id: "1",
+    quote:
+      "AETHON transformed our digital presence with a premium website that truly reflects our design standards. Their creative execution helped us attract more serious clients and showcase our portfolio professionally.",
+    name: "Kalim Ahmed",
+    role: "Director",
+    company: "ATK KALIM GROUP",
+  },
+  {
+    id: "2",
+    quote:
+      "From website design to smooth day-to-day management, AETHON handled everything with precision. Their systems made our operations faster, cleaner, and more scalable.",
+    name: "Shahid Rahman",
+    role: "Managing Partner",
+    company: "SEA INTERIOR",
+  },
+  {
+    id: "3",
+    quote:
+      "AETHON brought structure to our business operations and improved the way we manage growth. Their strategic systems saved us time, increased efficiency, and gave us clarity.",
+    name: "Ritika Sen",
+    role: "Operations Head",
+    company: "SPARKLE",
+  },
+  {
+    id: "4",
+    quote:
+      "What impressed us most was how AETHON understood our business goals and turned them into measurable results. They don't just deliver services — they build growth foundations.",
+    name: "Imran Sheikh",
+    role: "Founder",
+    company: "SKY Avenue",
+  },
+];
 
   // useEffect(() => {
   //   fetch("/api/testimonials")
@@ -170,7 +170,7 @@ export default function TestimonialsSection() {
           className="mb-10 sm:mb-14 lg:mb-16 text-center"
         >
           <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            What Founders{" "}
+            What Clients{" "}
             <span className="text-aethon-yellow">Say</span>
           </h2>
         </motion.div>

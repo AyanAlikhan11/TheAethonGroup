@@ -15,7 +15,7 @@ export default function FounderSection() {
     {
       name: "Rezaul Haque",
       role: "Founder & Growth Architect",
-      image: "/founders/1.PNG",
+      image: "/founders/1.webp",
       title: "Founder",
       linkedin: "https://linkedin.com/in/your-founder-linkedin",
 
@@ -48,8 +48,8 @@ We’re here to change how it’s played.”`,
 
     {
       name: "Md. Waleed Ayub",
-      role: "Co-Founder • Brand Strategy",
-      image: "/founders/2.jpg",
+      role: "Co-Founder • Operation & Scale",
+      image: "/founders/2.webp",
       title: "Co-Founder",
       linkedin: null,
 
@@ -77,8 +77,8 @@ your growth won’t be either.”`,
 
     {
       name: "Dr. Shahwar Ahmed Khan",
-      role: "Co-Founder • Operations & Scale",
-      image: "/founders/3.PNG",
+      role: "Co-Founder • Team management & Brand story",
+      image: "/founders/3.webp",
       title: "Co-Founder",
       linkedin: null,
 

@@ -5,15 +5,15 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
 const brands = [
-  { name: 'Client One', logo: '/client-logos/1.png' },
-  { name: 'Client Two', logo: '/client-logos/2.jpeg' },
-  { name: 'Client Three', logo: '/client-logos/3.jpeg' },
-  { name: 'Client Four', logo: '/client-logos/4.png' },
-  { name: 'Client Five', logo: '/client-logos/5.png' },
-  { name: 'Client Six', logo: '/client-logos/6.png' },
-  { name: 'Client Seven', logo: '/client-logos/7.png' },
-  { name: 'Client Eight', logo: '/client-logos/8.png' },
-  { name: 'Client Nine', logo: '/client-logos/9.png' },
+  { name: 'Client One', logo: '/client-logos/1.webp' },
+  { name: 'Client Two', logo: '/client-logos/2.webp' },
+  { name: 'Client Three', logo: '/client-logos/3.webp' },
+  { name: 'Client Four', logo: '/client-logos/4.webp' },
+  { name: 'Client Five', logo: '/client-logos/5.webp' },
+  { name: 'Client Six', logo: '/client-logos/6.webp' },
+  { name: 'Client Seven', logo: '/client-logos/7.webp' },
+  { name: 'Client Eight', logo: '/client-logos/8.webp' },
+  { name: 'Client Nine', logo: '/client-logos/9.webp' },
 ]
 
 export default function TrustSection() {
