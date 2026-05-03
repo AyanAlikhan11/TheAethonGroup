@@ -126,7 +126,7 @@ not just delivering within it.”`,
   return (
     <section
       id="founders"
-      className="relative w-full bg-[#f7f7f5] py-20 px-4 md:px-8 overflow-hidden"
+      className="relative w-full bg-[#f7f7f5] py-5 px-4 md:px-8 overflow-hidden"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#d4af37]/10 blur-3xl rounded-full" />
 
