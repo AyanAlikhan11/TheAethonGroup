@@ -14,7 +14,7 @@ const brands = [
   { name: 'Client Seven', logo: '/client-logos/7.webp' },
   { name: 'Client Eight', logo: '/client-logos/8.webp' },
   { name: 'Client Nine', logo: '/client-logos/9.webp' },
-  { name: 'Client Ten', logo: '/client-logos/10.webp' },
+  { name: 'Client Ten', logo: '/client-logos/10.png' },
   { name: 'Client Eleven', logo: '/client-logos/11.webp' },
 ]
 
