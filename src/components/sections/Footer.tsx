@@ -34,7 +34,7 @@ const socialLinks = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/theaethongrid/" },
   { icon: Twitter, label: "Twitter", href: "#" },
   { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Mail, label: "Email", href: "mailto:info@theaethongrid.com" },
+  { icon: Mail, label: "Email", href: "mailto:hello@theaethongrid.in" },
 ];
 
 export default function Footer() {
@@ -200,10 +200,10 @@ export default function Footer() {
                   </div>
 
                   <a
-                    href="mailto:theaethongroup@gmail.com"
+                    href="mailto:hello@theaethongrid.in"
                     className="text-sm text-white/80 break-all"
                   >
-                    theaethongrid@gmail.com
+                    hello@theaethongrid.in
                   </a>
                 </div>
               </div>
@@ -352,10 +352,10 @@ export default function Footer() {
                   </div>
 
                   <a
-                    href="mailto:theaethongroup@gmail.com"
+                    href="mailto:hello@theaethongrid.in"
                     className="text-sm text-white/80 break-all"
                   >
-                    info@theaethongrid.com
+                    hello@theaethongrid.in
                   </a>
                 </div>
               </div>
