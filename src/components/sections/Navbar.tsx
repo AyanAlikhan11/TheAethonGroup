@@ -172,210 +172,223 @@ export default function Navbar() {
               transition={{ duration: 0.3 }}
               className="bg-white/50 backdrop-blur-sm border-b border-transparent"
             >
-              <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20">
-                {/* Logo */}
-                <div
-                  className="flex items-center gap-1 group cursor-pointer shrink-0"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
+              <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
+  <div className="flex items-center justify-between w-full h-full">
+
+    {/* LEFT : LOGO */}
+    <div
+      className="flex items-center gap-1 group cursor-pointer flex-shrink-0"
+      onClick={() =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    >
+      <div
+        className="relative rounded-full backdrop-blur-2xl overflow-hidden transition-all duration-300 group-hover:scale-105"
+      >
+        <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
+
+        <img
+          src="/aethonlogo.webp"
+          alt="AETHON Logo"
+          className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 object-contain"
+        />
+      </div>
+
+      <span className="hidden sm:block font-['Roboto',sans-serif] text-[#f1c75b] text-lg lg:text-xl font-semibold leading-tight whitespace-nowrap">
+        THE AETHON GRID
+      </span>
+    </div>
+
+    {/* CENTER : DESKTOP NAV */}
+    <div className="hidden lg:flex items-center justify-center flex-1 px-6">
+      <div className="flex items-center gap-1">
+        {navLinks.map((link) => (
+          <div
+            key={link.href}
+            className="relative"
+            onMouseEnter={link.hasMega ? handleMegaEnter : undefined}
+            onMouseLeave={link.hasMega ? handleMegaLeave : undefined}
+          >
+            <button
+              onClick={() => scrollToSection(link.href)}
+              className="relative flex items-center gap-1 px-3 xl:px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group whitespace-nowrap"
+            >
+              {link.label}
+
+              {link.hasMega && (
+                <motion.span
+                  animate={{ rotate: megaOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {/* iPhone Glass only on image */}
-                  <div
-                    className="relative rounded-full backdrop-blur-2xl overflow-hidden transition-all duration-300
-                        group-hover:scale-105"
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </motion.span>
+              )}
+
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
+            </button>
+
+            {/* MEGA MENU */}
+            {link.hasMega && (
+              <AnimatePresence>
+                {megaOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scaleY: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                    exit={{ opacity: 0, y: 8, scaleY: 0.96 }}
+                    transition={{
+                      duration: 0.25,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50"
+                    style={{ width: "680px" }}
                   >
-                    {/* glossy reflection */}
-                    <span className="absolute top-0 left-[10%] h-[45%] w-[80%] rounded-full bg-gradient-to-b from-white/40 via-white/10 to-transparent blur-sm pointer-events-none" />
+                    <div className="bg-white/90 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-aethon-dark/10 border border-aethon-gray-dark/30 overflow-hidden">
 
-                    <img
-                      src="/aethonlogo.webp"
-                      alt="AETHON Logo"
-                      className="relative z-10 w-12 h-12 sm:w-20 sm:h-20 object-contain"
-                    />
-                  </div>
+                      {/* Header */}
+                      <div className="px-6 pt-5 pb-3 border-b border-aethon-gray-dark/20">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h3 className="text-sm font-bold text-aethon-text">
+                              Our Capabilities
+                            </h3>
 
-                  <span className="font-['Roboto',sans-serif] text-[#f1c75b] text-lg md:text-xl font-semibold leading-tight whitespace-nowrap">
-                    THE AETHON GRID
-                  </span>
-                </div>
+                            <p className="text-xs text-aethon-text-muted mt-0.5">
+                              What we engineer for compounding growth
+                            </p>
+                          </div>
 
-                {/* Center: Nav links */}
-                <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 ">
-                  {navLinks.map((link) => (
-                    <div
-                      key={link.href}
-                      className="relative"
-                      onMouseEnter={link.hasMega ? handleMegaEnter : undefined}
-                      onMouseLeave={link.hasMega ? handleMegaLeave : undefined}
-                    >
-                      <button
-                        onClick={() => scrollToSection(link.href)}
-                        className="relative flex items-center gap-1 px-4 py-2 text-sm font-medium text-aethon-text-secondary hover:text-aethon-dark transition-colors duration-300 cursor-pointer group"
-                      >
-                        {link.label}
-                        {link.hasMega && (
-                          <motion.span
-                            animate={{ rotate: megaOpen ? 180 : 0 }}
-                            transition={{ duration: 0.3 }}
+                          <button
+                            onClick={() =>
+                              scrollToSection("services")
+                            }
+                            className="flex items-center gap-1 text-xs font-semibold text-aethon-gold hover:text-aethon-gold-dark transition-colors cursor-pointer group"
                           >
-                            <ChevronDown className="w-3.5 h-3.5" />
-                          </motion.span>
-                        )}
-                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-aethon-gold group-hover:w-3/4 transition-all duration-300 rounded-full" />
-                      </button>
+                            View All
 
-                      {/* Services Mega Menu */}
-                      {link.hasMega && (
-                        <AnimatePresence>
-                          {megaOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, y: 8, scaleY: 0.96 }}
-                              animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                              exit={{ opacity: 0, y: 8, scaleY: 0.96 }}
+                            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* SERVICES */}
+                      <div className="grid grid-cols-2 gap-0">
+                        {megaServices.map((service, i) => {
+                          const Icon = service.icon;
+
+                          return (
+                            <motion.button
+                              key={service.title}
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
                               transition={{
-                                duration: 0.25,
-                                ease: [0.25, 0.46, 0.45, 0.94],
+                                delay: i * 0.04,
+                                duration: 0.3,
                               }}
-                              className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50"
-                              style={{ width: "680px" }}
+                              onClick={() =>
+                                scrollToSection("services")
+                              }
+                              className="flex items-start gap-3 px-5 py-3.5 text-left hover:bg-aethon-cream/60 transition-colors duration-200 cursor-pointer group/item border-b border-r border-aethon-gray-dark/15 last:border-b-0 even:border-r-0"
                             >
-                              <div className="bg-white/90 backdrop-blur-2xl rounded-2xl shadow-2xl shadow-aethon-dark/10 border border-aethon-gray-dark/30 overflow-hidden">
-                                {/* Header */}
-                                <div className="px-6 pt-5 pb-3 border-b border-aethon-gray-dark/20">
-                                  <div className="flex items-center justify-between">
-                                    <div>
-                                      <h3 className="text-sm font-bold text-aethon-text">
-                                        Our Capabilities
-                                      </h3>
-                                      <p className="text-xs text-aethon-text-muted mt-0.5">
-                                        What we engineer for compounding growth
-                                      </p>
-                                    </div>
-                                    <button
-                                      onClick={() =>
-                                        scrollToSection("services")
-                                      }
-                                      className="flex items-center gap-1 text-xs font-semibold text-aethon-gold hover:text-aethon-gold-dark transition-colors cursor-pointer group"
-                                    >
-                                      View All
-                                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                                    </button>
-                                  </div>
-                                </div>
-
-                                {/* Services Grid */}
-                                <div className="grid grid-cols-2 gap-0">
-                                  {megaServices.map((service, i) => {
-                                    const Icon = service.icon;
-                                    return (
-                                      <motion.button
-                                        key={service.title}
-                                        initial={{ opacity: 0, y: 8 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{
-                                          delay: i * 0.04,
-                                          duration: 0.3,
-                                        }}
-                                        onClick={() =>
-                                          scrollToSection("services")
-                                        }
-                                        className="flex items-start gap-3 px-5 py-3.5 text-left hover:bg-aethon-cream/60 transition-colors duration-200 cursor-pointer group/item border-b border-r border-aethon-gray-dark/15 last:border-b-0 even:border-r-0"
-                                      >
-                                        <div
-                                          className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center mt-0.5"
-                                          style={{
-                                            background: `${service.color}12`,
-                                            border: `1px solid ${service.color}25`,
-                                          }}
-                                        >
-                                          <Icon
-                                            className="w-4 h-4"
-                                            style={{ color: service.color }}
-                                          />
-                                        </div>
-                                        <div className="min-w-0">
-                                          <h4 className="text-sm font-semibold text-aethon-text group-hover/item:text-aethon-gold transition-colors leading-tight">
-                                            {service.title}
-                                          </h4>
-                                          <p className="text-xs text-aethon-text-muted mt-0.5 leading-relaxed">
-                                            {service.desc}
-                                          </p>
-                                        </div>
-                                      </motion.button>
-                                    );
-                                  })}
-                                </div>
-
-                                {/* Bottom CTA */}
-                                <div className="px-5 py-3 bg-aethon-cream/30 border-t border-aethon-gray-dark/15">
-                                  <button
-                                    onClick={openContactModal}
-                                    className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-aethon-dark bg-aethon-gold hover:bg-aethon-gold text-white text-xs font-semibold transition-colors duration-300 cursor-pointer"
-                                  >
-                                    <MessageSquare className="w-3.5 h-3.5" />
-                                    Discuss a Project
-                                  </button>
-                                </div>
+                              <div
+                                className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center mt-0.5"
+                                style={{
+                                  background: `${service.color}12`,
+                                  border: `1px solid ${service.color}25`,
+                                }}
+                              >
+                                <Icon
+                                  className="w-4 h-4"
+                                  style={{ color: service.color }}
+                                />
                               </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      )}
+
+                              <div className="min-w-0">
+                                <h4 className="text-sm font-semibold text-aethon-text group-hover/item:text-aethon-gold transition-colors leading-tight">
+                                  {service.title}
+                                </h4>
+
+                                <p className="text-xs text-aethon-text-muted mt-0.5 leading-relaxed">
+                                  {service.desc}
+                                </p>
+                              </div>
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+
+                      {/* BOTTOM CTA */}
+                      <div className="px-5 py-3 bg-aethon-cream/30 border-t border-aethon-gray-dark/15">
+                        <button
+                          onClick={openContactModal}
+                          className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-aethon-gold hover:bg-aethon-gold-dark text-white text-xs font-semibold transition-colors duration-300 cursor-pointer"
+                        >
+                          <MessageSquare className="w-3.5 h-3.5" />
+                          Discuss a Project
+                        </button>
+                      </div>
+
                     </div>
-                  ))}
-                </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
 
-                {/* Right: Discuss button + mobile hamburger */}
-                <div className="flex items-center gap-3 shrink-0">
-                  <Button
-                    onClick={openContactModal}
-                    className="hidden sm:flex relative overflow-hidden rounded-full px-5 lg:px-6 text-sm font-semibold text-gray-800 cursor-pointer
-  border border-white/25
-  bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
-  backdrop-blur-2xl
-  shadow-[0_10px_35px_rgba(201,162,39,0.30),inset_0_1px_1px_rgba(255,255,255,0.55)]
-  hover:shadow-[0_14px_45px_rgba(201,162,39,0.42),inset_0_1px_1px_rgba(255,255,255,0.65)]
-  hover:scale-[1.03]
-  transition-all duration-300"
-                  >
-                    {/* glossy top reflection */}
-                    <span className="absolute top-0 left-[8%] h-[48%] w-[84%] rounded-full bg-gradient-to-b from-white/55 via-white/20 to-transparent blur-[2px]" />
+    {/* RIGHT : CTA + MOBILE MENU */}
+    <div className="flex items-center gap-3 flex-shrink-0">
 
-                    {/* moving light streak */}
-                    <span className="absolute inset-y-0 -left-1/3 w-1/3 rotate-12 bg-white/25 blur-md animate-[shine_3s_linear_infinite]" />
+      {/* DESKTOP CTA */}
+      <Button
+        onClick={openContactModal}
+        className="hidden lg:flex relative overflow-hidden rounded-full px-5 xl:px-6 text-sm font-semibold text-gray-800 cursor-pointer
+border border-white/25
+bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+backdrop-blur-2xl
+shadow-[0_10px_35px_rgba(201,162,39,0.30),inset_0_1px_1px_rgba(255,255,255,0.55)]
+hover:shadow-[0_14px_45px_rgba(201,162,39,0.42),inset_0_1px_1px_rgba(255,255,255,0.65)]
+hover:scale-[1.03]
+transition-all duration-300"
+      >
+        <span className="absolute top-0 left-[8%] h-[48%] w-[84%] rounded-full bg-gradient-to-b from-white/55 via-white/20 to-transparent blur-[2px]" />
 
-                    {/* inner glass edge */}
-                    <span className="absolute inset-[1px] rounded-full border border-white/15" />
+        <span className="absolute inset-y-0 -left-1/3 w-1/3 rotate-12 bg-white/25 blur-md animate-[shine_3s_linear_infinite]" />
 
-                    <span className="relative z-10 tracking-tight">
-                      Discuss a Project
-                    </span>
-                  </Button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setMenuOpen(true)}
-                    className="sm:hidden relative overflow-hidden w-9 h-9 rounded-full
-  border border-aethon-gold-light/35
-  bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
-  backdrop-blur-2xl
-  flex items-center justify-center cursor-pointer
-  shadow-[0_8px_24px_rgba(201,162,39,0.24),inset_0_1px_1px_rgba(255,255,255,0.45)]
-  transition-all duration-300"
-                    aria-label="Open menu"
-                  >
-                    {/* iPhone glossy reflection */}
-                    <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 via-white/10 to-transparent blur-[2px]" />
+        <span className="absolute inset-[1px] rounded-full border border-white/15" />
 
-                    <div className="relative z-10 w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
-                      <span className="block w-3 h-[1.6px] bg-black rounded-full" />
-                      <span className="block w-4 h-[1.6px] bg-black rounded-full" />
-                      <span className="block w-2.5 h-[1.6px] bg-black rounded-full" />
-                    </div>
-                  </motion.button>
-                </div>
-              </nav>
+        <span className="relative z-10 tracking-tight">
+          Discuss a Project
+        </span>
+      </Button>
+
+      {/* MOBILE MENU BUTTON */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setMenuOpen(true)}
+        className="lg:hidden relative overflow-hidden w-9 h-9 rounded-full
+border border-aethon-gold-light/35
+bg-gradient-to-br from-aethon-gold-light via-aethon-gold to-aethon-gold-dark
+backdrop-blur-2xl
+flex items-center justify-center cursor-pointer
+shadow-[0_8px_24px_rgba(201,162,39,0.24),inset_0_1px_1px_rgba(255,255,255,0.45)]
+transition-all duration-300"
+        aria-label="Open menu"
+      >
+        <span className="absolute top-0 left-[12%] h-[42%] w-[76%] rounded-full bg-gradient-to-b from-white/45 via-white/10 to-transparent blur-[2px]" />
+
+        <div className="relative z-10 w-4 h-4 flex flex-col items-center justify-center gap-[3px]">
+          <span className="block w-3 h-[1.6px] bg-black rounded-full" />
+          <span className="block w-4 h-[1.6px] bg-black rounded-full" />
+          <span className="block w-2.5 h-[1.6px] bg-black rounded-full" />
+        </div>
+      </motion.button>
+
+    </div>
+  </div>
+</nav>
             </motion.div>
           ) : (
             /* ===== SCROLLED STATE: Two INDEPENDENT floating pills ===== */
